@@ -7,9 +7,7 @@ graph vx {
  "exit02" [function="exit" os="CumulusCommunity/cumulus-vx" version="3.6.2" memory="768" config="./helper_scripts/config_switch.sh" ]
  "server01" [function="host" os="yk0/ubuntu-xenial" memory="512" config="./helper_scripts/config_server.sh" ]
  "server02" [function="host" os="yk0/ubuntu-xenial" memory="512" config="./helper_scripts/config_server.sh" ]
- "internet" [function="internet" vagrant="swp12" os="CumulusCommunity/cumulus-vx" version="3.6.2" memory="768" config="./helper_scripts/config_internet.sh" ]
- "oob-mgmt-switch" [function="oob-switch" vagrant="eth0" os="CumulusCommunity/cumulus-vx" version="3.6.2" memory="768" config="./helper_scripts/config_oob_switch.sh" ]
- "oob-mgmt-server" [function="oob-server" vagrant="eth0" os="CumulusCommunity/vx_oob_server" version="1.0.4" memory="1024" config="./helper_scripts/config_oob_server.sh" ]
+ "internet" [function="internet" os="CumulusCommunity/cumulus-vx" version="3.6.2" memory="768" config="./helper_scripts/config_internet.sh" ]
  
  "leaf01":"swp15" -- "spine01":"swp1"
  "leaf02":"swp15" -- "spine01":"swp2"
