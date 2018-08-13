@@ -2,7 +2,7 @@
 #    Template Revision: v4.6.8
 #    https://github.com/cumulusnetworks/topology_converter
 #    using topology data from: ./topology.dot
-#    built with the following args: ./topology_converter.py ./topology.dot -p libvirt --start-port 30000
+#    built with the following args: ./topology_converter.py ./topology.dot -p libvirt --start-port 30000 -a
 #
 #    NOTE: in order to use this Vagrantfile you will need:
 #       -Vagrant(v2.0.2+) installed: http://www.vagrantup.com/downloads
@@ -101,6 +101,22 @@ Vagrant.configure("2") do |config|
   end
 
 
+  #Generating Ansible Host File at following location:
+  #    ./.vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "./helper_scripts/empty_playbook.yml"
+# ANSIBLE GROUPS CONFIGURATION
+    ansible.groups = {
+      "leaf" => ["leaf02","leaf01",],
+      "spine" => ["spine02","spine01",],
+      "oob-switch" => ["oob-mgmt-switch",],
+      "host" => ["server01","server02",],
+      "exit" => ["exit02","exit01",],
+      "internet" => ["internet",],
+      "oob-server" => ["oob-mgmt-server",],
+      "network:children" => ["leaf","spine","oob-switch","exit","internet",]
+    }
+  end
 
 
   ##### DEFINE VM for oob-mgmt-server #####
