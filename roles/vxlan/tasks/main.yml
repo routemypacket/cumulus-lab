@@ -1,0 +1,12 @@
+---
+  - name: Enable VXLAN
+    nclu:
+      commands:
+        - add vlan 100
+        - add vxlan vni10100 vxlan id 10100
+        - add vxlan vni10100 bridge access 100
+        - add vxlan vni10100 vxlan local-tunnelip {{ rid }}
+        - add bridge bridge ports vni10100
+#        - add bridge bridge vids 100
+      atomic: true
+      description: "Enable VXLAN"

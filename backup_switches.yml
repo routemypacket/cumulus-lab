@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: all_switches
   become: yes
   tasks:
   - name: Backup interfaces
@@ -10,4 +10,3 @@
 
   - name: Backup frr
     fetch: src=/etc/frr/frr.conf dest=./flatfiles/{{ansible_hostname}}/frr.conf flat=yes
-

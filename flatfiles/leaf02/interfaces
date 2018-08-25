@@ -7,7 +7,7 @@ source /etc/network/interfaces.d/*.intf
 auto lo
 iface lo inet loopback
     # The primary network interface
-    address 3.3.3.3/32
+    address 4.4.4.4/32
 
 # The primary network interface
 auto eth0
@@ -58,4 +58,4 @@ iface vni10100
     mstpctl-bpduguard yes
     mstpctl-portbpdufilter yes
     vxlan-id 10100
-    vxlan-local-tunnelip 3.3.3.3
+    vxlan-local-tunnelip 4.4.4.4

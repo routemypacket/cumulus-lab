@@ -1,0 +1,15 @@
+---
+  - name: Enable BGP
+    nclu:
+      commands:
+        - add loopback lo ip address {{ loopback }}
+        - add bgp autonomous-system {{ asn }}
+        - add bgp router-id {{ rid }}
+        - add bgp bestpath as-path multipath-relax
+        - add bgp neighbor {{ links }} interface remote-as external
+        - add bgp l2vpn evpn neighbor {{ item }} activate
+        - add bgp l2vpn evpn advertise-all-vni
+        - add bgp network {{ loopback }}
+      atomic: true
+      description: "Enable BGP"
+    with_items: "{{ evpn_neighbour_ports }}"

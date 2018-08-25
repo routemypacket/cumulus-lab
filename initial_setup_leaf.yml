@@ -1,0 +1,8 @@
+---
+  - hosts: leaf
+    gather_facts: no
+    roles:
+      - vxlan
+      - bgp
+      - access_ports
+      - vrf

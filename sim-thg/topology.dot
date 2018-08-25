@@ -18,22 +18,18 @@ graph vx {
  "leaf01":"swp16" -- "spine02":"swp1"
  "leaf02":"swp16" -- "spine02":"swp2"
 
- "exit01":"swp15" -- "spine01":"swp14"
- "exit01":"swp16" -- "spine02":"swp14"
- "exit02":"swp15" -- "spine01":"swp13"
- "exit02":"swp16" -- "spine02":"swp13"
+ "exit01":"swp15" -- "spine01":"swp15"
+ "exit01":"swp16" -- "spine02":"swp15"
+ "exit02":"swp15" -- "spine01":"swp16"
+ "exit02":"swp16" -- "spine02":"swp16"
 
  "internet":"swp1" -- "exit01":"swp1"
  "internet":"swp2" -- "exit02":"swp1"
 
  "server01":"eth1" -- "leaf01":"swp1" [left_mac="00:03:00:11:11:01"]
- "server01":"eth2" -- "leaf02":"swp1" [left_mac="00:03:00:11:11:02"]
  "server02":"eth1" -- "leaf01":"swp2" [left_mac="00:03:00:22:22:01"]
- "server02":"eth2" -- "leaf02":"swp2" [left_mac="00:03:00:22:22:02"]
- "server03":"eth1" -- "leaf01":"swp3" [left_mac="00:03:00:33:33:01"]
- "server03":"eth2" -- "leaf02":"swp3" [left_mac="00:03:00:33:33:02"]
- "server04":"eth1" -- "leaf01":"swp4" [left_mac="00:03:00:44:44:01"]
- "server04":"eth2" -- "leaf02":"swp4" [left_mac="00:03:00:44:44:02"]
+ "server03":"eth1" -- "leaf02":"swp1" [left_mac="00:03:00:33:33:01"]
+ "server04":"eth1" -- "leaf02":"swp2" [left_mac="00:03:00:44:44:01"]
 
  "oob-mgmt-server":"eth1" -- "oob-mgmt-switch":"swp1" [right_mac="a0:00:00:00:00:61"]
  "server01":"eth0" -- "oob-mgmt-switch":"swp2" [left_mac="a0:00:00:00:00:31"]
