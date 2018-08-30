@@ -4,6 +4,6 @@
       commands:
         - add vrf public vni 10100
         - add vlan 100 vrf public
-        - add vlan 100 ip address 10.0.0.1/24
+        - add vlan 100 ip address {{ gw_ip }}
       atomic: true
       description: "Enable VRF and SVI"

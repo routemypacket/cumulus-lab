@@ -2,8 +2,8 @@
 oob-mgmt-switch ansible_host=192.168.0.1
 
 [exit]
-exit01 ansible_host=192.168.0.41
-exit02 ansible_host=192.168.0.42
+exit01 ansible_host=192.168.0.41 peering_addr=172.16.0.1/30 bgp_neighbour_ports='["swp1", "swp15", "swp16"]' gw_ip=10.0.0.254/24
+exit02 ansible_host=192.168.0.42 peering_addr=172.16.0.5/30 bgp_neighbour_ports='["swp1", "swp15", "swp16"]' gw_ip=10.0.0.253/24
 
 [leaf]
 leaf01 ansible_host=192.168.0.11
@@ -23,12 +23,12 @@ server03 ansible_host=192.168.0.33
 server04 ansible_host=192.168.0.34
 
 [all_switches]
-spine01 ansible_host=192.168.0.21 rid=1.1.1.1 asn=65001 loopback=1.1.1.1/32 links=swp1-2 evpn_neighbour_ports='["swp1", "swp2"]'
-spine02 ansible_host=192.168.0.22 rid=2.2.2.2 asn=65002 loopback=2.2.2.2/32 links=swp1-2 evpn_neighbour_ports='["swp1", "swp2"]'
-leaf01 ansible_host=192.168.0.11 rid=3.3.3.3 asn=65003 loopback=3.3.3.3/32 links=swp15-16 evpn_neighbour_ports='["swp15", "swp16"]'
-leaf02 ansible_host=192.168.0.12 rid=4.4.4.4 asn=65004 loopback=4.4.4.4/32 links=swp15-16 evpn_neighbour_ports='["swp15", "swp16"]'
-exit01 ansible_host=192.168.0.41 rid=5.5.5.5 asn=65005 loopback=5.5.5.5/32 links=swp15-16 evpn_neighbour_ports='["swp15", "swp16"]'
-exit02 ansible_host=192.168.0.42 rid=6.6.6.6 asn=65006 loopback=6.6.6.6/32 links=swp15-16 evpn_neighbour_ports='["swp15", "swp16"]'
+spine01 ansible_host=192.168.0.21 rid=1.1.1.1 asn=65001 loopback=1.1.1.1/32 links=swp1-2 bgp_neighbour_ports='["swp1", "swp2","swp15", "swp16"]'
+spine02 ansible_host=192.168.0.22 rid=2.2.2.2 asn=65002 loopback=2.2.2.2/32 links=swp1-2 bgp_neighbour_ports='["swp1", "swp2","swp15", "swp16"]'
+leaf01 ansible_host=192.168.0.11 rid=3.3.3.3 asn=65003 loopback=3.3.3.3/32 links=swp15-16 bgp_neighbour_ports='["swp15", "swp16"]' gw_ip=10.0.0.1/24
+leaf02 ansible_host=192.168.0.12 rid=4.4.4.4 asn=65004 loopback=4.4.4.4/32 links=swp15-16 bgp_neighbour_ports='["swp15", "swp16"]' gw_ip=10.0.0.1/24
+exit01 ansible_host=192.168.0.41 rid=5.5.5.5 asn=65005 loopback=5.5.5.5/32 links=swp15-16 bgp_neighbour_ports='["swp15", "swp16"]'
+exit02 ansible_host=192.168.0.42 rid=6.6.6.6 asn=65006 loopback=6.6.6.6/32 links=swp15-16 bgp_neighbour_ports='["swp15", "swp16"]'
 
 
 [all:vars]

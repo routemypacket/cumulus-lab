@@ -18,3 +18,9 @@ iface swp1
 
 auto swp2
 iface swp2
+
+auto swp15
+iface swp15
+
+auto swp16
+iface swp16

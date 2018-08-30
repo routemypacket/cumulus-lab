@@ -1,8 +1,0 @@
----
-  - name: Enable VRF
-    nclu:
-      commands:
-        - add vrf public vni 10901
-        - add vlan 901 vrf public
-      atomic: true
-      description: "Enable VRF"

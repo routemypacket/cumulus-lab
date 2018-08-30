@@ -2,5 +2,4 @@
   - hosts: spine
     gather_facts: no
     roles:
-      - vxlan
       - bgp

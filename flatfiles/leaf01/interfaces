@@ -47,6 +47,8 @@ iface vlan100
 auto vni10100
 iface vni10100
     bridge-access 100
+    bridge-arp-nd-suppress on
+    bridge-learning off
     mstpctl-bpduguard yes
     mstpctl-portbpdufilter yes
     vxlan-id 10100
