@@ -21,14 +21,6 @@ auto swp2
 iface swp2
     bridge-access 100
 
-auto swp3
-iface swp3
-    bridge-access 100
-
-auto swp4
-iface swp4
-    bridge-access 100
-
 auto swp15
 iface swp15
 
@@ -37,7 +29,7 @@ iface swp16
 
 auto bridge
 iface bridge
-    bridge-ports swp1 swp2 swp3 swp4 vni10100
+    bridge-ports swp1 swp2 vni10100
     bridge-vids 100
     bridge-vlan-aware yes
 

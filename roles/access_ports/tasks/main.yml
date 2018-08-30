@@ -2,6 +2,6 @@
   - name: Configure access switchports
     nclu:
       commands:
-        - add interface swp1-4 bridge access 100
+        - add interface swp1-2 bridge access 100
       atomic: true
       description: "Configure access switchports"

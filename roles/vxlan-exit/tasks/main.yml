@@ -1,0 +1,15 @@
+---
+  - name: Enable VXLAN
+    nclu:
+      commands:
+        - add vlan 901
+        - add vxlan vni10901 vxlan id 10901
+        - add vxlan vni10901 bridge access 100
+        - add vxlan vni10901 bridge learning off
+        - add vxlan vni10901 bridge arp-nd-suppress on
+        - add vxlan vni10901 vxlan local-tunnelip {{ rid }}
+        - add bridge bridge ports vni10901
+        - add bridge bridge vids 901
+
+      atomic: true
+      description: "Enable VXLAN"

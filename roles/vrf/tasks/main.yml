@@ -2,7 +2,7 @@
   - name: Enable VRF and SVI
     nclu:
       commands:
-        - add vrf public vrf-table 1000
+        - add vrf public vni 10100
         - add vlan 100 vrf public
         - add vlan 100 ip address 10.0.0.1/24
       atomic: true
