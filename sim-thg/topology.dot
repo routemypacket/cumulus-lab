@@ -10,7 +10,7 @@ graph vx {
  "server03" [function="host" os="yk0/ubuntu-xenial" memory="512" config="./helper_scripts/config_server.sh" ]
  "server04" [function="host" os="yk0/ubuntu-xenial" memory="512" config="./helper_scripts/config_server.sh" ]
  "internet" [function="internet" vagrant="swp48" os="CumulusCommunity/cumulus-vx" version="3.6.2" memory="768" config="./helper_scripts/config_internet.sh" ]
- "oob-mgmt-switch" [function="oob-switch" vagrant="eth0" os="CumulusCommunity/cumulus-vx" version="3.6.2" memory="768" config="./helper_scripts/config_oob_switch.sh" ]
+ "AX1-N25" [function="oob-switch" vagrant="eth0" os="CumulusCommunity/cumulus-vx" version="3.6.2" memory="768" config="./helper_scripts/config_oob_switch.sh" ]
  "oob-mgmt-server" [function="oob-server" vagrant="eth0" os="CumulusCommunity/vx_oob_server" version="1.0.4" memory="1024" config="./helper_scripts/config_oob_server.sh" ]
 
  "leaf01":"swp15" -- "spine01":"swp1"
