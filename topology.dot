@@ -7,33 +7,16 @@ graph vx {
  "leaf01":"swp13" -- "leaf02":"swp13"
  "leaf01":"swp14" -- "leaf02":"swp14"
 
- "spine01":"swp15" -- "spine02":"swp15"
- "spine01":"swp16" -- "spine02":"swp16"
+ "server01":"eth1" -- "leaf01":"swp1" [left_mac="00:03:00:11:11:01"]
+ "server02":"eth1" -- "leaf01":"swp2" [left_mac="00:03:00:22:22:01"]
+ "server03":"eth1" -- "leaf02":"swp1" [left_mac="00:03:00:33:33:01"]
+ "server04":"eth1" -- "leaf02":"swp2" [left_mac="00:03:00:44:44:01"]
 
- "server01":"eth1" -- "leaf01":"swp1" 
- "server02":"eth1" -- "leaf01":"swp2" 
- "server03":"eth1" -- "leaf02":"swp1"
- "server04":"eth1" -- "leaf02":"swp2"
-
- "exit01":"swp15" -- "spine01":"swp3"
- "exit01":"swp16" -- "spine02":"swp3"
- "exit02":"swp15" -- "spine01":"swp4"
- "exit02":"swp16" -- "spine02":"swp4"
-
+ "exit01":"swp15" -- "spine01":"swp13"
+ "exit01":"swp16" -- "spine02":"swp14"
+ "exit02":"swp15" -- "spine01":"swp14"
+ "exit02":"swp16" -- "spine02":"swp13"
 
  "internet":"swp1" -- "exit01":"swp1"
  "internet":"swp2" -- "exit02":"swp1"
-
- "oob-mgmt-server":"eth1" -- "oob-mgmt-switch":"swp1" 
- "server01":"eth0" -- "oob-mgmt-switch":"swp2" 
- "server02":"eth0" -- "oob-mgmt-switch":"swp3" 
- "server03":"eth0" -- "oob-mgmt-switch":"swp4"
- "server04":"eth0" -- "oob-mgmt-switch":"swp5"
- "leaf01":"eth0" -- "oob-mgmt-switch":"swp6" 
- "leaf02":"eth0" -- "oob-mgmt-switch":"swp7" 
- "spine01":"eth0" -- "oob-mgmt-switch":"swp10" 
- "spine02":"eth0" -- "oob-mgmt-switch":"swp11" 
- "exit01":"eth0" -- "oob-mgmt-switch":"swp12" 
- "exit02":"eth0" -- "oob-mgmt-switch":"swp13" 
- "internet":"eth0" -- "oob-mgmt-switch":"swp15" 
 }
