@@ -1,17 +1,16 @@
 # The loopback network interface
- auto lo
- iface lo inet loopback
-   address 10.0.0.41/32
+    auto lo
+    iface lo inet loopback
+    address 10.0.0.41/32
 
- # The primary network interface
- auto eth0
- iface eth0 inet dhcp
+    # The primary network interface
+    auto eth0
+    iface eth0 inet dhcp
     vrf mgmt
 
 auto public
 iface public
-   vrf-table auto
-
+    vrf-table auto
 
 auto mgmt
 iface mgmt
@@ -20,21 +19,19 @@ iface mgmt
 
 auto bridge
 iface bridge
-  bridge-vlan-aware yes
-  bridge-ports vxlan4001
-
+    bridge-vlan-aware yes
+    bridge-ports vxlan4001
 
 auto vlan4001
 iface vlan4001
-  vlan-id 4001
-  vlan-raw-device bridge
-  vrf public
-
-
+    vlan-id 4001
+    vlan-raw-device bridge
+    vrf public
 
 auto swp1
 iface swp1
-   vrf public
+    address 172.16.1.1/24
+    vrf public
 
 auto swp15
 iface swp15
@@ -44,7 +41,7 @@ iface swp16
 
 auto vxlan4001
 iface vxlan4001
-   vxlan-id 104001
-   vxlan-local-tunnelip 10.0.0.41
-   bridge-learning off
-   bridge-access 4001
+    vxlan-id 104001
+    vxlan-local-tunnelip 10.0.0.41
+    bridge-learning off
+    bridge-access 4001
