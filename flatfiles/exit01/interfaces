@@ -1,20 +1,40 @@
-# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
-
-source /etc/network/interfaces.d/*.intf
-
 # The loopback network interface
-auto lo
-iface lo inet loopback
-    # The primary network interface
-    address 5.5.5.5/32
+ auto lo
+ iface lo inet loopback
+   address 10.0.0.41/32
 
-# The primary network interface
-auto eth0
-iface eth0 inet dhcp
+ # The primary network interface
+ auto eth0
+ iface eth0 inet dhcp
+    vrf mgmt
+
+auto public
+iface public
+   vrf-table auto
+
+
+auto mgmt
+iface mgmt
+    address 127.0.0.1/8
+    vrf-table auto
+
+auto bridge
+iface bridge
+  bridge-vlan-aware yes
+  bridge-ports vxlan4001
+
+
+auto vlan4001
+iface vlan4001
+  vlan-id 4001
+  vlan-raw-device bridge
+  vrf public
+
+
 
 auto swp1
 iface swp1
+   vrf public
 
 auto swp15
 iface swp15
@@ -22,29 +42,9 @@ iface swp15
 auto swp16
 iface swp16
 
-auto bridge
-iface bridge
-    bridge-ports vni10100 vni10100
-    bridge-vids 100
-    bridge-vlan-aware yes
-
-auto public
-iface public
-    vrf-table auto
-
-auto vlan100
-iface vlan100
-    address 10.0.0.254/24
-    vlan-id 100
-    vlan-raw-device bridge
-    vrf public
-
-auto vni10100
-iface vni10100
-    bridge-access 100
-    bridge-arp-nd-suppress on
-    bridge-learning off
-    mstpctl-bpduguard yes
-    mstpctl-portbpdufilter yes
-    vxlan-id 10100
-    vxlan-local-tunnelip 5.5.5.5
+auto vxlan4001
+iface vxlan4001
+   vxlan-id 104001
+   vxlan-local-tunnelip 10.0.0.41
+   bridge-learning off
+   bridge-access 4001

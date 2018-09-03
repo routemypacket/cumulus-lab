@@ -1,55 +1,125 @@
-# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
+# /etc/network/interfaces template for switches (leaf01)
+# Created by Ansible
 
-source /etc/network/interfaces.d/*.intf
-
-# The loopback network interface
+# Loopback interface
 auto lo
 iface lo inet loopback
-    # The primary network interface
-    address 3.3.3.3/32
+  address 10.0.0.11/32
+  clagd-vxlan-anycast-ip 10.0.0.112
+  alias loopback interface
 
-# The primary network interface
+# Management interface
+
 auto eth0
 iface eth0 inet dhcp
+    vrf mgmt
 
+auto mgmt
+iface mgmt
+    address 127.0.0.1/8
+    vrf-table auto
+
+# Port to Server01
 auto swp1
 iface swp1
-    bridge-access 100
+  alias to Server01
+  mtu 9000
+  bridge-access 100
 
+# Port to Server02
 auto swp2
 iface swp2
-    bridge-access 100
+  alias to Server02
+  mtu 9000
+  bridge-access 100
 
+# Port to Leaf02
+auto swp13
+iface swp13
+  mtu 9216
+  alias to Leaf02
+
+# Port to Leaf02
+auto swp14
+iface swp14
+  alias to Leaf02
+
+# Port to Spine01
 auto swp15
 iface swp15
+  alias to Spine01
 
+# Port to Spine02
 auto swp16
 iface swp16
+  mtu 9216
+  alias to Spine02
 
+# CLAG Peerlink bond
+auto peerlink
+iface peerlink
+  mtu 9000
+  bond-slaves swp13 swp14
+
+# CLAG Peerlink L2 interface.
+# This creates VLAN 4094 that only lives on the peerlink bond
+# No other interface will be aware of VLAN 4094
+auto peerlink.4094
+iface peerlink.4094
+  address 169.254.1.1/30
+  clagd-peer-ip 169.254.1.2
+  clagd-backup-ip 10.0.0.12
+  clagd-sys-mac 44:39:39:ff:40:94
+  clagd-priority 100
+
+# Define the bridge for STP
 auto bridge
 iface bridge
-    bridge-ports swp1 swp2 vni10100
-    bridge-vids 100
-    bridge-vlan-aware yes
+  bridge-vlan-aware yes
+  # bridge-ports includes all ports related to VxLAN and CLAG.
+  # does not include the Peerlink.4094 subinterface
+  bridge-ports swp1 peerlink vni100 vxlan4001
+  bridge-vids 100
+  bridge-pvid 1
+
+# VxLAN Tunnel for Pubic Network (Vlan 100)
+auto vni100
+iface vni100
+  mtu 9000
+  vxlan-id 10100
+  vxlan-local-tunnelip 10.0.0.11
+  bridge-access 100
+  bridge-learning off
+  mstpctl-bpduguard yes
+  mstpctl-portbpdufilter yes
+
+auto vxlan4001
+iface vxlan4001
+    vxlan-id 104001
+    vxlan-local-tunnelip 10.0.0.11
+    bridge-learning off
+    bridge-access 4001
 
 auto public
 iface public
-    vrf-table auto
+   vrf-table auto
+
+
+#Tenant SVIs - anycast GW
 
 auto vlan100
 iface vlan100
-    address 10.0.0.1/24
+    address 10.1.0.11/24
+    address-virtual 44:39:39:ff:00:10 10.1.0.1/24
     vlan-id 100
     vlan-raw-device bridge
     vrf public
 
-auto vni10100
-iface vni10100
-    bridge-access 100
-    bridge-arp-nd-suppress on
-    bridge-learning off
-    mstpctl-bpduguard yes
-    mstpctl-portbpdufilter yes
-    vxlan-id 10100
-    vxlan-local-tunnelip 3.3.3.3
+#L3 VLAN interface per tenant (for L3 VNI)
+
+auto vlan4001
+iface vlan4001
+    hwaddress 44:39:39:FF:40:94
+    vlan-id 4001
+    vlan-raw-device bridge
+    vrf public
