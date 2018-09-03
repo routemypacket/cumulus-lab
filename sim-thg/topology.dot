@@ -21,9 +21,6 @@ graph vx {
  "leaf01":"swp13" -- "leaf02":"swp13"
  "leaf01":"swp14" -- "leaf02":"swp14"
 
- "spine01":"swp15" -- "spine02":"swp15"
- "spine01":"swp16" -- "spine02":"swp16"
-
  "server01":"eth1" -- "leaf01":"swp1" [left_mac="00:03:00:11:11:01"]
  "server02":"eth1" -- "leaf01":"swp2" [left_mac="00:03:00:22:22:01"]
  "server03":"eth1" -- "leaf02":"swp1" [left_mac="00:03:00:33:33:01"]
