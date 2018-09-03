@@ -13,6 +13,17 @@ leaf02 ansible_host=10.255.6.4
 spine01 ansible_host=10.255.6.7
 spine02 ansible_host=10.255.6.8
 
+[hosts]
+server01 ansible_host=185.2.136.71
+server02 ansible_host=185.2.136.72
+server03 ansible_host=185.2.136.73
+server04 ansible_host=185.2.136.74
+
+[hosts-ipmi]
+server01-ipmi ansible_host=10.15.79.x
+server02-ipmi ansible_host=10.15.79.x
+server03-ipmi ansible_host=10.15.79.x
+server04-ipmi ansible_host=10.15.79.x
 
 [all:vars]
 ansible_user=cumulus
