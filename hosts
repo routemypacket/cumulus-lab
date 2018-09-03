@@ -1,7 +1,7 @@
 # Created by Topology-Converter v4.6.8
 #    Template Revision: v4.6.8
 #    https://github.com/cumulusnetworks/topology_converter
-#    using topology data from: ./topology.dot
+#    using topology data from: topology.dot
 
 
 
@@ -12,8 +12,8 @@ oob-mgmt-switch ansible_host=192.168.200.3
 
 
 [exit]
-exit01 ansible_host=192.168.200.4
 exit02 ansible_host=192.168.200.7
+exit01 ansible_host=192.168.200.8
 
 
 
@@ -35,7 +35,9 @@ spine01 ansible_host=192.168.200.6
 
 [host]
 server01 ansible_host=192.168.200.9
-server02 ansible_host=192.168.200.10
+server03 ansible_host=192.168.200.10
+server02 ansible_host=192.168.200.11
+server04 ansible_host=192.168.200.12
 
 
 [all:vars]
