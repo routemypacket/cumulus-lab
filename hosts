@@ -1,3 +1,4 @@
+
 [oob-switch]
 oob-mgmt-switch ansible_host=10.255.6.2
 
@@ -20,14 +21,11 @@ server03 ansible_host=185.2.136.247
 server04 ansible_host=185.2.136.248
 
 [hosts-ipmi]
-server01-ipmi ansible_host=10.15.79.x
-server02-ipmi ansible_host=10.15.79.x
-server03-ipmi ansible_host=10.15.79.x
-server04-ipmi ansible_host=10.15.79.x
+server01-ipmi ansible_host=10.15.79.1
+server02-ipmi ansible_host=10.15.79.2
+server03-ipmi ansible_host=10.15.79.3
+server04-ipmi ansible_host=10.15.79.4
 
 [all:vars]
 ansible_user=cumulus
 ansible_ssh_pass=CumulusLinux!
-
-
-185.2.136.240/
