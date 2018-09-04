@@ -13,9 +13,9 @@ graph vx {
  "server04":"eth1" -- "leaf02":"swp2" [left_mac="00:03:00:44:44:01"]
 
  "exit01":"swp15" -- "spine01":"swp13"
- "exit01":"swp16" -- "spine02":"swp14"
+ "exit01":"swp16" -- "spine02":"swp13"
  "exit02":"swp15" -- "spine01":"swp14"
- "exit02":"swp16" -- "spine02":"swp13"
+ "exit02":"swp16" -- "spine02":"swp14"
 
  "internet":"swp1" -- "exit01":"swp1"
  "internet":"swp2" -- "exit02":"swp1"

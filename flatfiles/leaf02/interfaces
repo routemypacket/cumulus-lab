@@ -22,20 +22,21 @@ iface mgmt
     vrf-table auto
 
 
-# Port to Server03
-auto swp1
-iface swp1
-  alias to Server03
-  mtu 9000
-  bridge-access 100
+# Port to Server01
+auto swp1s0
+iface swp1s0
 
+# Port to Server02
+auto swp1s1
+iface swp1s1
+
+# Port to Server03
+auto swp1s2
+iface swp1s2
 
 # Port to Server04
-auto swp2
-iface swp2
-  alias to Server04
-  mtu 9000
-  bridge-access 100
+auto swp1s3
+iface swp1s3
 
 
 # Port to Leaf01
