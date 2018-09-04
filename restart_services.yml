@@ -1,5 +1,5 @@
 ---
-- hosts: all_switches
+- hosts: leaf,exit,spine
   become: yes
   tasks:
   - name: reload networking

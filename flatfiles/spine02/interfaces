@@ -6,9 +6,10 @@ iface lo inet loopback
 
 # Management interface
 auto eth0
-iface eth0 inet dhcp
-    alias management interface
-    vrf mgmt
+iface eth0
+ vrf mgmt
+    address 10.255.6.8/23
+    gateway 10.255.6.1
 
 auto mgmt
 iface mgmt
