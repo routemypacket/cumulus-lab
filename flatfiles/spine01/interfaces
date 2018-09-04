@@ -29,14 +29,14 @@ iface swp2
   alias to Leaf02
 
 # Port to Exit01
-auto swp3
-iface swp3
+auto swp13
+iface swp13
   mtu 9216
   alias to Exit01
 
 # Port to Exit02
-auto swp4
-iface swp4
+auto swp14
+iface swp14
   mtu 9216
   alias to Exit02
 
