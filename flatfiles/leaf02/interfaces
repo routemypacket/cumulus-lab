@@ -11,8 +11,9 @@ iface lo inet loopback
 # Management interface
 
 auto eth0
-iface eth0 inet dhcp
-    vrf mgmt
+iface eth0
+    address 10.255.6.4/23
+    gateway 10.255.6.1
 
 auto mgmt
 iface mgmt
@@ -94,7 +95,7 @@ iface vxlan4001
      bridge-learning off
      bridge-access 4001
 
-# VxLAN Tunnel for Server1-Server3 (Vlan 13)
+# VxLAN Tunnel for Server1-Server3 (Vlan 100)
 auto vni100
 iface vni100
   mtu 9000
@@ -111,8 +112,8 @@ iface public
 
 auto vlan100
 iface vlan100
-    address 10.1.0.12/24
-    address-virtual 44:39:39:ff:00:10 10.1.0.1/24
+    address 185.2.136.244/28
+    address-virtual 44:39:39:ff:00:10 185.2.136.241/28
     vlan-id 100
     vlan-raw-device bridge
     vrf public

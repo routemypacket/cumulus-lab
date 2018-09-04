@@ -14,10 +14,10 @@ spine01 ansible_host=10.255.6.7
 spine02 ansible_host=10.255.6.8
 
 [hosts]
-server01 ansible_host=185.2.136.242
-server02 ansible_host=185.2.136.243
-server03 ansible_host=185.2.136.244
-server04 ansible_host=185.2.136.245
+server01 ansible_host=185.2.136.245
+server02 ansible_host=185.2.136.246
+server03 ansible_host=185.2.136.247
+server04 ansible_host=185.2.136.248
 
 [hosts-ipmi]
 server01-ipmi ansible_host=10.15.79.x
