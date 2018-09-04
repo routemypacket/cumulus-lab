@@ -6,8 +6,11 @@ iface lo inet loopback
 # The primary network interface
 
 auto eth0
-iface eth0 inet dhcp
-    vrf mgmt
+iface eth0
+ vrf mgmt
+    address 10.255.6.6/23
+    gateway 10.255.6.1
+    alias MGT_NET
 
 auto public
 iface public
@@ -31,13 +34,18 @@ iface vlan4001
 
 auto swp1
 iface swp1
-      vrf public
+  mtu 1500
+  address 185.2.139.138/31
+  vrf public
+  alias EXIT_INT
 
 auto swp15
 iface swp15
+  alias SPINE_01
 
 auto swp16
 iface swp16
+  alias SPINE_02
 
 
 auto vxlan4001
