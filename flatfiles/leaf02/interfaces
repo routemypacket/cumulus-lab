@@ -26,28 +26,24 @@ iface mgmt
 auto swp1s0
 iface swp1s0
   alias to Server01
-  mtu 9000
   bridge-access 100
 
 # Port to Server06
 auto swp1s1
 iface swp1s1
   alias to Server06
-  mtu 9000
   bridge-access 100
 
 # Port to Server07
 auto swp1s2
 iface swp1s2
   alias to Server07
-  mtu 9000
   bridge-access 100
 
 # Port to Server08
 auto swp1s3
 iface swp1s3
   alias to Server08
-  mtu 9000
   bridge-access 100
 
 
@@ -76,7 +72,6 @@ iface swp16
 # CLAG Peerlink bond
 auto peerlink
 iface peerlink
-  mtu 9000
   bond-slaves swp13 swp14
 
 # CLAG Peerlink L2 interface.
@@ -112,7 +107,7 @@ iface vxlan4001
 # VxLAN Tunnel for Server1-Server3 (Vlan 100)
 auto vni100
 iface vni100
-  mtu 9000
+  mtu 9166
   vxlan-id 10100
   vxlan-local-tunnelip 10.0.0.12
   bridge-access 13

@@ -1,11 +1,10 @@
 
 # Public IP addresses
 public - 185.2.136.240/28
-anycast_gw: 185.2.136.241
+leaf01/02 anycast gw: 185.2.136.241
 leaf01: 185.2.136.243
 leaf02: 185.2.136.244
 
-available - 185.2.136.248/29
 
 # NetQ
 http://10.255.4.20:9000/​​​​​​​
