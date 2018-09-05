@@ -48,7 +48,6 @@ iface swp1s3
 # Port to Leaf02
 auto swp13
 iface swp13
-  mtu 9216
   alias to Leaf02
 
 # Port to Leaf02
@@ -64,7 +63,6 @@ iface swp15
 # Port to Spine02
 auto swp16
 iface swp16
-  mtu 9216
   alias to Spine02
 
 # CLAG Peerlink bond

@@ -60,13 +60,11 @@ iface swp14
 # Port to Spine01
 auto swp15
 iface swp15
-  mtu 9216
   alias to Spine01
 
 # Port to Spine02
 auto swp16
 iface swp16
-  mtu 9216
   alias to Spine02
 
 # CLAG Peerlink bond
