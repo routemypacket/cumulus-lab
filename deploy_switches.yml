@@ -16,7 +16,7 @@
 
   - name: Copy over MTU json
     copy: src=./flatfiles/{{ansible_hostname}}/mtu.json dest=/etc/network/ifupdown2/policy.d/mtu.json
-    notify: reload frr
+    notify: reload networking
 
   handlers:
   - name: reload networking
