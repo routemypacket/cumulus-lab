@@ -10,3 +10,6 @@
 
   - name: Backup frr
     fetch: src=/etc/frr/frr.conf dest=./flatfiles/{{ansible_hostname}}/frr.conf flat=yes
+
+  - name: Backup Cumulus ports
+    fetch: src=/etc/cumulus/ports.conf dest=./flatfiles/{{ansible_hostname}}/ports.conf flat=yes
