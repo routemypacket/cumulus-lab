@@ -15,4 +15,4 @@
     fetch: src=/etc/cumulus/ports.conf dest=./flatfiles/{{ansible_hostname}}/ports.conf flat=yes
 
   - name: Backup over MTU json
-    fetch: src=/etc/network/ifupdown2/policy.d/mtu.json dest=./flatfiles/{{ansible_hostname}}/mtu.json
+    fetch: src=/etc/network/ifupdown2/policy.d/mtu.json dest=./flatfiles/{{ansible_hostname}}/mtu.json flat=yes
