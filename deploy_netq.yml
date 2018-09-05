@@ -15,7 +15,7 @@
         state: latest
 
     - name: Configure Netq Server
-      shell: /usr/bin/netq config add server 192.168.6.250 vrf mgmt
+      shell: /usr/bin/netq config add server 10.255.6.250 vrf mgmt
 
     - name: Restart Netq agent to apply config
       shell: /usr/bin/netq config restart agent
