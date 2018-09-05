@@ -108,7 +108,7 @@ iface vni100
   mtu 9166
   vxlan-id 10100
   vxlan-local-tunnelip 10.0.0.12
-  bridge-access 13
+  bridge-access 100
   bridge-learning off
   mstpctl-bpduguard yes
   mstpctl-portbpdufilter yes
