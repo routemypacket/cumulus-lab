@@ -1,0 +1,5 @@
+{
+ "address": {"defaults": { "mtu": "9216" },
+             "iface_defaults": {"eth0": {"mtu": "1500"}}
+            }
+}
