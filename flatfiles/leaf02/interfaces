@@ -21,11 +21,11 @@ iface mgmt
     address 127.0.0.1/8
     vrf-table auto
 
-
 # Port to Server01
 auto swp1s0
 iface swp1s0
   alias to Server01
+  bridge-access 100
 
 # Port to Server06
 auto swp1s1
@@ -67,11 +67,11 @@ iface swp16
   alias to Spine02
 
 # Bond to Server01
-auto bond01
-iface bond01
-  bond-slaves swp1s0
-  bridge-access 100
-  clag-id 1
+#auto bond01
+#iface bond01
+#  bond-slaves swp1s0
+#  bridge-access 100
+#  clag-id 1
 
 # CLAG Peerlink bond
 auto peerlink
@@ -96,7 +96,7 @@ iface bridge
   bridge-vlan-aware yes
   # bridge-ports includes all ports related to VxLAN and CLAG.
   # does not include the Peerlink.4094 subinterface
-  bridge-ports bond01 swp1s1 swp1s2 swp1s3 vni100 vxlan4001 peerlink
+  bridge-ports swp1s0 swp1s1 swp1s2 swp1s3 vni100 vxlan4001 peerlink
   bridge-vids 100 4001
   bridge-pvid 1
 
