@@ -1,4 +1,3 @@
-
 [oob-switch]
 oob-mgmt-switch ansible_host=10.255.6.2
 
@@ -24,10 +23,10 @@ server06 ansible_host=185.2.136.247
 
 [hosts-ipmi]
 server01-ipmi ansible_host=10.15.79.11
-server02-ipmi- ansible_host=10.15.79.12
+server02-ipmi ansible_host=10.15.79.12
 server03-ipmi ansible_host=10.15.79.3
 server04-ipmi ansible_host=10.15.79.4
-server05-ipmi ansible_host=10.15.79.4
+server05-ipmi ansible_host=10.15.79.0
 server06-ipmi ansible_host=10.15.79.13
 server07-ipmi ansible_host=10.15.79.14
 
