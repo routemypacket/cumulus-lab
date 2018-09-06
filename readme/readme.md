@@ -1,5 +1,4 @@
 
-
 # Validating EVPN traffic flows
 
 ## Validate IP neighbor table
