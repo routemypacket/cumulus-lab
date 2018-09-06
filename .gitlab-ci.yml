@@ -1,0 +1,58 @@
+---
+stages:
+  - lint
+  - prep simulation environment
+  - build the simulation
+  - provision the simulation
+  - test the simulation
+  - cleanup the simulation
+
+
+lint:
+  stage: lint
+  script:
+    - bash ./tests/linter.sh
+
+prep:
+  stage: prep simulation environment
+  script:
+    - bash ./tests/prep_sim.sh
+  only:
+    - /^dev.*$/
+
+build:
+  stage: build the simulation
+  artifacts:
+    expire_in: 1 week
+    untracked: true
+  script:
+    - bash ./sim-thg/bring_up_simulation.sh
+  only:
+    - /^dev.*$/
+
+provision:
+  stage: provision the simulation
+  script:
+    - bash ./tests/provision_sim_outside.sh
+  only:
+    - /^dev.*$/
+  dependencies:
+    - build
+
+test:
+  stage: test the simulation
+  script:
+    - bash ./tests/test_sim_outside.sh
+  only:
+    - /^dev.*$/
+  dependencies:
+    - build
+
+cleanup:
+  stage: cleanup the simulation
+  script:
+    - bash ./tests/cleanup.sh
+  only:
+    - /^dev.*$/
+  dependencies:
+    - build

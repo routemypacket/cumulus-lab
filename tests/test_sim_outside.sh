@@ -14,7 +14,7 @@ trap error ERR
 source ./tests/pipeline_failure_behavior
 echo "Starting to run tests...."
 
-cd ~/yahoojp/sim-thg
+cd ~/sim-thg
 
 set -e
 set -x

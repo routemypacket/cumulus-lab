@@ -7,7 +7,7 @@ if [ "$?" != "0" ]; then
 fi
 }
 
-cd ./sim-yahoojp
+cd ./sim-thg
 echo "Currently in directory: $(pwd)"
 
 # Force Colored output for Vagrant when being run in CI Pipeline

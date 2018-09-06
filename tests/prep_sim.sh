@@ -34,7 +34,7 @@ vagrant box list | grep netq130 | grep libvirt
 
 #script to clean up libvirt simulations
 echo "Cleaning pre-existing simulations"
-vms=$(virsh list --all | grep sim-yahoojp | grep -e '^ [1-9]' | awk '{print $2}')
+vms=$(virsh list --all | grep sim-thg | grep -e '^ [1-9]' | awk '{print $2}')
 
 for item in $vms; do
   echo "$item"
