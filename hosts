@@ -17,14 +17,19 @@ spine02 ansible_host=10.255.6.8
 [hosts]
 server01 ansible_host=185.2.136.245
 server02 ansible_host=185.2.136.246
-server03 ansible_host=185.2.136.247
-server04 ansible_host=185.2.136.248
+server03 ansible_host=185.2.136.0
+server07 ansible_host=185.2.136.248
+server05 ansible_host=185.2.136.249
+server06 ansible_host=185.2.136.247
 
 [hosts-ipmi]
-server01-ipmi ansible_host=10.15.79.1
-server02-ipmi ansible_host=10.15.79.2
+server01-ipmi ansible_host=10.15.79.11
+server02-ipmi- ansible_host=10.15.79.12
 server03-ipmi ansible_host=10.15.79.3
 server04-ipmi ansible_host=10.15.79.4
+server05-ipmi ansible_host=10.15.79.4
+server06-ipmi ansible_host=10.15.79.13
+server07-ipmi ansible_host=10.15.79.14
 
 [all:vars]
 ansible_user=cumulus
