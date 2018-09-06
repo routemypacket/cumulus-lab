@@ -30,6 +30,7 @@ iface swp1s3
 auto bridge
 iface bridge
     bridge-ports vxlan4001
+    bridge-vids 4001
     bridge-vlan-aware yes
 
 auto public
