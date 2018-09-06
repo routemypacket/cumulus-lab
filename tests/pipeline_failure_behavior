@@ -1,0 +1,2 @@
+# This option will leave the simulation active if the pipeline hits an error
+debug=true
