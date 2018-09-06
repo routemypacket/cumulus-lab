@@ -15,6 +15,10 @@ Peering range
 exit01 - cs1 - 185.2.139.136/31
 exit02 - cs2 - 185.2.139.138/31
 
-# Public IP address 
+# Public IP address
 public 46.23.68.80/29
 leaf02 anycast gw: 46.23.68.81
+
+
+Public IPv6
+2A02:2498:E004:4F::/64
