@@ -51,11 +51,13 @@ iface swp1s3
 auto swp13
 iface swp13
   alias to Leaf02
+  bridge-access 100
 
 # Port to Leaf02
 auto swp14
 iface swp14
   alias to Leaf02
+  bridge-access 100
 
 # Port to Spine01
 auto swp15
@@ -90,7 +92,7 @@ iface bridge
   bridge-vlan-aware yes
   # bridge-ports includes all ports related to VxLAN and CLAG.
   # does not include the Peerlink.4094 subinterface
-  bridge-ports swp1s0 swp1s1 swp1s2 swp1s3 vni100 vni200 vxlan4001
+  bridge-ports swp1s0 swp1s1 swp1s2 swp1s3 swp13 swp14 vni100 vni200 vxlan4001
   bridge-vids 100 200 4001
   bridge-pvid 1
 
