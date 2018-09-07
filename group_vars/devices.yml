@@ -7,15 +7,15 @@ devices:
       ipv4: "10.255.6.7/23"
       ipv4_gateway: "10.255.6.1"
     interfaces:
-        swp1:
+        - swp1:
             description: "Leaf01"
-        swp2:
+        - swp2:
             description: "Leaf02"
-        swp13:
+        - swp13:
             description: "Exit01"
-        swp14:
+        - swp14:
             description: "Exit02"
-        swp15:
+        - swp15:
             description: "Spine01"
-        swp16:
+        - swp16:
             description: "Spine02"
