@@ -5,4 +5,5 @@
 
 - name: render template on remote remote host
   template: src=spine_interfaces.j2 dest=/etc/network/interfaces
-  notify: reload networking
+  notify:
+    - reload networking
