@@ -8,7 +8,7 @@ iface lo inet loopback
 
 auto eth0
 iface eth0
-{% if switch.mgmt is defined %}
+{% if profile.mgmt is defined %}
   vrf mgmt
 {% endif %}
   address {{ switch.eth0.ipv4 }}
