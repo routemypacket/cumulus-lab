@@ -1,0 +1,29 @@
+{% set switch = devices[inventory_hostname] %}
+# Loopback interface
+auto lo
+iface lo inet loopback
+  address {{ switch.lo.ipv4 }}/32
+
+auto eth0
+iface eth0
+{% if switch.mgmt is defined %}
+  vrf mgmt
+{% endif %}
+  address {{ switch.eth0.ipv4 }}
+  gateway {{ switch.eth0.ipv4_gateway }}
+
+{% if switch.mgmt is defined %}
+auto mgmt
+iface mgmt
+    address 127.0.0.1/8
+    vrf-table auto
+{% endif %}
+
+{% for interface in switch.interfaces %}
+{% set intvars = switch.interfaces[interface] %}
+# Port to {{ switch.interfaces[interface].description }}
+auto {{ interface }}
+iface {{ interface }}
+  alias to {{ intvars.description }}
+
+{% endfor %}

@@ -1,0 +1,21 @@
+devices:
+  spine01:
+    mgmt: true
+    lo:
+      ipv4: "10.0.0.22"
+    eth0:
+      ipv4: "10.255.6.8/23"
+      ipv4_gateway: "10.255.6.1"
+    interfaces:
+        swp1:
+            description: "Leaf01"
+        swp2:
+            description: "Leaf02"
+        swp13:
+            description: "Exit01"
+        swp14:
+            description: "Exit02"
+        swp15:
+            description: "Spine01"
+        swp16:
+            description: "Spine02"
