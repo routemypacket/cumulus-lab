@@ -1,6 +1,6 @@
 ---
 - name: locally render template
-  template: src=spine_interfaces.j2 dest=./config/{{ inventory_hostname }}/interfaces flat=yes
+  template: src=spine_interfaces.j2 dest=./config/{{ inventory_hostname }}/interfaces
   delegate_to: localhost
 
 - name: render template on remote remote host
