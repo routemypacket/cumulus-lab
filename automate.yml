@@ -1,7 +1,7 @@
 ---
-- hosts: leafs
+- hosts: spines
   become: true
   gather_facts: false
   roles:
       - config_interfaces
-      - config_routing
+      #- config_routing
