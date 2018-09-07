@@ -2,6 +2,8 @@
 - hosts: spine
   become: true
   gather_facts: false
+  vars:
+    - ./group_vars/devices.yml
   roles:
       - config_interfaces
       #- config_routing
