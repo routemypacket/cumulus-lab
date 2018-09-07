@@ -1,4 +1,8 @@
 ---
+- name: create config folder locally
+  file: path=config/{{ inventory_hostname }} state=directory recurse=yes
+  delegate_to: localhost
+
 - name: locally render template
   template: src=spine_interfaces.j2 dest=config/{{ inventory_hostname }}/interfaces
   delegate_to: localhost
