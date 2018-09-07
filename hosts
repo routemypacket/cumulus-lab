@@ -1,3 +1,8 @@
+[all:vars]
+ansible_connection=ssh
+ansible_user=cumulus
+ansible_pass='CumulusLinux!'
+
 [oob-switch]
 oob-mgmt-switch ansible_host=10.255.6.2
 
