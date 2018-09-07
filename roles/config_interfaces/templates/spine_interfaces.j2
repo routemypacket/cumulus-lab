@@ -14,7 +14,7 @@ iface eth0
   address {{ switch.eth0.ipv4 }}
   gateway {{ switch.eth0.ipv4_gateway }}
 
-{% if switch.mgmt is defined %}
+{% if profile.mgmt is defined %}
 auto mgmt
 iface mgmt
     address 127.0.0.1/8
