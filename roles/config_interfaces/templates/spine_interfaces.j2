@@ -1,4 +1,5 @@
 {% set switch = devices[inventory_hostname] %}
+{% set profile = profiles[devices[inventory_hostname].profile]}
 # Loopback interface
 auto lo
 iface lo inet loopback
@@ -20,9 +21,9 @@ iface mgmt
     vrf-table auto
 {% endif %}
 
-{% for interface in switch.interfaces %}
-{% set intvars = switch.interfaces[interface] %}
-# Port to {{ switch.interfaces[interface].description }}
+{% for interface in profile.interfaces %}
+{% set intvars = profile.interfaces[interface] %}
+# Port to {{ profile.interfaces[interface].description }}
 auto {{ interface }}
 iface {{ interface }}
   alias to {{ intvars.description }}

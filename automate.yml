@@ -4,6 +4,7 @@
   gather_facts: false
   vars_files:
     - ./group_vars/devices.yml
+    - ./group_vars/profiles.yml
   roles:
       - config_interfaces
       #- config_routing
