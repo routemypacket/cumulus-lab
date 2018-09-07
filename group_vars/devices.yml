@@ -9,7 +9,7 @@ devices:
   spine02:
     profile: "SPINE"
     lo:
-      ipv4: "10.0.0.21"
+      ipv4: "10.0.0.22"
     eth0:
-      ipv4: "10.255.6.7/23"
+      ipv4: "10.255.6.8/23"
       ipv4_gateway: "10.255.6.1"
