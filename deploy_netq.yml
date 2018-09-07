@@ -17,6 +17,9 @@
     - name: Configure Netq Server
       shell: /usr/bin/netq config add server 10.255.6.250 vrf mgmt
 
+    - name: Enable NetQ stats
+      shell: /usr/bin/netq config add agent stats
+
     - name: Restart Netq agent to apply config
       shell: /usr/bin/netq config restart agent
 
