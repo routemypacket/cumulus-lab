@@ -1,5 +1,5 @@
 {% set switch = devices[inventory_hostname] %}
-{% set profile = profiles[devices[inventory_hostname].profile]}
+{% set profile = profiles[devices[inventory_hostname].profile] %}
 # Loopback interface
 auto lo
 iface lo inet loopback
