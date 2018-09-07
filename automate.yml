@@ -2,7 +2,7 @@
 - hosts: spine
   become: true
   gather_facts: false
-  vars:
+  vars_files:
     - ./group_vars/devices.yml
   roles:
       - config_interfaces
