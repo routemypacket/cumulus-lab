@@ -2,9 +2,9 @@ devices:
   spine01:
     mgmt: true
     lo:
-      ipv4: "10.0.0.22"
+      ipv4: "10.0.0.21"
     eth0:
-      ipv4: "10.255.6.8/23"
+      ipv4: "10.255.6.7/23"
       ipv4_gateway: "10.255.6.1"
     interfaces:
         swp1:
