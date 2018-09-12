@@ -16,7 +16,7 @@ iface swp1
 
 auto bridge
 iface bridge
-    bridge-ports vxlan4001
+    bridge-ports vni100 vxlan4001
     bridge-vids 4001
     bridge-vlan-aware yes
 
