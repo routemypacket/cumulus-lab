@@ -9,8 +9,6 @@ iface eth0
 
 auto swp1
 iface swp1
-    address 185.2.139.137/31
 
 auto swp2
 iface swp2
-    address 185.2.139.139/31
