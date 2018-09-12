@@ -14,11 +14,15 @@ iface swp1
     address 185.2.139.138/31
     vrf public
 
+
+# Define the bridge for STP
 auto bridge
 iface bridge
-    bridge-ports vni100 vxlan4001
-    bridge-vids 4001
-    bridge-vlan-aware yes
+  bridge-vlan-aware yes
+  bridge-ports vni100
+  bridge-vids 100
+  bridge-pvid 1
+
 
 auto public
 iface public
@@ -29,12 +33,6 @@ iface mgmt
     address 127.0.0.1/8
     vrf-table auto
 
-auto vlan4001
-iface vlan4001
-    vlan-id 4001
-    vlan-raw-device bridge
-    vrf public
-
 auto swp15
 iface swp15
     alias SPINE_01
@@ -42,13 +40,6 @@ iface swp15
 auto swp16
 iface swp16
     alias SPINE_02
-
-auto vxlan4001
-iface vxlan4001
-    vxlan-id 104001
-    vxlan-local-tunnelip 10.0.0.42
-    bridge-learning off
-    bridge-access 4001
 
 
 # VxLAN Tunnel for Public (Vlan 100)
