@@ -1,7 +1,6 @@
 ---
 - hosts: leaf,spine,exit
   become: yes
-  gather_facts: false
   tasks:
   - name: Copy over interfaces
     copy: src=./flatfiles/{{ansible_hostname}}/interfaces dest=/etc/network/interfaces
