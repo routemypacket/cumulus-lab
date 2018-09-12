@@ -1,0 +1,64 @@
+# The loopback network interface
+auto lo
+iface lo inet loopback
+    address 10.0.0.42/32
+
+# The primary network interface
+
+auto eth0
+iface eth0
+    vrf mgmt
+    address 10.255.6.6/23
+    gateway 10.255.6.1
+    alias MGT_NET
+
+auto swp1s0
+iface swp1s0
+
+auto swp1s1
+iface swp1s1
+
+auto swp1s2
+iface swp1s2
+
+auto swp1s3
+iface swp1s3
+    address 185.2.139.138/31
+    alias EXIT_INT
+    mtu 1500
+    vrf public
+
+auto public
+iface public
+    vrf-table auto
+
+auto mgmt
+iface mgmt
+    address 127.0.0.1/8
+    vrf-table auto
+
+auto bridge
+iface bridge
+    bridge-vlan-aware yes
+    bridge-ports vxlan4001
+
+auto vlan4001
+iface vlan4001
+    vlan-id 4001
+    vlan-raw-device bridge
+    vrf public
+
+auto swp15
+iface swp15
+    alias SPINE_01
+
+auto swp16
+iface swp16
+    alias SPINE_02
+
+auto vxlan4001
+iface vxlan4001
+    vxlan-id 104001
+    vxlan-local-tunnelip 10.0.0.42
+    bridge-learning off
+    bridge-access 4001
