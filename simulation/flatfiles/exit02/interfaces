@@ -12,8 +12,6 @@ iface eth0 inet dhcp
 auto swp1
 iface swp1
     address 185.2.139.138/31
-    alias EXIT_INT
-    mtu 1500
     vrf public
 
 auto public
