@@ -5,27 +5,15 @@ iface lo inet loopback
 
 # The primary network interface
 auto eth0
-iface eth0
-    address 10.255.6.5/23
-    gateway 10.255.6.1
-    alias MGT_NET
+iface eth0 inet dhcp
     vrf mgmt
 
-auto swp1s0
-iface swp1s0
-
-auto swp1s1
-iface swp1s1
+auto swp1
+iface swp1
     address 185.2.139.136/31
     alias EXIT_INT
     mtu 1500
     vrf public
-
-auto swp1s2
-iface swp1s2
-
-auto swp1s3
-iface swp1s3
 
 auto bridge
 iface bridge

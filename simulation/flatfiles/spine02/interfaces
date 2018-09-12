@@ -5,10 +5,9 @@ iface lo inet loopback
   alias loopback interface
 
 auto eth0
-iface eth0
-  vrf mgmt
-  address 10.255.6.8/23
-  gateway 10.255.6.1
+iface eth0 inet dhcp
+    vrf mgmt
+
 
 auto mgmt
 iface mgmt
@@ -44,4 +43,3 @@ iface swp2
 auto swp1
 iface swp1
   alias to Leaf01
-
