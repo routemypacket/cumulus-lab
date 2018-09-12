@@ -37,8 +37,21 @@ auto bridge
 iface bridge
     bridge-vlan-aware yes
     bridge-ports vni100
-    bridge-vids 100
+    bridge-vids 100 4001
     bridge-pvid 1
+
+auto vlan4001
+iface vlan4001
+    vlan-id 4001
+    vlan-raw-device bridge
+    vrf public
+
+auto vxlan4001
+iface vxlan4001
+    vxlan-id 104001
+    vxlan-local-tunnelip 10.0.0.42
+    bridge-learning off
+    bridge-access 4001
 
 
 # VxLAN Tunnel for Pubic Network (Vlan 100)
