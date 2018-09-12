@@ -41,3 +41,10 @@ iface swp15
 auto swp16
 iface swp16
     alias SPINE_02
+
+auto vxlan4001
+iface vxlan4001
+    vxlan-id 104001
+    vxlan-local-tunnelip 10.0.0.41
+    bridge-learning off
+    bridge-access 4001

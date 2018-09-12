@@ -14,6 +14,12 @@ iface swp1
     address 185.2.139.138/31
     vrf public
 
+auto bridge
+iface bridge
+    bridge-ports vxlan4001
+    bridge-vids 4001
+    bridge-vlan-aware yes
+
 auto public
 iface public
     vrf-table auto
@@ -22,11 +28,6 @@ auto mgmt
 iface mgmt
     address 127.0.0.1/8
     vrf-table auto
-
-auto bridge
-iface bridge
-    bridge-vlan-aware yes
-    bridge-ports vxlan4001
 
 auto vlan4001
 iface vlan4001
@@ -41,3 +42,10 @@ iface swp15
 auto swp16
 iface swp16
     alias SPINE_02
+
+auto vxlan4001
+iface vxlan4001
+    vxlan-id 104001
+    vxlan-local-tunnelip 10.0.0.42
+    bridge-learning off
+    bridge-access 4001
