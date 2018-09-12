@@ -1,0 +1,11 @@
+---
+- hosts: host
+  become: yes
+  tasks:
+  - name: Copy over interfaces
+    copy: src=./flatfiles/{{ansible_hostname}}/interfaces dest=/etc/network/interfaces
+    notify: reload networking
+
+  handlers:
+  - name: reload networking
+    shell: systemctl restart networking.service
