@@ -72,13 +72,16 @@ iface swp16
 auto bridge
 iface bridge
     bridge-vlan-aware yes
-    bridge-ports swp1 swp2 vni100
-    bridge-vids 100
+    # bridge-ports includes all ports related to VxLAN and CLAG.
+    # does not include the Peerlink.4094 subinterface
+    bridge-ports swp1 swp2 vni100 vxlan4001
+    bridge-vids 100 4001
     bridge-pvid 1
 
 # VxLAN Tunnel for Pubic Network (Vlan 100)
 auto vni100
 iface vni100
+    mtu 9166
     vxlan-id 10100
     vxlan-local-tunnelip 10.0.0.11
     bridge-access 100
@@ -86,6 +89,13 @@ iface vni100
     mstpctl-bpduguard yes
     mstpctl-portbpdufilter yes
 
+auto vxlan4001
+iface vxlan4001
+    hwaddress 44:39:39:FF:40:94
+    vxlan-id 104001
+    vxlan-local-tunnelip 10.0.0.11
+    bridge-learning off
+    bridge-access 4001
 
 auto public
 iface public
@@ -95,8 +105,17 @@ iface public
 
 auto vlan100
 iface vlan100
-    address 185.2.136.241/28
+    address 185.2.136.243/28
     address 2A02:2498:E004:4F::2/64
+    address-virtual 44:39:39:ff:00:10 185.2.136.241/28
     vlan-id 100
+    vlan-raw-device bridge
+    vrf public
+
+#L3 VLAN interface per tenant (for L3 VNI)
+
+auto vlan4001
+iface vlan4001
+    vlan-id 4001
     vlan-raw-device bridge
     vrf public
