@@ -81,7 +81,6 @@ iface bridge
 # VxLAN Tunnel for Pubic Network (Vlan 100)
 auto vni100
 iface vni100
-    mtu 9166
     vxlan-id 10100
     vxlan-local-tunnelip 10.0.0.11
     bridge-access 100
@@ -105,9 +104,8 @@ iface public
 
 auto vlan100
 iface vlan100
-    address 185.2.136.243/28
+    address 185.2.136.241/28
     address 2A02:2498:E004:4F::2/64
-    address-virtual 44:39:39:ff:00:10 185.2.136.241/28
     vlan-id 100
     vlan-raw-device bridge
     vrf public
