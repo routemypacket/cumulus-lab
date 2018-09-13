@@ -60,10 +60,11 @@ iface vni100
     mstpctl-bpduguard yes
     mstpctl-portbpdufilter yes
 
+
 auto vlan100
 iface vlan100
-    address 185.2.136.241/28
-    address 2A02:2498:E004:4F::2/64
+    address 185.2.136.253/28
+    address 2A02:2498:E004:4F::8/64
     vlan-id 100
     vlan-raw-device bridge
     vrf public
