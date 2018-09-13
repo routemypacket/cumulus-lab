@@ -104,14 +104,13 @@ iface public
    vrf-table auto
 
 auto vlan100
-iface vlan100
-    address 185.2.136.244/28
+    iface vlan100
+    hwaddress 44:39:39:ff:00:10
+    address 185.2.136.241/28
     address 2A02:2498:E004:4F::2/64
-    address-virtual 44:39:39:ff:00:10 185.2.136.241/28
     vlan-id 100
     vlan-raw-device bridge
     vrf public
-
 
 #L3 VLAN interface per tenant (for L3 VNI)
 
