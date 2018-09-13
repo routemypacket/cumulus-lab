@@ -51,20 +51,21 @@ iface vxlan4001
     bridge-access 4001
 
 # VxLAN Tunnel for Pubic Network (Vlan 100)
-auto vni100
-iface vni100
-    vxlan-id 10100
-    vxlan-local-tunnelip 10.0.0.41
-    bridge-access 100
-    bridge-learning off
-    mstpctl-bpduguard yes
-    mstpctl-portbpdufilter yes
-
-
-auto vlan100
-iface vlan100
-    address 185.2.136.241/28
-    address 2A02:2498:E004:4F::2/64
-    vlan-id 100
-    vlan-raw-device bridge
-    vrf public
+#auto vni100
+#iface vni100
+#    vxlan-id 10100
+#    vxlan-local-tunnelip 10.0.0.41
+#    bridge-access 100
+#    bridge-learning off
+#    mstpctl-bpduguard yes
+#    mstpctl-portbpdufilter yes
+#
+#
+#auto vlan100
+#iface vlan100
+#    address 185.2.136.241/28
+#    address 2A02:2498:E004:4F::2/64
+#    vlan-id 100
+#    vlan-raw-device bridge
+#    vrf public
+#
