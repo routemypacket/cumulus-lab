@@ -64,8 +64,9 @@ iface vni100
 
 auto vlan100
 iface vlan100
-    address 185.2.136.241/28
+    address 185.2.136.251/28
     address 2A02:2498:E004:4F::2/64
+    address-virtual 44:39:39:ff:00:9 185.2.136.241/28
     vlan-id 100
     vlan-raw-device bridge
     vrf public
