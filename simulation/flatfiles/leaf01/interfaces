@@ -105,7 +105,6 @@ iface public
 
 auto vlan100
 iface vlan100
-    hwaddress 44:39:39:ff:00:10
     address 185.2.136.241/28
     address 2A02:2498:E004:4F::2/64
     vlan-id 100
