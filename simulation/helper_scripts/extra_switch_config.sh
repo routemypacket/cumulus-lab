@@ -16,6 +16,12 @@ iface vagrant inet dhcp
 
 auto eth0
 iface eth0 inet dhcp
+    vrf mgmt
+
+auto mgmt
+iface mgmt
+    address 127.0.0.1/8
+    vrf-table auto
 
 EOT
 
