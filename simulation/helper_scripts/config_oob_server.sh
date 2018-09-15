@@ -271,12 +271,12 @@ function error() {
 trap error ERR
 
 sed -i '/iface eth0/a \ vrf mgmt' /etc/network/interfaces
-cat <<EOT >> /etc/network/interfaces
+cat <<EOT2 >> /etc/network/interfaces
 auto mgmt
 iface mgmt
   address 127.0.0.1/8
   vrf-table auto
-EOT
+EOT2
 
 # Setup SSH key authentication for Ansible
 mkdir -p /home/cumulus/.ssh
