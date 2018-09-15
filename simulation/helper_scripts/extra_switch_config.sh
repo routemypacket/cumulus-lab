@@ -16,7 +16,7 @@ iface vagrant inet dhcp
 
 auto eth0
 iface eth0 inet dhcp
-    vrf mgmt
+  vrf mgmt
 
 auto mgmt
 iface mgmt
