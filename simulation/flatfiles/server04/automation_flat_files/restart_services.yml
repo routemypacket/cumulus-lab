@@ -1,0 +1,6 @@
+---
+- hosts: leaf,exit,spine
+  become: yes
+  tasks:
+  - name: reload networking
+    shell: systemctl restart networking.service

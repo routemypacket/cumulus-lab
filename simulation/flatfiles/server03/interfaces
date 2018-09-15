@@ -9,3 +9,4 @@ iface eth1 inet static
   address 185.2.136.247
   netmask 255.255.255.240
   post-up ip route add 172.16.1.0/24 via 185.2.136.241
+  post-up ip route add 29.0.0.1/32 via 185.2.136.241
