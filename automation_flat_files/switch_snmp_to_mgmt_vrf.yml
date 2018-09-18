@@ -17,5 +17,5 @@
   - name: configure snmp
     nclu:
       commands:
-        - add snmp-server listening-address {{ ansible_host }}
+        - add snmp-server listening-address {{ snmp_ip }}
         - add snmp-server readonly-community public access any
