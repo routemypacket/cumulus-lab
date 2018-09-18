@@ -1,0 +1,19 @@
+---
+- hosts: leaf,exit,spine
+  become: yes
+  tasks:
+  - name: stop snmpd
+    shell: systemctl stop snmpd.service
+
+  - name: disable snmpd
+    shell: systemctl disable snmpd.service
+
+  - name: start snmpd in mgmt vrf
+    shell: systemctl start snmpd@mgmt.service
+
+  - name: enable snmpd in mgmt vrf
+    shell: systemctl enable snmpd@mgmt.service
+    nclu:
+      commands:
+        - add snmp-server listening-address {{ ansible_host }}
+        - add snmp-server readonly-community public access any
