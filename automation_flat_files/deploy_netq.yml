@@ -15,7 +15,7 @@
         state: latest
 
     - name: Configure Netq Server
-      shell: /usr/bin/netq config add server 10.255.6.250 vrf mgmt
+      shell: /usr/bin/netq config add server 10.255.4.20 vrf mgmt
 
     - name: Enable NetQ stats
       shell: /usr/bin/netq config add agent stats
