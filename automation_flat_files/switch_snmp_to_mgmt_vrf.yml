@@ -1,5 +1,5 @@
 ---
-- hosts: leaf,exit,spine
+- hosts: leaf,exit,spine,oob-switch
   become: yes
   tasks:
   - name: stop snmpd

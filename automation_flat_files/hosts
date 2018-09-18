@@ -4,19 +4,19 @@ ansible_user=cumulus
 ansible_pass='CumulusLinux!'
 
 [oob-switch]
-oob-mgmt-switch ansible_host=10.255.6.2
+oob-mgmt-switch ansible_host=10.255.6.2 snmp_ip=10.255.6.2
 
 [exit]
-exit01 ansible_host=10.255.6.5
-exit02 ansible_host=10.255.6.6
+exit01 ansible_host=10.255.6.5 snmp_ip=10.255.6.5
+exit02 ansible_host=10.255.6.6 snmp_ip=10.255.6.6
 
 [leaf]
-leaf01 ansible_host=10.255.6.3
-leaf02 ansible_host=10.255.6.4
+leaf01 ansible_host=10.255.6.3 snmp_ip=10.255.6.3
+leaf02 ansible_host=10.255.6.4 snmp_ip=10.255.6.4
 
 [spine]
-spine01 ansible_host=10.255.6.7
-spine02 ansible_host=10.255.6.8
+spine01 ansible_host=10.255.6.7 snmp_ip=10.255.6.7
+spine02 ansible_host=10.255.6.8 snmp_ip=10.255.6.8
 
 [hosts]
 server01 ansible_host=185.2.136.245
