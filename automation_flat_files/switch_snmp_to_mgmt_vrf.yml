@@ -19,3 +19,4 @@
       commands:
         - add snmp-server listening-address {{ snmp_ip }}
         - add snmp-server readonly-community public access any
+      atomic: true
