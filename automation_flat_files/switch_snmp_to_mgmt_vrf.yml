@@ -8,6 +8,9 @@
   - name: disable snmpd
     shell: systemctl disable snmpd.service
 
+  - name: stop snmpd in mgmt vrf
+    shell: systemctl stop snmpd@mgmt.service
+
   - name: start snmpd in mgmt vrf
     shell: systemctl start snmpd@mgmt.service
 
