@@ -13,9 +13,3 @@
 
   - name: enable snmpd in mgmt vrf
     shell: systemctl enable snmpd@mgmt.service
-
-  - name: configure snmp
-    nclu:
-      commands:
-        - add snmp-server listening-address {{ ansible_host }}
-        - add snmp-server readonly-community public access any
