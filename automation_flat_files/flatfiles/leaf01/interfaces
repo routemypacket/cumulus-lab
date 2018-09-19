@@ -19,40 +19,35 @@ iface eth0
 
 auto swp1s0
 iface swp1s0
-    alias Connects to Server01
     bridge-access 100
 
 auto swp1s1
 iface swp1s1
-    alias Connects to Server06
     bridge-pvid 100
     bridge-vids 400
 
 auto swp1s2
 iface swp1s2
-    alias Connects to Server03
     bridge-access 100
 
 auto swp1s3
 iface swp1s3
-    alias Connects to Server05
     bridge-access 200
+
+auto swp12
+iface swp12
 
 auto swp13
 iface swp13
-    alias Connects to Leaf02
 
 auto swp14
 iface swp14
-    alias Connects to Leaf02
 
 auto swp15
 iface swp15
-    alias Connects to Spine01
 
 auto swp16
 iface swp16
-    alias Connects to Spine02
 
 auto bridge
 iface bridge
@@ -60,7 +55,7 @@ iface bridge
     # does not include the Peerlink.4094 subinterface
     bridge-ports swp1s0 swp1s1 swp1s2 swp1s3 peerlink vni100 vni200 vni400 vxlan4001
     bridge-pvid 1
-    bridge-vids 100 200 400 4001
+    bridge-vids 100 400 4001
     bridge-vlan-aware yes
 
 auto mgmt
@@ -72,7 +67,7 @@ iface mgmt
 # CLAG Peerlink bond
 auto peerlink
     iface peerlink
-    bond-slaves swp13 swp14
+    bond-slaves swp12
 
 # CLAG Peerlink L2 interface.
 # This creates VLAN 4094 that only lives on the peerlink bond
@@ -85,7 +80,6 @@ auto peerlink.4094
     clagd-sys-mac 44:39:39:ff:40:94
     clagd-priority 100
 
-# Define the bridge for STP
 # VxLAN Tunnel for Pubic Network (Vlan 100)
 auto vni100
 iface vni100
@@ -141,19 +135,19 @@ iface vlan4001
     vlan-raw-device bridge
     vrf public
 
-auto vlan200
-iface vlan200
-    address 46.23.68.82/29
-    address-virtual 44:39:39:ff:00:20 46.23.68.81/29
-    vlan-id 200
-    vlan-raw-device bridge
-    vrf public
+#auto vlan200
+#iface vlan200
+#    address 46.23.68.82/29
+#    address-virtual 44:39:39:ff:00:20 46.23.68.81/29
+#    vlan-id 200
+#    vlan-raw-device bridge
+#    vrf public
 
-iface vni200
-    mtu 9166
-    vxlan-id 10200
-    vxlan-local-tunnelip 10.0.0.11
-    bridge-access 200
-    bridge-learning off
-    mstpctl-bpduguard yes
-    mstpctl-portbpdufilter yes
+#iface vni200
+#    mtu 9166
+#    vxlan-id 10200
+#    vxlan-local-tunnelip 10.0.0.11
+#    bridge-access 200
+#    bridge-learning off
+#    mstpctl-bpduguard yes
+#    mstpctl-portbpdufilter yes

@@ -22,45 +22,40 @@ iface mgmt
 
 auto swp1s0
 iface swp1s0
-  alias Connects to Server01
   bridge-access 100
 
 auto swp1s1
 iface swp1s1
-  alias Connects to Server03
   bridge-access 100
 
 auto swp1s2
 iface swp1s2
-  alias Connects to Server04
   bridge-pvid 100
   bridge-vids 400
 
 auto swp1s3
 iface swp1s3
-  alias Connects to Server08
   bridge-access 100
+
+auto swp12
+iface swp12
 
 auto swp13
 iface swp13
-  alias Connects to Leaf01
 
 auto swp14
 iface swp14
-  alias Connects to Leaf01
 
 auto swp15
 iface swp15
-  alias Connects to Spine01
 
 auto swp16
 iface swp16
-  alias Connects to Spine02
 
 # CLAG Peerlink bond
 auto peerlink
     iface peerlink
-    bond-slaves swp13 swp14
+    bond-slaves swp12
 
 # CLAG Peerlink L2 interface.
 # This creates VLAN 4094 that only lives on the peerlink bond
@@ -81,7 +76,7 @@ iface bridge
     # bridge-ports includes all ports related to VxLAN and CLAG.
     # does not include the Peerlink.4094 subinterface
     bridge-ports swp1s0 swp1s1 swp1s2 swp1s3 peerlink vni100 vni400 vxlan4001
-    bridge-vids 100 200 4001
+    bridge-vids 100 400 4001
     bridge-pvid 1
 
 
@@ -93,7 +88,7 @@ iface vxlan4001
      bridge-learning off
      bridge-access 4001
 
-# VxLAN Tunnel for Server1-Server3 (Vlan 100)
+# VxLAN Tunnel for Vlan 100
 auto vni100
 iface vni100
   mtu 9166

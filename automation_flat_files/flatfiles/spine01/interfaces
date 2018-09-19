@@ -15,33 +15,20 @@ iface mgmt
     address 127.0.0.1/8
     vrf-table auto
 
-# Port to Exit01
-auto swp13
-iface swp13
-  alias to Exit01
-
-# Port to Exit02
-auto swp14
-iface swp14
-  alias to Exit02
-
-# Port to Spine01
-auto swp15
-iface swp15
-  alias to Spine01
-
-# Port to Spine02
-auto swp16
-iface swp16
-  alias to Spine02
-
-# Port to Leaf02
-auto swp2
-iface swp2
-  alias to Leaf02
-
-# Port to Leaf01
 auto swp1
 iface swp1
-  alias to Leaf01
 
+auto swp2
+iface swp2
+
+auto swp13
+iface swp13
+
+auto swp14
+iface swp14
+
+auto swp15
+iface swp15
+
+auto swp16
+iface swp16
