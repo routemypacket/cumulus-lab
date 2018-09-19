@@ -133,20 +133,3 @@ iface vlan4001
     vlan-id 4001
     vlan-raw-device bridge
     vrf public
-
-#auto vlan200
-#iface vlan200
-#    address 46.23.68.82/29
-#    address-virtual 44:39:39:ff:00:20 46.23.68.81/29
-#    vlan-id 200
-#    vlan-raw-device bridge
-#    vrf public
-
-#iface vni200
-#    mtu 9166
-#    vxlan-id 10200
-#    vxlan-local-tunnelip 10.0.0.11
-#    bridge-access 200
-#    bridge-learning off
-#    mstpctl-bpduguard yes
-#    mstpctl-portbpdufilter yes
