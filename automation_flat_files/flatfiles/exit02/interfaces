@@ -7,7 +7,6 @@ iface lo inet loopback
 
 auto eth0
 iface eth0
-    alias Connects to MGMT
     vrf mgmt
     address 10.255.6.6/23
     gateway 10.255.6.1
@@ -32,18 +31,15 @@ iface swp1s2
 
 auto swp1s3
 iface swp1s3
-    alias Connects to oob-mgmt-switch
     address 185.2.139.138/31
     mtu 1500
     vrf public
 
 auto swp15
 iface swp15
-    alias Connects to Spine01
 
 auto swp16
 iface swp16
-    alias Connects to Spine02
 
 auto bridge
 iface bridge

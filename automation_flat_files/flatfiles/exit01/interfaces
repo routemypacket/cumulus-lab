@@ -25,7 +25,6 @@ iface swp1s0
 
 auto swp1s1
 iface swp1s1
-    alias Connects to oob-mgmt-switch
     address 185.2.139.136/31
     mtu 1500
     vrf public
@@ -38,11 +37,9 @@ iface swp1s3
 
 auto swp15
 iface swp15
-    alias Connects to Spine01
 
 auto swp16
 iface swp16
-    alias Connects to Spine02
 
 auto bridge
 iface bridge
