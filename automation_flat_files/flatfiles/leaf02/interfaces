@@ -9,10 +9,9 @@ iface lo inet loopback
   alias loopback interface
 
 # Management interface
-
 auto eth0
 iface eth0
- vrf mgmt
+    vrf mgmt
     address 10.255.6.4/23
     gateway 10.255.6.1
 
@@ -21,52 +20,42 @@ iface mgmt
     address 127.0.0.1/8
     vrf-table auto
 
-
-# Port to Server05
 auto swp1s0
 iface swp1s0
-  alias to Server01
+  alias Connects to Server01
   bridge-access 100
 
-# Port to Server06
 auto swp1s1
 iface swp1s1
-  alias to Server06
+  alias Connects to Server06
   bridge-access 100
 
-# Port to Server07
 auto swp1s2
 iface swp1s2
-  alias to Server07
+  alias Connects to Server07
   bridge-pvid 100
   bridge-vids 400
 
-# Port to Server08
 auto swp1s3
 iface swp1s3
-  alias to Server08
+  alias Connects to Server08
   bridge-access 100
 
-
-# Port to Leaf01
 auto swp13
 iface swp13
-  alias to Leaf01
+  alias Connects to Leaf01
 
-# Port to Leaf01
 auto swp14
 iface swp14
-  alias to Leaf01
+  alias Connects to Leaf01
 
-# Port to Spine01
 auto swp15
 iface swp15
-  alias to Spine01
+  alias Connects to Spine01
 
-# Port to Spine02
 auto swp16
 iface swp16
-  alias to Spine02
+  alias Connects to Spine02
 
 # CLAG Peerlink bond
 #auto peerlink

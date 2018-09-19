@@ -7,10 +7,19 @@ iface lo inet loopback
 
 auto eth0
 iface eth0
+    alias Connects to MGMT
     vrf mgmt
     address 10.255.6.6/23
     gateway 10.255.6.1
-    alias MGT_NET
+
+auto mgmt
+iface mgmt
+    address 127.0.0.1/8
+    vrf-table auto
+
+auto public
+iface public
+    vrf-table auto
 
 auto swp1s0
 iface swp1s0
@@ -23,19 +32,18 @@ iface swp1s2
 
 auto swp1s3
 iface swp1s3
+    alias Connects to oob-mgmt-switch
     address 185.2.139.138/31
-    alias EXIT_INT
     mtu 1500
     vrf public
 
-auto public
-iface public
-    vrf-table auto
+auto swp15
+iface swp15
+    alias Connects to Spine01
 
-auto mgmt
-iface mgmt
-    address 127.0.0.1/8
-    vrf-table auto
+auto swp16
+iface swp16
+    alias Connects to Spine02
 
 auto bridge
 iface bridge
@@ -47,14 +55,6 @@ iface vlan4001
     vlan-id 4001
     vlan-raw-device bridge
     vrf public
-
-auto swp15
-iface swp15
-    alias SPINE_01
-
-auto swp16
-iface swp16
-    alias SPINE_02
 
 auto vxlan4001
 iface vxlan4001

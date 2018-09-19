@@ -12,25 +12,49 @@ iface lo inet loopback
 
 auto eth0
 iface eth0
+    alias Connects to MGMT
     vrf mgmt
     address 10.255.6.3/23
     gateway 10.255.6.1
 
+auto swp1s0
+iface swp1s0
+    alias Connects to Server01
+    bridge-access 100
+
 auto swp1s1
 iface swp1s1
-    alias to Server02
+    alias Connects to Server06
     bridge-pvid 100
     bridge-vids 400
 
+auto swp1s2
+iface swp1s2
+    alias Connects to Server03
+    bridge-access 100
+
+auto swp1s3
+iface swp1s3
+    alias Connects to Server05
+    bridge-access 200
+
 auto swp13
 iface swp13
-    alias to Leaf02
+    alias Connects to Leaf02
     bridge-access 100
 
 auto swp14
 iface swp14
-    alias to Leaf02
+    alias Connects to Leaf02
     bridge-access 100
+
+auto swp15
+iface swp15
+    alias Connects to Spine01
+
+auto swp16
+iface swp16
+    alias Connects to Spine02
 
 auto bridge
 iface bridge
@@ -46,36 +70,6 @@ iface mgmt
     address 127.0.0.1/8
     vrf-table auto
 
-# Port to Server01
-auto swp1s0
-iface swp1s0
-    alias to Server01
-    bridge-access 100
-
-# Port to Server02
-# Port to Server03
-auto swp1s2
-iface swp1s2
-    alias to Server03
-    bridge-access 100
-
-# Port to Server04
-auto swp1s3
-iface swp1s3
-    alias to Server04
-    bridge-access 200
-
-# Port to Leaf02
-# Port to Leaf02
-# Port to Spine01
-auto swp15
-iface swp15
-    alias to Spine01
-
-# Port to Spine02
-auto swp16
-iface swp16
-    alias to Spine02
 
 # CLAG Peerlink bond
 # auto peerlink
