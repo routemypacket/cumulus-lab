@@ -32,7 +32,6 @@ iface swp1s2
 
 auto swp1s3
 iface swp1s3
-    bridge-access 200
 
 auto swp12
 iface swp12
