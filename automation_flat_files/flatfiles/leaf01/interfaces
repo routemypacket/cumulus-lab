@@ -55,7 +55,7 @@ iface bridge
     # does not include the Peerlink.4094 subinterface
     bridge-ports swp1s0 swp1s1 swp1s2 swp1s3 peerlink vni100 vni200 vni400 vxlan4001
     bridge-pvid 1
-    bridge-vids 100 200 400 4001
+    bridge-vids 100 400 4001
     bridge-vlan-aware yes
 
 auto mgmt
@@ -80,7 +80,6 @@ auto peerlink.4094
     clagd-sys-mac 44:39:39:ff:40:94
     clagd-priority 100
 
-# Define the bridge for STP
 # VxLAN Tunnel for Pubic Network (Vlan 100)
 auto vni100
 iface vni100
@@ -136,19 +135,19 @@ iface vlan4001
     vlan-raw-device bridge
     vrf public
 
-auto vlan200
-iface vlan200
-    address 46.23.68.82/29
-    address-virtual 44:39:39:ff:00:20 46.23.68.81/29
-    vlan-id 200
-    vlan-raw-device bridge
-    vrf public
+#auto vlan200
+#iface vlan200
+#    address 46.23.68.82/29
+#    address-virtual 44:39:39:ff:00:20 46.23.68.81/29
+#    vlan-id 200
+#    vlan-raw-device bridge
+#    vrf public
 
-iface vni200
-    mtu 9166
-    vxlan-id 10200
-    vxlan-local-tunnelip 10.0.0.11
-    bridge-access 200
-    bridge-learning off
-    mstpctl-bpduguard yes
-    mstpctl-portbpdufilter yes
+#iface vni200
+#    mtu 9166
+#    vxlan-id 10200
+#    vxlan-local-tunnelip 10.0.0.11
+#    bridge-access 200
+#    bridge-learning off
+#    mstpctl-bpduguard yes
+#    mstpctl-portbpdufilter yes
