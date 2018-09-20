@@ -2,33 +2,34 @@
 # Modifies the Cumulus forwarding profile
 # Also modifies the kernel parameters for L4 neighbor entries
 
-- hosts: leaf,spine,exit
+- hosts: exit
   become: yes
   gather_facts: yes
   tasks:
-    - name: Sysctl net.ipv4.neigh.default.gc_thresh2
+    - name: Default Sysctl net.ipv4.neigh.default.gc_thresh2
       sysctl:
             name: net.ipv4.neigh.default.gc_thresh2
-            value: 48000
+            value: 28672
             state: present
             reload: no
-    - name: Sysctl net.ipv4.neigh.default.gc_thresh3
+    - name: Default Sysctl net.ipv4.neigh.default.gc_thresh3
       sysctl:
             name: net.ipv4.neigh.default.gc_thresh3
-            value: 50000
+            value: 32768
             state: present
             reload: no
     - name: Reloads sysctl
       shell: sysctl -p
-    - name: Modifies the forwarding profile from default to l2-heavy
+    - name: Modifies the forwarding profile from default to v4-lpm-heavy
       lineinfile:
             path: /etc/cumulus/datapath/traffic.conf
             regexp: '^#forwarding_table.profile = default'
-            line: 'forwarding_table.profile = l2-heavy'
-    - name: Modifies the forwarding profile from v4-lpm-heavy to l2-heavy
+            line: 'forwarding_table.profile = v4-lpm-heavy'
+
+    - name: Modifies the forwarding profile from l2-heavy to v4-lpm-heavy
       lineinfile:
             path: /etc/cumulus/datapath/traffic.conf
-            regexp: '^forwarding_table.profile = v4-lpm-heavy'
-            line: 'forwarding_table.profile = l2-heavy'
+            regexp: '^forwarding_table.profile = l2-heavy'
+            line: 'forwarding_table.profile = v4-lpm-heavy'
     - name: Reload switchd
       shell: systemctl restart switchd

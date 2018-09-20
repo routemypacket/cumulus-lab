@@ -1,0 +1,35 @@
+---
+# Modifies the Cumulus forwarding profile
+# Also modifies the kernel parameters for L4 neighbor entries
+
+- hosts: exit
+  become: yes
+  gather_facts: yes
+  tasks:
+    - name: Default Sysctl net.ipv4.neigh.default.gc_thresh2
+      sysctl:
+            name: net.ipv4.neigh.default.gc_thresh2
+            value: 28672
+            state: present
+            reload: no
+    - name: Default Sysctl net.ipv4.neigh.default.gc_thresh3
+      sysctl:
+            name: net.ipv4.neigh.default.gc_thresh3
+            value: 32768
+            state: present
+            reload: no
+    - name: Reloads sysctl
+      shell: sysctl -p
+    - name: Set the forwarding profile to default
+      lineinfile:
+            path: /etc/cumulus/datapath/traffic.conf
+            regexp: '^forwarding_table.profile = l2-heavy'
+            line: '#forwarding_table.profile = default'
+
+    - name: Set the forwarding profile to default
+      lineinfile:
+            path: /etc/cumulus/datapath/traffic.conf
+            regexp: '^forwarding_table.profile = l2-heavy'
+            line: '#forwarding_table.profile = default'
+    - name: Reload switchd
+      shell: systemctl restart switchd
