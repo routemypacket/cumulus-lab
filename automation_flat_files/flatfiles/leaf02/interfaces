@@ -22,7 +22,7 @@ iface mgmt
 
 auto swp1s0
 iface swp1s0
-  bridge-access 100
+ bridge-access 100
 
 auto swp1s1
 iface swp1s1
@@ -51,6 +51,13 @@ iface swp15
 
 auto swp16
 iface swp16
+
+#auto bond01
+#iface bond01
+#  mtu 9000
+#  bond-slaves swp1s0
+#  bridge-access 100
+#  clag-id 1
 
 # CLAG Peerlink bond
 auto peerlink
@@ -118,6 +125,8 @@ iface public
 auto vlan100
 iface vlan100
     address 185.2.136.244/28
+    address 192.168.0.3/17
+    address 192.168.128.3/17
     address 2A02:2498:E004:4F::2/64
     address-virtual 44:39:39:ff:00:10 185.2.136.241/28
     vlan-id 100
