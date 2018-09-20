@@ -132,8 +132,8 @@ iface vlan100
     address 192.168.128.2/17
     address 2A02:2498:E004:4F::2/64
     address-virtual 44:39:39:ff:00:10 185.2.136.241/28
-    address-virtual 44:39:39:ff:00:10 192.168.0.1/17
-    address-virtual 44:39:39:ff:00:10 192.168.128.1/17
+    address-virtual 44:39:39:ff:01:10 192.168.0.1/17
+    address-virtual 44:39:39:ff:02:10 192.168.128.1/17
     vlan-id 100
     vlan-raw-device bridge
     vrf public
