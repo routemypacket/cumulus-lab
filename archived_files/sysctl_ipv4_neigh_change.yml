@@ -19,14 +19,16 @@
     		state: present
     		reload: no
 	- name: Reloads sysctl
-			shell: sysctl -p
-    - name: Modifies the forwarding profile from default to l2-heavy
+		shell: sysctl -p
+	- name: Modifies the forwarding profile from default to l2-heavy
 		lineinfile:
 			path: /etc/cumulus/datapath/traffic.conf
 			regexp: '^#forwarding_table.profile = default'
 			line: 'forwarding_table.profile = l2-heavy'
-    - name: Modifies the forwarding profile from v4-lpm-heavy to l2-heavy
+	- name: Modifies the forwarding profile from v4-lpm-heavy to l2-heavy
 		lineinfile:
 			path: /etc/cumulus/datapath/traffic.conf
 			regexp: '^forwarding_table.profile = v4-lpm-heavy'
 			line: 'forwarding_table.profile = l2-heavy'
+	- name: Reload switchd
+		shell: systemctl reload switchd
