@@ -31,4 +31,4 @@
             regexp: '^forwarding_table.profile = v4-lpm-heavy'
             line: 'forwarding_table.profile = l2-heavy'
     - name: Reload switchd
-      shell: systemctl reload switchd
+      shell: systemctl restart switchd
