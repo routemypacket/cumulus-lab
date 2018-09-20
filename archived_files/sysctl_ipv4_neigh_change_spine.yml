@@ -2,7 +2,7 @@
 # Modifies the Cumulus forwarding profile
 # Also modifies the kernel parameters for L4 neighbor entries
 
-- hosts: exit
+- hosts: spine
   become: yes
   gather_facts: yes
   tasks:
