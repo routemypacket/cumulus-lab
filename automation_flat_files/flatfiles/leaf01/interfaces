@@ -33,14 +33,14 @@ iface swp1s2
 auto swp1s3
 iface swp1s3
 
-auto swp12
-iface swp12
+#auto swp12
+#iface swp12
 
-auto swp13
-iface swp13
-
-auto swp14
-iface swp14
+#auto swp13
+#iface swp13
+#
+#auto swp14
+#iface swp14
 
 auto swp15
 iface swp15
