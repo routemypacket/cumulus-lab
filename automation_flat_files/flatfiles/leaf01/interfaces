@@ -62,6 +62,7 @@ iface bridge
     # bridge-ports includes all ports related to VxLAN and CLAG.
     # does not include the Peerlink.4094 subinterface
     bridge-ports swp1s0 swp1s1 swp1s2 swp1s3 vni100 vni400 vxlan4001
+    bridge-stp on
     bridge-pvid 1
     bridge-vids 100 400 4001
     bridge-vlan-aware yes
@@ -96,7 +97,7 @@ iface vni100
     vxlan-local-tunnelip 10.0.0.11
     bridge-access 100
     bridge-learning off
-    bridge-arp-nd-suppress on
+#    bridge-arp-nd-suppress on
     mstpctl-bpduguard yes
     mstpctl-portbpdufilter yes
 
@@ -119,7 +120,7 @@ iface vxlan4001
     vxlan-id 104001
     vxlan-local-tunnelip 10.0.0.11
     bridge-learning off
-    bridge-arp-nd-suppress on
+#    bridge-arp-nd-suppress on
     bridge-access 4001
 
 auto public
