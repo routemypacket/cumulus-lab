@@ -20,7 +20,7 @@ iface eth0
 auto swp1s0
 iface swp1s0
   bridge-access 100
-#  post-up post-up echo 1 > /proc/sys/net/ipv4/conf/swp1s0/proxy_arp
+  post-up post-up echo 1 > /proc/sys/net/ipv4/conf/swp1s0/proxy_arp
 
 auto swp1s1
 iface swp1s1
