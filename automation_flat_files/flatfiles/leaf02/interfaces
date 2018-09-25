@@ -32,6 +32,7 @@ auto swp1s2
 iface swp1s2
   bridge-pvid 100
   bridge-vids 400
+  post-up post-up echo 1 > /proc/sys/net/ipv4/conf/swp1s2/proxy_arp
 
 auto swp1s3
 iface swp1s3
