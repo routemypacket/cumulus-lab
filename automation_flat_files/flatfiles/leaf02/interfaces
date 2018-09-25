@@ -134,6 +134,7 @@ iface vlan100
     address 2A02:2498:E004:5D::3/113
     address-virtual 44:39:39:ff:00:10 185.2.136.241/28
     post-up echo 1 > /proc/sys/net/ipv4/conf/vlan100/proxy_arp
+    post-up echo 1 > /proc/sys/net/ipv4/conf/vlan100/proxy_arp_pvlan
     vlan-id 100
     vlan-raw-device bridge
     vrf public
