@@ -32,7 +32,6 @@ auto swp1s2
 iface swp1s2
   bridge-pvid 100
   bridge-vids 400
-  post-up echo 1 > /proc/sys/net/ipv4/conf/swp1s2/proxy_arp
 
 auto swp1s3
 iface swp1s3
@@ -134,6 +133,7 @@ iface vlan100
     address 2A02:2498:E004:4D::3/113
     address 2A02:2498:E004:5D::3/113
     address-virtual 44:39:39:ff:00:10 185.2.136.241/28
+    post-up echo 1 > /proc/sys/net/ipv4/conf/vlan100/proxy_arp
     vlan-id 100
     vlan-raw-device bridge
     vrf public
