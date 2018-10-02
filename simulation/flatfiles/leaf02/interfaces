@@ -88,7 +88,7 @@ iface vxlan4001
      bridge-learning off
      bridge-access 4001
 
-# VxLAN Tunnel for Server1-Server3 (Vlan 100)
+# VxLAN Tunnel for (Vlan 100)
 auto vni100
 iface vni100
   mtu 9166
