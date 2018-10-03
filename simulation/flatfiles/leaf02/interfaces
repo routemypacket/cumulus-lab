@@ -114,8 +114,8 @@ iface vlan100
 
 #L3 VLAN interface per tenant (for L3 VNI)
 
-#auto vlan4001
-#iface vlan4001
-#    vlan-id 4001
-#    vlan-raw-device bridge
-#    vrf public
+auto vlan4001
+iface vlan4001
+    vlan-id 4001
+    vlan-raw-device bridge
+    vrf public
