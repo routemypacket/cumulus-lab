@@ -60,3 +60,4 @@ iface vxlan4001
     bridge-learning off
     bridge-arp-nd-suppress on
     bridge-access 4001
+    bridge-arp-nd-suppress on

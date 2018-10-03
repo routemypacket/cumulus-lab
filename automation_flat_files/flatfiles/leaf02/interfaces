@@ -94,6 +94,7 @@ iface vxlan4001
      vxlan-local-tunnelip 10.0.0.12
      bridge-learning off
      bridge-access 4001
+     bridge-arp-nd-suppress on
 
 # VxLAN Tunnel for Vlan 100
 auto vni100
@@ -102,6 +103,7 @@ iface vni100
   vxlan-id 10100
   vxlan-local-tunnelip 10.0.0.12
   bridge-access 100
+  bridge-arp-nd-suppress on
   bridge-learning off
   mstpctl-bpduguard yes
   mstpctl-portbpdufilter yes
@@ -113,6 +115,7 @@ iface vni400
     vxlan-id 10400
     vxlan-local-tunnelip 10.0.0.12
     bridge-access 400
+    bridge-arp-nd-suppress on
     bridge-learning off
     mstpctl-bpduguard yes
     mstpctl-portbpdufilter yes
