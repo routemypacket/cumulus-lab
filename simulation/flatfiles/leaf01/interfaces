@@ -34,7 +34,7 @@ iface mgmt
 auto swp1
 iface swp1
     alias to Server01
-    bridge-access 100
+    bridge-access 102
 
 # Port to Server02
 auto swp2
@@ -75,7 +75,7 @@ iface bridge
     # bridge-ports includes all ports related to VxLAN and CLAG.
     # does not include the Peerlink.4094 subinterface
     bridge-ports swp1 swp2 vni100 vxlan4001
-    bridge-vids 100 4001
+    bridge-vids 100 102 4001
     bridge-pvid 1
 
 # VxLAN Tunnel for Pubic Network (Vlan 100)
@@ -109,6 +109,13 @@ iface vlan100
     address 2A02:2498:E004:4F::2/64
     address-virtual 44:39:39:ff:00:10 185.2.136.241/28
     vlan-id 100
+    vlan-raw-device bridge
+    vrf public
+
+auto vlan102
+iface vlan102
+    address 192.168.168.1/24
+    vlan-id 102
     vlan-raw-device bridge
     vrf public
 
