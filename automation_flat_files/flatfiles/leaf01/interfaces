@@ -131,11 +131,11 @@ iface public
 
 auto vlan100
 iface vlan100
-    address 185.2.136.243/28
-    address 192.168.0.2/17
-    address 192.168.128.2/17
-    address 2A02:2498:E004:4D::2/113
-    address 2A02:2498:E004:5D::2/113
+#    address 185.2.136.243/28
+#    address 192.168.0.2/17
+#    address 192.168.128.2/17
+#    address 2A02:2498:E004:4D::2/113
+#    address 2A02:2498:E004:5D::2/113
     address-virtual 44:39:39:ff:00:10 185.2.136.241/28
     vlan-id 100
     vlan-raw-device bridge
