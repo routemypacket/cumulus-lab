@@ -103,7 +103,7 @@ iface vni100
   vxlan-id 10100
   vxlan-local-tunnelip 10.0.0.12
   bridge-access 100
-  bridge-arp-nd-suppress on
+  #bridge-arp-nd-suppress on
   bridge-learning off
   mstpctl-bpduguard yes
   mstpctl-portbpdufilter yes
