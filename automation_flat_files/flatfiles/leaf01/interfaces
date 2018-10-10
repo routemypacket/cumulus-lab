@@ -167,6 +167,65 @@ iface vlan100
     address 192.168.33.1/24
     address 192.168.34.1/24
     address 192.168.35.1/24
+    address 192.168.36.1/27
+    address 192.168.37.1/27
+    address 192.168.38.1/27
+    address 192.168.39.1/27
+    address 192.168.40.1/27
+    address 192.168.41.1/27
+    address 192.168.42.1/27
+    address 192.168.43.1/27
+    address 192.168.44.1/27
+    address 192.168.45.1/27
+    address 192.168.46.1/27
+    address 192.168.47.1/27
+    address 192.168.48.1/27
+    address 192.168.49.1/27
+    address 192.168.50.1/27
+    address 192.168.51.1/27
+    address 192.168.52.1/27
+    address 192.168.53.1/27
+    address 192.168.54.1/27
+    address 192.168.55.1/27
+    address 192.168.56.1/27
+    address 192.168.57.1/27
+    address 192.168.58.1/27
+    address 192.168.59.1/27
+    address 192.168.60.1/27
+    address 192.168.61.1/27
+    address 192.168.62.1/27
+    address 192.168.63.1/27
+    address 192.168.64.1/27
+    address 192.168.65.1/27
+    address 192.168.66.1/27
+    address 192.168.67.1/27
+    address 192.168.68.1/27
+    address 192.168.69.1/28
+    address 192.168.70.1/28
+    address 192.168.71.1/28
+    address 192.168.72.1/28
+    address 192.168.73.1/28
+    address 192.168.74.1/28
+    address 192.168.75.1/28
+    address 192.168.76.1/28
+    address 192.168.78.1/28
+    address 192.168.79.1/28
+    address 192.168.80.1/28
+    address 192.168.81.1/28
+    address 192.168.82.1/28
+    address 192.168.83.1/28
+    address 192.168.84.1/28
+    address 192.168.85.1/28
+    address 192.168.86.1/28
+    address 192.168.87.1/28
+    address 192.168.88.1/28
+    address 192.168.89.1/28
+    address 192.168.90.1/28
+    address 192.168.91.1/28
+    address 192.168.92.1/28
+    address 192.168.93.1/28
+    address 192.168.94.1/28
+    address 192.168.95.1/28
     address 2A02:2498:E004:4D::1/113
     address 2A02:2498:E004:5D::1/113
     address 185.2.136.241/28
