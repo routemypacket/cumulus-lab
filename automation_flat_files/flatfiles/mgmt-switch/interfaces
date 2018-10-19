@@ -163,7 +163,7 @@ iface swp49
 
 auto swp50
 iface swp50
-    bridge-access 10
+    address 29.0.0.1/24
 
 auto swp51
 iface swp51
@@ -175,6 +175,6 @@ iface swp52
 
 auto bridge
 iface bridge
-    bridge-ports swp49 swp50 swp51 swp52
+    bridge-ports swp49 swp51 swp52
     bridge-vids 10-11
     bridge-vlan-aware yes

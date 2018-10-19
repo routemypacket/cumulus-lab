@@ -85,8 +85,6 @@ iface bridge
     bridge-vids 100 400 4001
     bridge-pvid 1
     bridge-vlan-aware yes
-    post-up echo 1 > /proc/sys/net/ipv4/conf/bridge/proxy_arp
-
 
 auto vxlan4001
 iface vxlan4001
