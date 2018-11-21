@@ -66,9 +66,16 @@ leaf02 ansible_host=192.168.0.12 ansible_user=cumulus
 leaf03 ansible_host=192.168.0.13 ansible_user=cumulus
 leaf01 ansible_host=192.168.0.11 ansible_user=cumulus
 
+[superspine]
+superspine02 ansible_host=192.168.0.22 ansible_user=cumulus
+superspine01 ansible_host=192.168.0.21 ansible_user=cumulus
+
 [spine]
-spine02 ansible_host=192.168.0.22 ansible_user=cumulus
-spine01 ansible_host=192.168.0.21 ansible_user=cumulus
+spine02 ansible_host=192.168.0.24 ansible_user=cumulus
+spine01 ansible_host=192.168.0.23 ansible_user=cumulus
+
+[netq]
+netq ansible_host=192.168.0.52 ansible_user=cumulus
 
 [host]
 edge01 ansible_host=192.168.0.51 ansible_user=cumulus
@@ -153,9 +160,13 @@ group {
 
  host exit01 {hardware ethernet a0:00:00:00:00:41; fixed-address 192.168.0.41; option host-name "exit01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  }
 
- host spine02 {hardware ethernet a0:00:00:00:00:22; fixed-address 192.168.0.22; option host-name "spine02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  }
+ host superspine02 {hardware ethernet a0:00:00:00:00:22; fixed-address 192.168.0.22; option host-name "superspine02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  }
 
- host spine01 {hardware ethernet a0:00:00:00:00:21; fixed-address 192.168.0.21; option host-name "spine01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  }
+ host superspine01 {hardware ethernet a0:00:00:00:00:21; fixed-address 192.168.0.21; option host-name "superspine01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  }
+
+ host spine02 {hardware ethernet a0:00:00:00:00:24; fixed-address 192.168.0.24; option host-name "spine02"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  }
+
+ host spine01 {hardware ethernet a0:00:00:00:00:23; fixed-address 192.168.0.23; option host-name "spine01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  }
 
  host leaf04 {hardware ethernet a0:00:00:00:00:14; fixed-address 192.168.0.14; option host-name "leaf04"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  }
 
@@ -166,6 +177,8 @@ group {
  host leaf01 {hardware ethernet a0:00:00:00:00:11; fixed-address 192.168.0.11; option host-name "leaf01"; option cumulus-provision-url "http://192.168.0.254/ztp_oob.sh";  }
 
  host edge01 {hardware ethernet a0:00:00:00:00:51; fixed-address 192.168.0.51; option host-name "edge01"; }
+
+ host netq {hardware ethernet a0:00:00:00:00:52; fixed-address 192.168.0.52; option host-name "netq"; }
 
  host server01 {hardware ethernet a0:00:00:00:00:31; fixed-address 192.168.0.31; option host-name "server01"; }
 
@@ -194,13 +207,16 @@ cat << EOT > /etc/hosts
 192.168.0.1 oob-mgmt-switch
 192.168.0.42 exit02
 192.168.0.41 exit01
-192.168.0.22 spine02
-192.168.0.21 spine01
+192.168.0.22 superspine02
+192.168.0.21 superspine01
+192.168.0.24 spine02
+192.168.0.23 spine01
 192.168.0.14 leaf04
 192.168.0.12 leaf02
 192.168.0.13 leaf03
 192.168.0.11 leaf01
 192.168.0.51 edge01
+192.168.0.52 netq
 192.168.0.31 server01
 192.168.0.33 server03
 192.168.0.32 server02
