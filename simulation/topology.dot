@@ -9,7 +9,7 @@ graph vx {
  "superspine02" [function="superspine" os="CumulusCommunity/cumulus-vx" version="3.7.1" memory="768" config="./helper_scripts/config_switch.sh" ]
  "exit01" [function="exit" os="CumulusCommunity/cumulus-vx" version="3.7.1" memory="768" config="./helper_scripts/config_switch.sh" ]
  "exit02" [function="exit" os="CumulusCommunity/cumulus-vx" version="3.7.1" memory="768" config="./helper_scripts/config_switch.sh" ]
- "netq" [function="host" os="cumulus/ts" memory="768" config="./helper_scripts/config_server.sh" ]
+ "netq" [function="host" os="cumulus/ts" memory="2048" config="./helper_scripts/config_server.sh" ]
  "server01" [function="host" os="yk0/ubuntu-xenial" memory="512" config="./helper_scripts/config_server.sh" ]
  "server02" [function="host" os="yk0/ubuntu-xenial" memory="512" config="./helper_scripts/config_server.sh" ]
  "server03" [function="host" os="yk0/ubuntu-xenial" memory="512" config="./helper_scripts/config_server.sh" ]
