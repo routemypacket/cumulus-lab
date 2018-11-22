@@ -590,9 +590,9 @@ end
             :mac => "a0:00:00:00:00:24",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8032',
+            :libvirt__tunnel_local_port => '8033',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9032',
+            :libvirt__tunnel_port => '9033',
             :libvirt__iface_name => 'eth0',
             auto_config: false
       # link for swp1 --> leaf01:swp50
@@ -1436,6 +1436,71 @@ vagrant_interface_rule
 
 end
 
+  ##### DEFINE VM for netq #####
+  config.vm.define "netq" do |device|
+    
+    device.vm.hostname = "netq" 
+    
+    device.vm.box = "cumulus/ts"
+
+    device.vm.provider :libvirt do |v|
+      v.nic_model_type = 'e1000' 
+      v.memory = 768
+    end
+    #   see note here: https://github.com/pradels/vagrant-libvirt#synced-folders
+    device.vm.synced_folder ".", "/vagrant", disabled: true
+
+
+
+    # NETWORK INTERFACES
+      # link for eth0 --> oob-mgmt-switch:swp16
+      device.vm.network "private_network",
+            :mac => "a0:00:00:00:00:52",
+            :libvirt__tunnel_type => 'udp',
+            :libvirt__tunnel_local_ip => '127.0.0.1',
+            :libvirt__tunnel_local_port => '8032',
+            :libvirt__tunnel_ip => '127.0.0.1',
+            :libvirt__tunnel_port => '9032',
+            :libvirt__iface_name => 'eth0',
+            auto_config: false
+
+
+
+    # Fixes "stdin: is not a tty" and "mesg: ttyname failed : Inappropriate ioctl for device"  messages --> https://github.com/mitchellh/vagrant/issues/1673
+    device.vm.provision :shell , inline: "(sudo grep -q 'mesg n' /root/.profile 2>/dev/null && sudo sed -i '/mesg n/d' /root/.profile  2>/dev/null) || true;", privileged: false
+
+    
+    # Run the Config specified in the Node Attributes
+    device.vm.provision :shell , privileged: false, :inline => 'echo "$(whoami)" > /tmp/normal_user'
+    device.vm.provision :shell , path: "./helper_scripts/config_server.sh"
+
+
+    # Install Rules for the interface re-map
+    device.vm.provision :shell , :inline => <<-delete_udev_directory
+if [ -d "/etc/udev/rules.d/70-persistent-net.rules" ]; then
+    rm -rfv /etc/udev/rules.d/70-persistent-net.rules &> /dev/null
+fi
+rm -rfv /etc/udev/rules.d/70-persistent-net.rules &> /dev/null
+delete_udev_directory
+
+device.vm.provision :shell , :inline => <<-udev_rule
+echo "  INFO: Adding UDEV Rule: a0:00:00:00:00:52 --> eth0"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="a0:00:00:00:00:52", NAME="eth0", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+udev_rule
+     
+      device.vm.provision :shell , :inline => <<-vagrant_interface_rule
+echo "  INFO: Adding UDEV Rule: Vagrant interface = vagrant"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{ifindex}=="2", NAME="vagrant", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "#### UDEV Rules (/etc/udev/rules.d/70-persistent-net.rules) ####"
+cat /etc/udev/rules.d/70-persistent-net.rules
+vagrant_interface_rule
+
+# Run Any Platform Specific Code and Apply the interface Re-map
+    #   (may or may not perform a reboot depending on platform)
+    device.vm.provision :shell , :inline => $script
+
+end
+
   ##### DEFINE VM for oob-mgmt-switch #####
   config.vm.define "oob-mgmt-switch" do |device|
     
@@ -1555,12 +1620,12 @@ end
             auto_config: false
       # link for swp11 --> spine02:eth0
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:2e",
+            :mac => "44:38:39:00:00:2f",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '9032',
+            :libvirt__tunnel_local_port => '9033',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '8032',
+            :libvirt__tunnel_port => '8033',
             :libvirt__iface_name => 'swp11',
             auto_config: false
       # link for swp12 --> exit01:eth0
@@ -1592,6 +1657,16 @@ end
             :libvirt__tunnel_ip => '127.0.0.1',
             :libvirt__tunnel_port => '8019',
             :libvirt__iface_name => 'swp15',
+            auto_config: false
+      # link for swp16 --> netq:eth0
+      device.vm.network "private_network",
+            :mac => "44:38:39:00:00:2e",
+            :libvirt__tunnel_type => 'udp',
+            :libvirt__tunnel_local_ip => '127.0.0.1',
+            :libvirt__tunnel_local_port => '9032',
+            :libvirt__tunnel_ip => '127.0.0.1',
+            :libvirt__tunnel_port => '8032',
+            :libvirt__iface_name => 'swp16',
             auto_config: false
 
 
@@ -1654,8 +1729,8 @@ echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:1b --> swp10"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:1b", NAME="swp10", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:2e --> swp11"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:2e", NAME="swp11", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:2f --> swp11"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:2f", NAME="swp11", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
 echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:09 --> swp12"
@@ -1668,6 +1743,10 @@ udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
 echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:1c --> swp15"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:1c", NAME="swp15", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+udev_rule
+     device.vm.provision :shell , :inline => <<-udev_rule
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:2e --> swp16"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:2e", NAME="swp16", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      
       device.vm.provision :shell , :inline => <<-vagrant_interface_rule

@@ -19,13 +19,15 @@ leaf02,swp1,44:38:39:00:00:06
 leaf02,swp2,44:38:39:00:00:24
 leaf02,swp49,44:38:39:00:00:01
 leaf02,swp50,44:38:39:00:00:1d
+netq,eth0,a0:00:00:00:00:52
 oob-mgmt-server,eth1,44:38:39:00:00:2d
 oob-mgmt-switch,swp1,a0:00:00:00:00:61
 oob-mgmt-switch,swp10,44:38:39:00:00:1b
-oob-mgmt-switch,swp11,44:38:39:00:00:2e
+oob-mgmt-switch,swp11,44:38:39:00:00:2f
 oob-mgmt-switch,swp12,44:38:39:00:00:09
 oob-mgmt-switch,swp13,44:38:39:00:00:28
 oob-mgmt-switch,swp15,44:38:39:00:00:1c
+oob-mgmt-switch,swp16,44:38:39:00:00:2e
 oob-mgmt-switch,swp2,44:38:39:00:00:23
 oob-mgmt-switch,swp3,44:38:39:00:00:27
 oob-mgmt-switch,swp4,44:38:39:00:00:0e
