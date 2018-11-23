@@ -1,8 +1,8 @@
 
 auto lo
 iface lo inet loopback
-  address 10.0.160.23/32
-  alias loopback interface
+    address 10.0.160.23/32
+    alias loopback interface
 
 auto eth0
 iface eth0 inet dhcp
