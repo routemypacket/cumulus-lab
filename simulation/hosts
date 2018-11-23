@@ -23,7 +23,6 @@ spine01 ansible_host=10.0.163.23 ansible_user=cumulus
 netq ansible_host=10.0.163.52 ansible_user=cumulus
 
 [host]
-edge01 ansible_host=10.0.163.51 ansible_user=cumulus
 server01 ansible_host=10.0.163.31 ansible_user=cumulus
 server03 ansible_host=10.0.163.33 ansible_user=cumulus
 server02 ansible_host=10.0.163.32 ansible_user=cumulus
