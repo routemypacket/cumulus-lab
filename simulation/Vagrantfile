@@ -195,34 +195,34 @@ end
             :libvirt__tunnel_port => '9027',
             :libvirt__iface_name => 'eth0',
             auto_config: false
-      # link for swp1 --> spine01:swp4
+      # link for swp1 --> spine01:swp26
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:04",
+            :mac => "44:38:39:00:00:13",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8003',
+            :libvirt__tunnel_local_port => '8014',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9003',
+            :libvirt__tunnel_port => '9014',
             :libvirt__iface_name => 'swp1',
             auto_config: false
-      # link for swp2 --> spine02:swp4
+      # link for swp2 --> spine02:swp26
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:25",
+            :mac => "44:38:39:00:00:0a",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8025',
+            :libvirt__tunnel_local_port => '8008',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9025',
+            :libvirt__tunnel_port => '9008',
             :libvirt__iface_name => 'swp2',
             auto_config: false
       # link for swp32 --> internet:swp2
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:0d",
+            :mac => "44:38:39:00:00:0e",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '9009',
+            :libvirt__tunnel_local_port => '9010',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '8009',
+            :libvirt__tunnel_port => '8010',
             :libvirt__iface_name => 'swp32',
             auto_config: false
 
@@ -250,16 +250,16 @@ echo "  INFO: Adding UDEV Rule: a0:00:00:00:00:42 --> eth0"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="a0:00:00:00:00:42", NAME="eth0", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:04 --> swp1"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:04", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:13 --> swp1"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:13", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:25 --> swp2"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:25", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:0a --> swp2"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:0a", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:0d --> swp32"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:0d", NAME="swp32", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:0e --> swp32"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:0e", NAME="swp32", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      
       device.vm.provision :shell , :inline => <<-vagrant_interface_rule
@@ -302,34 +302,34 @@ end
             :libvirt__tunnel_port => '9006',
             :libvirt__iface_name => 'eth0',
             auto_config: false
-      # link for swp1 --> spine01:swp3
+      # link for swp1 --> spine01:swp25
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:13",
+            :mac => "44:38:39:00:00:25",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8014',
+            :libvirt__tunnel_local_port => '8025',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9014',
+            :libvirt__tunnel_port => '9025',
             :libvirt__iface_name => 'swp1',
             auto_config: false
-      # link for swp2 --> spine02:swp3
+      # link for swp2 --> spine02:swp25
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:19",
+            :mac => "44:38:39:00:00:1c",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8017',
+            :libvirt__tunnel_local_port => '8020',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9017',
+            :libvirt__tunnel_port => '9020',
             :libvirt__iface_name => 'swp2',
             auto_config: false
       # link for swp32 --> internet:swp1
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:22",
+            :mac => "44:38:39:00:00:23",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '9022',
+            :libvirt__tunnel_local_port => '9023',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '8022',
+            :libvirt__tunnel_port => '8023',
             :libvirt__iface_name => 'swp32',
             auto_config: false
 
@@ -357,16 +357,16 @@ echo "  INFO: Adding UDEV Rule: a0:00:00:00:00:41 --> eth0"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="a0:00:00:00:00:41", NAME="eth0", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:13 --> swp1"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:13", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:25 --> swp1"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:25", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:19 --> swp2"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:19", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:1c --> swp2"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:1c", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:22 --> swp32"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:22", NAME="swp32", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:23 --> swp32"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:23", NAME="swp32", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      
       device.vm.provision :shell , :inline => <<-vagrant_interface_rule
@@ -411,17 +411,17 @@ end
             auto_config: false
       # link for swp1 --> spine01:swp31
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:17",
+            :mac => "44:38:39:00:00:18",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8016',
+            :libvirt__tunnel_local_port => '8017',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9016',
+            :libvirt__tunnel_port => '9017',
             :libvirt__iface_name => 'swp1',
             auto_config: false
       # link for swp2 --> spine02:swp31
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:07",
+            :mac => "44:38:39:00:00:06",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
             :libvirt__tunnel_local_port => '8005',
@@ -454,12 +454,12 @@ echo "  INFO: Adding UDEV Rule: a0:00:00:00:00:22 --> eth0"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="a0:00:00:00:00:22", NAME="eth0", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:17 --> swp1"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:17", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:18 --> swp1"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:18", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:07 --> swp2"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:07", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:06 --> swp2"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:06", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      
       device.vm.provision :shell , :inline => <<-vagrant_interface_rule
@@ -504,12 +504,12 @@ end
             auto_config: false
       # link for swp1 --> spine01:swp32
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:1f",
+            :mac => "44:38:39:00:00:20",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8021',
+            :libvirt__tunnel_local_port => '8022',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9021',
+            :libvirt__tunnel_port => '9022',
             :libvirt__iface_name => 'swp1',
             auto_config: false
       # link for swp2 --> spine02:swp32
@@ -547,8 +547,8 @@ echo "  INFO: Adding UDEV Rule: a0:00:00:00:00:21 --> eth0"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="a0:00:00:00:00:21", NAME="eth0", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:1f --> swp1"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:1f", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:20 --> swp1"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:20", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
 echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:15 --> swp2"
@@ -607,37 +607,37 @@ end
             auto_config: false
       # link for swp2 --> leaf02:swp50
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:1e",
+            :mac => "44:38:39:00:00:1f",
+            :libvirt__tunnel_type => 'udp',
+            :libvirt__tunnel_local_ip => '127.0.0.1',
+            :libvirt__tunnel_local_port => '9021',
+            :libvirt__tunnel_ip => '127.0.0.1',
+            :libvirt__tunnel_port => '8021',
+            :libvirt__iface_name => 'swp2',
+            auto_config: false
+      # link for swp25 --> exit01:swp2
+      device.vm.network "private_network",
+            :mac => "44:38:39:00:00:1d",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
             :libvirt__tunnel_local_port => '9020',
             :libvirt__tunnel_ip => '127.0.0.1',
             :libvirt__tunnel_port => '8020',
-            :libvirt__iface_name => 'swp2',
+            :libvirt__iface_name => 'swp25',
             auto_config: false
-      # link for swp3 --> exit01:swp2
+      # link for swp26 --> exit02:swp2
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:1a",
+            :mac => "44:38:39:00:00:0b",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '9017',
+            :libvirt__tunnel_local_port => '9008',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '8017',
-            :libvirt__iface_name => 'swp3',
-            auto_config: false
-      # link for swp4 --> exit02:swp2
-      device.vm.network "private_network",
-            :mac => "44:38:39:00:00:26",
-            :libvirt__tunnel_type => 'udp',
-            :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '9025',
-            :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '8025',
-            :libvirt__iface_name => 'swp4',
+            :libvirt__tunnel_port => '8008',
+            :libvirt__iface_name => 'swp26',
             auto_config: false
       # link for swp31 --> superspine02:swp2
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:08",
+            :mac => "44:38:39:00:00:07",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
             :libvirt__tunnel_local_port => '9005',
@@ -684,20 +684,20 @@ echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:12 --> swp1"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:12", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:1e --> swp2"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:1e", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:1f --> swp2"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:1f", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:1a --> swp3"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:1a", NAME="swp3", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:1d --> swp25"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:1d", NAME="swp25", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:26 --> swp4"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:26", NAME="swp4", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:0b --> swp26"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:0b", NAME="swp26", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:08 --> swp31"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:08", NAME="swp31", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:07 --> swp31"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:07", NAME="swp31", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
 echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:16 --> swp32"
@@ -764,7 +764,17 @@ end
             :libvirt__tunnel_port => '8001',
             :libvirt__iface_name => 'swp2',
             auto_config: false
-      # link for swp3 --> exit01:swp1
+      # link for swp25 --> exit01:swp1
+      device.vm.network "private_network",
+            :mac => "44:38:39:00:00:26",
+            :libvirt__tunnel_type => 'udp',
+            :libvirt__tunnel_local_ip => '127.0.0.1',
+            :libvirt__tunnel_local_port => '9025',
+            :libvirt__tunnel_ip => '127.0.0.1',
+            :libvirt__tunnel_port => '8025',
+            :libvirt__iface_name => 'swp25',
+            auto_config: false
+      # link for swp26 --> exit02:swp1
       device.vm.network "private_network",
             :mac => "44:38:39:00:00:14",
             :libvirt__tunnel_type => 'udp',
@@ -772,36 +782,26 @@ end
             :libvirt__tunnel_local_port => '9014',
             :libvirt__tunnel_ip => '127.0.0.1',
             :libvirt__tunnel_port => '8014',
-            :libvirt__iface_name => 'swp3',
-            auto_config: false
-      # link for swp4 --> exit02:swp1
-      device.vm.network "private_network",
-            :mac => "44:38:39:00:00:05",
-            :libvirt__tunnel_type => 'udp',
-            :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '9003',
-            :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '8003',
-            :libvirt__iface_name => 'swp4',
+            :libvirt__iface_name => 'swp26',
             auto_config: false
       # link for swp31 --> superspine02:swp1
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:18",
+            :mac => "44:38:39:00:00:19",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '9016',
+            :libvirt__tunnel_local_port => '9017',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '8016',
+            :libvirt__tunnel_port => '8017',
             :libvirt__iface_name => 'swp31',
             auto_config: false
       # link for swp32 --> superspine01:swp1
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:20",
+            :mac => "44:38:39:00:00:21",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '9021',
+            :libvirt__tunnel_local_port => '9022',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '8021',
+            :libvirt__tunnel_port => '8022',
             :libvirt__iface_name => 'swp32',
             auto_config: false
 
@@ -837,20 +837,20 @@ echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:02 --> swp2"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:02", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:14 --> swp3"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:14", NAME="swp3", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:26 --> swp25"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:26", NAME="swp25", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:05 --> swp4"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:05", NAME="swp4", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:14 --> swp26"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:14", NAME="swp26", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:18 --> swp31"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:18", NAME="swp31", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:19 --> swp31"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:19", NAME="swp31", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:20 --> swp32"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:20", NAME="swp32", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:21 --> swp32"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:21", NAME="swp32", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      
       device.vm.provision :shell , :inline => <<-vagrant_interface_rule
@@ -895,7 +895,7 @@ end
             auto_config: false
       # link for swp1 --> server03:eth1
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:06",
+            :mac => "44:38:39:00:00:05",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
             :libvirt__tunnel_local_port => '9004',
@@ -905,12 +905,12 @@ end
             auto_config: false
       # link for swp2 --> server04:eth1
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:24",
+            :mac => "44:38:39:00:00:17",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '9024',
+            :libvirt__tunnel_local_port => '9016',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '8024',
+            :libvirt__tunnel_port => '8016',
             :libvirt__iface_name => 'swp2',
             auto_config: false
       # link for swp49 --> spine01:swp2
@@ -925,12 +925,12 @@ end
             auto_config: false
       # link for swp50 --> spine02:swp2
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:1d",
+            :mac => "44:38:39:00:00:1e",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8020',
+            :libvirt__tunnel_local_port => '8021',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9020',
+            :libvirt__tunnel_port => '9021',
             :libvirt__iface_name => 'swp50',
             auto_config: false
 
@@ -958,20 +958,20 @@ echo "  INFO: Adding UDEV Rule: a0:00:00:00:00:12 --> eth0"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="a0:00:00:00:00:12", NAME="eth0", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:06 --> swp1"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:06", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:05 --> swp1"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:05", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:24 --> swp2"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:24", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:17 --> swp2"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:17", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
 echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:01 --> swp49"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:01", NAME="swp49", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:1d --> swp50"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:1d", NAME="swp50", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:1e --> swp50"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:1e", NAME="swp50", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      
       device.vm.provision :shell , :inline => <<-vagrant_interface_rule
@@ -1009,9 +1009,9 @@ end
             :mac => "a0:00:00:00:00:11",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8011',
+            :libvirt__tunnel_local_port => '8003',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9011',
+            :libvirt__tunnel_port => '9003',
             :libvirt__iface_name => 'eth0',
             auto_config: false
       # link for swp1 --> server01:eth1
@@ -1026,12 +1026,12 @@ end
             auto_config: false
       # link for swp2 --> server02:eth1
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:0b",
+            :mac => "44:38:39:00:00:0c",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '9008',
+            :libvirt__tunnel_local_port => '9009',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '8008',
+            :libvirt__tunnel_port => '8009',
             :libvirt__iface_name => 'swp2',
             auto_config: false
       # link for swp49 --> spine01:swp1
@@ -1083,8 +1083,8 @@ echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:03 --> swp1"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:03", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:0b --> swp2"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:0b", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:0c --> swp2"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:0c", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
 echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:2a --> swp49"
@@ -1130,9 +1130,9 @@ end
             :mac => "a0:00:00:00:00:31",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8023',
+            :libvirt__tunnel_local_port => '8024',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9023',
+            :libvirt__tunnel_port => '9024',
             :libvirt__iface_name => 'eth0',
             auto_config: false
       # link for eth1 --> leaf01:swp1
@@ -1212,9 +1212,9 @@ end
             :mac => "a0:00:00:00:00:33",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8010',
+            :libvirt__tunnel_local_port => '8011',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9010',
+            :libvirt__tunnel_port => '9011',
             :libvirt__iface_name => 'eth0',
             auto_config: false
       # link for eth1 --> leaf02:swp1
@@ -1304,9 +1304,9 @@ end
             :mac => "00:03:00:22:22:01",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8008',
+            :libvirt__tunnel_local_port => '8009',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9008',
+            :libvirt__tunnel_port => '9009',
             :libvirt__iface_name => 'eth1',
             auto_config: false
 
@@ -1386,9 +1386,9 @@ end
             :mac => "00:03:00:44:44:01",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8024',
+            :libvirt__tunnel_local_port => '8016',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9024',
+            :libvirt__tunnel_port => '9016',
             :libvirt__iface_name => 'eth1',
             auto_config: false
 
@@ -1445,7 +1445,7 @@ end
 
     device.vm.provider :libvirt do |v|
       v.nic_model_type = 'e1000' 
-      v.memory = 768
+      v.memory = 2048
     end
     #   see note here: https://github.com/pradels/vagrant-libvirt#synced-folders
     device.vm.synced_folder ".", "/vagrant", disabled: true
@@ -1530,12 +1530,12 @@ end
             auto_config: false
       # link for swp2 --> server01:eth0
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:23",
+            :mac => "44:38:39:00:00:24",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '9023',
+            :libvirt__tunnel_local_port => '9024',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '8023',
+            :libvirt__tunnel_port => '8024',
             :libvirt__iface_name => 'swp2',
             auto_config: false
       # link for swp3 --> server02:eth0
@@ -1550,17 +1550,17 @@ end
             auto_config: false
       # link for swp4 --> server03:eth0
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:0e",
+            :mac => "44:38:39:00:00:0f",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '9010',
+            :libvirt__tunnel_local_port => '9011',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '8010',
+            :libvirt__tunnel_port => '8011',
             :libvirt__iface_name => 'swp4',
             auto_config: false
       # link for swp5 --> server04:eth0
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:0a",
+            :mac => "44:38:39:00:00:09",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
             :libvirt__tunnel_local_port => '9007',
@@ -1570,12 +1570,12 @@ end
             auto_config: false
       # link for swp6 --> leaf01:eth0
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:0f",
+            :mac => "44:38:39:00:00:04",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '9011',
+            :libvirt__tunnel_local_port => '9003',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '8011',
+            :libvirt__tunnel_port => '8003',
             :libvirt__iface_name => 'swp6',
             auto_config: false
       # link for swp7 --> leaf02:eth0
@@ -1610,7 +1610,7 @@ end
             auto_config: false
       # link for swp10 --> spine01:eth0
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:1b",
+            :mac => "44:38:39:00:00:1a",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
             :libvirt__tunnel_local_port => '9018',
@@ -1630,7 +1630,7 @@ end
             auto_config: false
       # link for swp12 --> exit01:eth0
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:09",
+            :mac => "44:38:39:00:00:08",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
             :libvirt__tunnel_local_port => '9006',
@@ -1650,7 +1650,7 @@ end
             auto_config: false
       # link for swp15 --> internet:eth0
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:1c",
+            :mac => "44:38:39:00:00:1b",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
             :libvirt__tunnel_local_port => '9019',
@@ -1693,24 +1693,24 @@ echo "  INFO: Adding UDEV Rule: a0:00:00:00:00:61 --> swp1"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="a0:00:00:00:00:61", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:23 --> swp2"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:23", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:24 --> swp2"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:24", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
 echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:27 --> swp3"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:27", NAME="swp3", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:0e --> swp4"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:0e", NAME="swp4", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:0f --> swp4"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:0f", NAME="swp4", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:0a --> swp5"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:0a", NAME="swp5", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:09 --> swp5"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:09", NAME="swp5", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:0f --> swp6"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:0f", NAME="swp6", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:04 --> swp6"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:04", NAME="swp6", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
 echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:29 --> swp7"
@@ -1725,24 +1725,24 @@ echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:10 --> swp9"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:10", NAME="swp9", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:1b --> swp10"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:1b", NAME="swp10", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:1a --> swp10"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:1a", NAME="swp10", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
 echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:2f --> swp11"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:2f", NAME="swp11", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:09 --> swp12"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:09", NAME="swp12", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:08 --> swp12"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:08", NAME="swp12", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
 echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:28 --> swp13"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:28", NAME="swp13", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:1c --> swp15"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:1c", NAME="swp15", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:1b --> swp15"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:1b", NAME="swp15", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
 echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:2e --> swp16"
@@ -1791,22 +1791,22 @@ end
             auto_config: false
       # link for swp1 --> exit01:swp32
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:21",
+            :mac => "44:38:39:00:00:22",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8022',
+            :libvirt__tunnel_local_port => '8023',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9022',
+            :libvirt__tunnel_port => '9023',
             :libvirt__iface_name => 'swp1',
             auto_config: false
       # link for swp2 --> exit02:swp32
       device.vm.network "private_network",
-            :mac => "44:38:39:00:00:0c",
+            :mac => "44:38:39:00:00:0d",
             :libvirt__tunnel_type => 'udp',
             :libvirt__tunnel_local_ip => '127.0.0.1',
-            :libvirt__tunnel_local_port => '8009',
+            :libvirt__tunnel_local_port => '8010',
             :libvirt__tunnel_ip => '127.0.0.1',
-            :libvirt__tunnel_port => '9009',
+            :libvirt__tunnel_port => '9010',
             :libvirt__iface_name => 'swp2',
             auto_config: false
 
@@ -1834,12 +1834,12 @@ echo "  INFO: Adding UDEV Rule: a0:00:00:00:00:50 --> eth0"
 echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="a0:00:00:00:00:50", NAME="eth0", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:21 --> swp1"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:21", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:22 --> swp1"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:22", NAME="swp1", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      device.vm.provision :shell , :inline => <<-udev_rule
-echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:0c --> swp2"
-echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:0c", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
+echo "  INFO: Adding UDEV Rule: 44:38:39:00:00:0d --> swp2"
+echo 'ACTION=="add", SUBSYSTEM=="net", ATTR{address}=="44:38:39:00:00:0d", NAME="swp2", SUBSYSTEMS=="pci"' >> /etc/udev/rules.d/70-persistent-net.rules
 udev_rule
      
       device.vm.provision :shell , :inline => <<-vagrant_interface_rule
