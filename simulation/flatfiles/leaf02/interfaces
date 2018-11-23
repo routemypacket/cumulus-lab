@@ -29,30 +29,30 @@ iface swp50
 
 auto bridge
 iface bridge
-  bridge-vlan-aware yes
-  # bridge-ports includes all ports related to VxLAN and CLAG.
-  # does not include the Peerlink.4094 subinterface
-  bridge-ports swp1 swp2 vni100 vxlan4001
-  bridge-vids 100 4001
-  bridge-pvid 1
+    bridge-vlan-aware yes
+    bridge-ports swp1 swp2 vni100 vxlan4001
+    bridge-vids 100 4001
+    bridge-pvid 1
 
 auto vxlan4001
 iface vxlan4001
-     hwaddress 44:39:39:FF:40:95
-     vxlan-id 104001
-     vxlan-local-tunnelip 10.0.160.12
-     bridge-learning off
-     bridge-access 4001
+    hwaddress 44:39:39:FF:40:95
+    vxlan-id 104001
+    vxlan-local-tunnelip 10.0.160.12
+    bridge-learning off
+    bridge-access 4001
+    bridge-arp-nd-suppress on
 
 auto vni100
 iface vni100
-  mtu 9166
-  vxlan-id 10100
-  vxlan-local-tunnelip 10.0.160.12
-  bridge-access 100
-  bridge-learning off
-  mstpctl-bpduguard yes
-  mstpctl-portbpdufilter yes
+    mtu 9166
+    vxlan-id 10100
+    vxlan-local-tunnelip 10.0.160.12
+    bridge-access 100
+    bridge-learning off
+    mstpctl-bpduguard yes
+    mstpctl-portbpdufilter yes
+    bridge-arp-nd-suppress on
 
 auto public
 iface public

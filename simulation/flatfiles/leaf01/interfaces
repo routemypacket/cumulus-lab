@@ -2,9 +2,6 @@
 auto lo
 iface lo inet loopback
     address 10.0.160.11/32
-    alias to_loopback interface
-
-# Management interface
 
 auto eth0
 iface eth0 inet dhcp
@@ -29,17 +26,13 @@ iface swp49
 auto swp50
 iface swp50
 
-# Define the bridge for STP
 auto bridge
 iface bridge
     bridge-vlan-aware yes
-    # bridge-ports includes all ports related to VxLAN and CLAG.
-    # does not include the Peerlink.4094 subinterface
     bridge-ports swp1 swp2 vni100 vxlan4001
     bridge-vids 100 4001
     bridge-pvid 1
 
-# VxLAN Tunnel for Pubic Network (Vlan 100)
 auto vni100
 iface vni100
     mtu 9166
@@ -49,6 +42,7 @@ iface vni100
     bridge-learning off
     mstpctl-bpduguard yes
     mstpctl-portbpdufilter yes
+    bridge-arp-nd-suppress on
 
 auto vxlan4001
 iface vxlan4001
@@ -57,11 +51,11 @@ iface vxlan4001
     vxlan-local-tunnelip 10.0.160.11
     bridge-learning off
     bridge-access 4001
+    bridge-arp-nd-suppress on
 
 auto public
 iface public
     vrf-table auto
-
 
 auto vlan100
 iface vlan100
@@ -70,7 +64,6 @@ iface vlan100
     vlan-id 100
     vlan-raw-device bridge
     vrf public
-
 
 auto vlan4001
 iface vlan4001

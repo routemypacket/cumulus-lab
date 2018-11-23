@@ -9,12 +9,6 @@ auto eth0
 iface eth0 inet dhcp
     vrf mgmt
 
-auto bridge
-iface bridge
-    bridge-ports vni100 vxlan4001
-    bridge-vids 100 4001
-    bridge-pvid 1
-    bridge-vlan-aware yes
 
 auto public
 iface public
@@ -25,11 +19,6 @@ iface mgmt
     address 127.0.0.1/8
     vrf-table auto
 
-auto vlan4001
-iface vlan4001
-    vlan-id 4001
-    vlan-raw-device bridge
-    vrf public
 
 auto swp1
 iface swp1
@@ -42,20 +31,22 @@ iface swp32
     address 185.2.139.138/31
     vrf public
 
+auto bridge
+iface bridge
+    bridge-ports vxlan4001
+    bridge-vids 4001
+    bridge-vlan-aware yes
+
+auto vlan4001
+iface vlan4001
+    vlan-id 4001
+    vlan-raw-device bridge
+    vrf public
+
 auto vxlan4001
 iface vxlan4001
     vxlan-id 104001
     vxlan-local-tunnelip 10.0.160.42
     bridge-learning off
+    bridge-arp-nd-suppress on
     bridge-access 4001
-
-# VxLAN Tunnel for (Vlan 100)
-auto vni100
-iface vni100
-  mtu 9166
-  vxlan-id 10100
-  vxlan-local-tunnelip 10.0.160.42
-  bridge-access 100
-  bridge-learning off
-  mstpctl-bpduguard yes
-  mstpctl-portbpdufilter yes
