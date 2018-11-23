@@ -27,6 +27,9 @@ echo -e "iface swp1" >> /etc/network/interfaces
 echo -e "auto swp2" >> /etc/network/interfaces
 echo -e "iface swp2" >> /etc/network/interfaces
 
+#
+echo "cumulus ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/10_cumulus
+
 
 # Setup SSH key authentication for Ansible
 echo " #### Installing SSH Keys ####"
