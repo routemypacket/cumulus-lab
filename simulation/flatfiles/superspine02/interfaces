@@ -1,0 +1,22 @@
+
+auto lo
+iface lo inet loopback
+  address 10.0.160.22/32
+  alias loopback interface
+
+auto eth0
+iface eth0 inet dhcp
+    vrf mgmt
+
+auto mgmt
+iface mgmt
+    address 127.0.0.1/8
+    vrf-table auto
+
+auto swp1
+iface swp1
+  alias to_spine01
+
+auto swp2
+iface swp2
+  alias to_spine02

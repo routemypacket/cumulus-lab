@@ -1,16 +1,18 @@
+
 auto lo
 iface lo inet loopback
-  address 29.0.0.1/32
   address 172.16.1.1/32
 
 auto eth0
 iface eth0
-  address 192.168.0.253/24
+  address 10.0.163.63/25
 
 auto swp1
 iface swp1
+    alias to_exit01
     address 185.2.139.137/31
 
 auto swp2
 iface swp2
+    alias to_exit02
     address 185.2.139.139/31

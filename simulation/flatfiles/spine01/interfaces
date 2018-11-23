@@ -1,7 +1,7 @@
-# Loopback interface
+
 auto lo
 iface lo inet loopback
-  address 10.0.0.21/32
+  address 10.0.160.23/32
   alias loopback interface
 
 auto eth0
@@ -15,24 +15,24 @@ iface mgmt
 
 auto swp1
 iface swp1
-  alias Connects to Leaf01
+  alias to_leaf01
 
 auto swp2
 iface swp2
-  alias Connects to Leaf02
+  alias to_leaf02
 
-auto swp13
-iface swp13
-  alias Connects to Exit01
+auto swp25
+iface swp25
+  alias to_exit01
 
-auto swp14
-iface swp14
-  alias Connects to Exit02
+auto swp26
+iface swp26
+  alias to_exit02
 
-auto swp15
-iface swp15
-  alias Connects to Spine01
+auto swp31
+iface swp31
+  alias to_superspine02
 
-auto swp16
-iface swp16
-  alias Connects to Spine02
+auto swp32
+iface swp32
+  alias to_superspine01

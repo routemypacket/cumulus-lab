@@ -1,7 +1,7 @@
-# The loopback network interface
+
 auto lo
 iface lo inet loopback
-    address 10.0.0.42/32
+    address 10.0.160.42/32
 
 # The primary network interface
 
@@ -36,18 +36,23 @@ iface vlan4001
     vlan-raw-device bridge
     vrf public
 
-auto swp15
-iface swp15
-    alias SPINE_01
+auto swp1
+iface swp1
+    alias to_spine01
 
-auto swp16
-iface swp16
-    alias SPINE_02
+auto swp2
+iface swp2
+    alias to_spine02
+
+auto swp32
+iface swp32
+    address 185.2.139.138/31
+    vrf public
 
 auto vxlan4001
 iface vxlan4001
     vxlan-id 104001
-    vxlan-local-tunnelip 10.0.0.42
+    vxlan-local-tunnelip 10.0.160.42
     bridge-learning off
     bridge-access 4001
 
@@ -56,7 +61,7 @@ auto vni100
 iface vni100
   mtu 9166
   vxlan-id 10100
-  vxlan-local-tunnelip 10.0.0.42
+  vxlan-local-tunnelip 10.0.160.42
   bridge-access 100
   bridge-learning off
   mstpctl-bpduguard yes

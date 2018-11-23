@@ -15,7 +15,7 @@ echo -e "iface swp48 inet dhcp\n" >> /etc/network/interfaces
 # Config for OOB Switch
 echo -e "auto eth0" >> /etc/network/interfaces
 echo -e "iface eth0" >> /etc/network/interfaces
-echo -e "    address 192.168.0.253/24" >> /etc/network/interfaces
+echo -e "    address 10.0.163.63/25" >> /etc/network/interfaces
 
 
 # Exit 1

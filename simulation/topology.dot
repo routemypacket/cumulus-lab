@@ -33,10 +33,10 @@ graph vx {
  "server03":"eth1" -- "leaf02":"swp1" [left_mac="00:03:00:33:33:01"]
  "server04":"eth1" -- "leaf02":"swp2" [left_mac="00:03:00:44:44:01"]
 
- "exit01":"swp1" -- "spine01":"swp3"
- "exit01":"swp2" -- "spine02":"swp3"
- "exit02":"swp1" -- "spine01":"swp4"
- "exit02":"swp2" -- "spine02":"swp4"
+ "exit01":"swp1" -- "spine01":"swp25"
+ "exit01":"swp2" -- "spine02":"swp25"
+ "exit02":"swp1" -- "spine01":"swp26"
+ "exit02":"swp2" -- "spine02":"swp26"
 
  "internet":"swp1" -- "exit01":"swp32"
  "internet":"swp2" -- "exit02":"swp32"
