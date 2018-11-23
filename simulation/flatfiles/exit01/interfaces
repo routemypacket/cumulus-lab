@@ -26,6 +26,7 @@ iface swp2
 auto swp32
 iface swp32
     address 185.2.139.136/31
+    address 2A02:2498:E004:1F::2/64
     vrf public
 
 auto bridge
