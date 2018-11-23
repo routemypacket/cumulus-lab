@@ -10,4 +10,4 @@ auto eth1
 iface eth1 inet static
   address 185.2.136.245
   netmask 255.255.255.240
-  post-up ip route add 172.16.1.0/24 via 185.2.136.1
+  up route add -net 172.16.1.0 netmask 255.255.255.0 gw 185.2.136.241
