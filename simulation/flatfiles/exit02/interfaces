@@ -9,11 +9,6 @@ auto eth0
 iface eth0 inet dhcp
     vrf mgmt
 
-auto swp1
-iface swp1
-    address 185.2.139.138/31
-    vrf public
-
 auto bridge
 iface bridge
     bridge-ports vni100 vxlan4001
