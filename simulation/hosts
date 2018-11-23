@@ -17,7 +17,7 @@ superspine01 ansible_host=10.0.163.21 ansible_user=cumulus
 spine02 ansible_host=10.0.163.24 ansible_user=cumulus
 spine01 ansible_host=10.0.163.23 ansible_user=cumulus
 
-[netq]
+[ts]
 netq ansible_host=10.0.163.52 ansible_user=cumulus
 
 [inet]
