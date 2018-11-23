@@ -6,7 +6,7 @@ exit02 ansible_host=10.0.163.42 ansible_user=cumulus
 exit01 ansible_host=10.0.163.41 ansible_user=cumulus
 
 [leaf]
-leaf03 ansible_host=10.0.163.13 ansible_user=cumulus
+leaf02 ansible_host=10.0.163.12 ansible_user=cumulus
 leaf01 ansible_host=10.0.163.11 ansible_user=cumulus
 
 [superspine]
