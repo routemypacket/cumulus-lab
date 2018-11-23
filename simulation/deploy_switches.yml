@@ -1,5 +1,5 @@
 ---
-- hosts: leaf,spine,exit,inet
+- hosts: leaf,superspine,spine,exit,inet
   become: yes
   tasks:
   - name: Copy over interfaces
