@@ -15,8 +15,6 @@ iface mgmt
 
 auto swp1
 iface swp1
-  alias to_spine01
 
 auto swp2
 iface swp2
-  alias to_spine02

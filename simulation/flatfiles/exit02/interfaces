@@ -38,11 +38,9 @@ iface vlan4001
 
 auto swp1
 iface swp1
-    alias to_spine01
 
 auto swp2
 iface swp2
-    alias to_spine02
 
 auto swp32
 iface swp32

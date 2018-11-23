@@ -9,10 +9,8 @@ iface eth0
 
 auto swp1
 iface swp1
-    alias to_exit01
     address 185.2.139.137/31
 
 auto swp2
 iface swp2
-    alias to_exit02
     address 185.2.139.139/31

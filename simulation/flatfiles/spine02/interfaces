@@ -15,24 +15,18 @@ iface mgmt
 
 auto swp1
 iface swp1
-  alias to_leaf01
 
 auto swp2
 iface swp2
-  alias to_leaf02
 
 auto swp25
 iface swp25
-  alias to_exit01
 
 auto swp26
 iface swp26
-  alias to_exit02
 
 auto swp31
 iface swp31
-  alias to_superspine02
 
 auto swp32
 iface swp32
-  alias to_superspine01
