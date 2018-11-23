@@ -1,4 +1,5 @@
 ---
+- hosts: leaf,superspine,spine,exit
 - name: Apply Netq repos
   apt_repository:
     repo: deb http://apps3.cumulusnetworks.com/repos/deb CumulusLinux-3 netq-latest
