@@ -6,8 +6,6 @@ exit02 ansible_host=10.0.163.42 ansible_user=cumulus
 exit01 ansible_host=10.0.163.41 ansible_user=cumulus
 
 [leaf]
-leaf04 ansible_host=10.0.163.14 ansible_user=cumulus
-leaf02 ansible_host=10.0.163.12 ansible_user=cumulus
 leaf03 ansible_host=10.0.163.13 ansible_user=cumulus
 leaf01 ansible_host=10.0.163.11 ansible_user=cumulus
 
@@ -21,6 +19,9 @@ spine01 ansible_host=10.0.163.23 ansible_user=cumulus
 
 [netq]
 netq ansible_host=10.0.163.52 ansible_user=cumulus
+
+[inet]
+internet ansible_host=10.0.163.63 ansible_user=cumulus
 
 [host]
 server01 ansible_host=10.0.163.31 ansible_user=cumulus

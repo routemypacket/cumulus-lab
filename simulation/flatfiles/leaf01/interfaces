@@ -26,7 +26,7 @@ iface swp2
     bridge-access 100
 
 auto swp49
-iface swp50
+iface swp49
     alias to_spine01
 
 auto swp50
