@@ -2,14 +2,14 @@ devices:
   spine01:
     profile: "spine"
     lo:
-      ipv4: "10.0.0.21"
+      ipv4: "10.0.160.23"
     eth0:
-      ipv4: "10.255.6.7/23"
-      ipv4_gateway: "10.255.6.1"
+      ipv4: "10.0.163.23/25"
+      ipv4_gateway: "10.0.163.1"
   spine02:
     profile: "spine"
     lo:
-      ipv4: "10.0.0.22"
+      ipv4: "10.0.160.24"
     eth0:
-      ipv4: "10.255.6.8/23"
-      ipv4_gateway: "10.255.6.1"
+      ipv4: "10.0.163.24/25"
+      ipv4_gateway: "10.0.163.1"

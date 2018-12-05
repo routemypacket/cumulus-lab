@@ -1,16 +1,16 @@
 profiles:
-  SPINE:
+  spine:
     mgmt: true
     interfaces:
         swp1:
-            description: "Leaf01"
+            description: "leaf01"
         swp2:
-            description: "Leaf02"
-        swp13:
-            description: "Exit01"
-        swp14:
-            description: "Exit02"
-        swp15:
-            description: "Spine01"
-        swp16:
-            description: "Spine02"
+            description: "leaf02"
+        swp25:
+            description: "exit01"
+        swp26:
+            description: "exit02"
+        swp31:
+            description: "superspine02"
+        swp32:
+            description: "superspine01"
