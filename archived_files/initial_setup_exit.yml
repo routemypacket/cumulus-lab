@@ -1,7 +1,0 @@
----
-  - hosts: exit
-    gather_facts: no
-    roles:
-      - bgp
-      - vxlan
-      - vrf

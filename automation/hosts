@@ -1,39 +1,34 @@
-[all:vars]
-ansible_connection=ssh
-ansible_user=cumulus
-ansible_pass='CumulusLinux!'
-
 [oob-switch]
-oob-mgmt-switch ansible_host=10.255.6.2
+oob-mgmt-switch ansible_host=10.0.163.1 ansible_user=cumulus
 
 [exit]
-exit01 ansible_host=10.255.6.5
-exit02 ansible_host=10.255.6.6
+exit02 ansible_host=10.0.163.42 ansible_user=cumulus
+exit01 ansible_host=10.0.163.41 ansible_user=cumulus
 
 [leaf]
-leaf01 ansible_host=10.255.6.3
-leaf02 ansible_host=10.255.6.4
+leaf02 ansible_host=10.0.163.12 ansible_user=cumulus
+leaf01 ansible_host=10.0.163.11 ansible_user=cumulus
+
+[superspine]
+superspine02 ansible_host=10.0.163.22 ansible_user=cumulus
+superspine01 ansible_host=10.0.163.21 ansible_user=cumulus
 
 [spine]
-spine01 ansible_host=10.255.6.7
-spine02 ansible_host=10.255.6.8
+spine02 ansible_host=10.0.163.24 ansible_user=cumulus
+spine01 ansible_host=10.0.163.23 ansible_user=cumulus
 
-[hosts]
-server01 ansible_host=185.2.136.245
-server02 ansible_host=185.2.136.246
-server03 ansible_host=185.2.136.0
-server07 ansible_host=185.2.136.248
-server05 ansible_host=185.2.136.249
-server06 ansible_host=185.2.136.247
+[ts]
+netq ansible_host=10.0.163.52 ansible_user=cumulus
 
-[hosts-ipmi]
-server01-ipmi ansible_host=10.15.79.11
-server02-ipmi ansible_host=10.15.79.12
-server03-ipmi ansible_host=10.15.79.3
-server04-ipmi ansible_host=10.15.79.4
-server05-ipmi ansible_host=10.15.79.0
-server06-ipmi ansible_host=10.15.79.13
-server07-ipmi ansible_host=10.15.79.14
+[inet]
+internet ansible_host=10.0.163.63 ansible_user=cumulus
+
+[host]
+server01 ansible_host=10.0.163.31 ansible_user=cumulus
+server03 ansible_host=10.0.163.33 ansible_user=cumulus
+server02 ansible_host=10.0.163.32 ansible_user=cumulus
+server04 ansible_host=10.0.163.34 ansible_user=cumulus
+
 
 [all:vars]
 ansible_user=cumulus

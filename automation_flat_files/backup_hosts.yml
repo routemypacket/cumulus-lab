@@ -1,6 +1,0 @@
----
-- hosts: host
-  become: yes
-  tasks:
-  - name: Backup interfaces
-    fetch: src=/etc/network/interfaces dest=./flatfiles/{{ansible_hostname}}/interfaces flat=yes

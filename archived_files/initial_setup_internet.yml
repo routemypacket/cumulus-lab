@@ -1,5 +1,0 @@
----
-  - hosts: internet
-    gather_facts: no
-    roles:
-      - bgp

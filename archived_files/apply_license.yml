@@ -1,6 +1,0 @@
----
-- hosts: all_switches
-  become: yes
-  tasks:
-  - name: reload networking
-    shell: systemctl restart networking.service

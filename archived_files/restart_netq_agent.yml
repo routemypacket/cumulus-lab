@@ -1,6 +1,0 @@
----
-- hosts: leaf,exit,spine
-  become: yes
-  tasks:
-  - name: reload netq agent
-    shell: netq config restart agent

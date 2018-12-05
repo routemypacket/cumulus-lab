@@ -1,4 +1,0 @@
----
-- import_playbook: deploy_switches.yml
-- import_playbook: deploy_netq.yml
-- import_playbook: deploy_hosts.yml

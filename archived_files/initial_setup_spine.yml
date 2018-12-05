@@ -1,5 +1,0 @@
----
-  - hosts: spine
-    gather_facts: no
-    roles:
-      - bgp

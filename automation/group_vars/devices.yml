@@ -1,13 +1,13 @@
 devices:
   spine01:
-    profile: "SPINE"
+    profile: "spine"
     lo:
       ipv4: "10.0.0.21"
     eth0:
       ipv4: "10.255.6.7/23"
       ipv4_gateway: "10.255.6.1"
   spine02:
-    profile: "SPINE"
+    profile: "spine"
     lo:
       ipv4: "10.0.0.22"
     eth0:

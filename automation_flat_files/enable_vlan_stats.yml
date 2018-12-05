@@ -1,7 +1,0 @@
----
-- hosts: leaf,spine,exit
-  become: true
-  gather_facts: false
-  tasks:
-    - name: turn on vlan stats
-      shell: echo TRUE > /cumulus/switchd/config/stats/vlan/show_internal_vlans
