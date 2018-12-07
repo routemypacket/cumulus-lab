@@ -6,10 +6,43 @@ devices:
     eth0:
       ipv4: "10.0.163.23/25"
       ipv4_gateway: "10.0.163.1"
+
   spine02:
     profile: "spine"
     lo:
       ipv4: "10.0.160.24"
     eth0:
       ipv4: "10.0.163.24/25"
+      ipv4_gateway: "10.0.163.1"
+
+  superspine01:
+    profile: "superspine"
+    lo:
+      ipv4: "10.0.160.21"
+    eth0:
+      ipv4: "10.0.163.21/25"
+      ipv4_gateway: "10.0.163.1"
+
+  superspine02:
+    profile: "superspine"
+    lo:
+      ipv4: "10.0.160.21"
+    eth0:
+      ipv4: "10.0.163.21/25"
+      ipv4_gateway: "10.0.163.1"
+
+  leaf01:
+    profile: "leaf"
+    lo:
+      ipv4: "10.0.160.11"
+    eth0:
+      ipv4: "10.0.163.11/25"
+      ipv4_gateway: "10.0.163.1"
+
+  leaf02:
+    profile: "leaf"
+    lo:
+      ipv4: "10.0.160.12"
+    eth0:
+      ipv4: "10.0.163.12/25"
       ipv4_gateway: "10.0.163.1"

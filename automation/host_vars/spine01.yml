@@ -1,0 +1,23 @@
+---
+name: spine01
+profile: spine
+lo:
+  ipv4: "10.0.160.23"
+eth0:
+  ipv4: "10.0.163.23/25"
+  ipv4_gateway: "10.0.163.1"
+vni:
+  enabled: false
+interfaces:
+    swp1:
+        description: "leaf01"
+    swp2:
+        description: "leaf02"
+    swp25:
+        description: "exit01"
+    swp26:
+        description: "exit02"
+    swp31:
+        description: "superspine02"
+    swp32:
+        description: "superspine01"

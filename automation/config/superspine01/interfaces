@@ -1,0 +1,29 @@
+# Loopback interface
+auto lo
+iface lo inet loopback
+  address 10.0.160.21/32
+  alias loopback interface
+
+# Management interface
+auto eth0
+iface eth0
+  vrf mgmt
+  address 10.0.163.21/25
+  gateway 10.0.163.1
+
+auto mgmt
+iface mgmt
+    address 127.0.0.1/8
+    vrf-table auto
+
+
+# Connects to spine02
+auto swp2
+iface swp2
+  alias to spine02
+  
+# Connects to spine01
+auto swp1
+iface swp1
+  alias to spine01
+  

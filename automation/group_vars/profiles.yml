@@ -1,4 +1,11 @@
 profiles:
+  superspine:
+    mgmt: true
+    interfaces:
+        swp1:
+            description: "spine01"
+        swp2:
+            description: "spine02"
   spine:
     mgmt: true
     interfaces:
@@ -14,3 +21,10 @@ profiles:
             description: "superspine02"
         swp32:
             description: "superspine01"
+  leaf:
+    mgmt: true
+    interfaces:
+        swp49:
+            description: "spine01"
+        swp50:
+            description: "spine02"
