@@ -25,17 +25,4 @@ iface mgmt
 auto {{ interface }}
 iface {{ interface }}
   alias to {{ interface_vars.description }}
-  {% if interface_vars.access_port is defined %}
-  bridge-access {{ interface_vars.vlan}}
-  {% endif %}
 {% endfor %}
-
-{% if switch_details.bridge.enabled is defined %}
-# Bridge configuration
-auto bridge
-iface bridge
-    bridge-vlan-aware yes
-    bridge-ports {{ switch_details.bridge.bridge_ports }}
-    bridge-vids {{ switch_details.bridge.bridge_vids }}
-    bridge-pvid 1
-{% endif %}

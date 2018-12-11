@@ -3,8 +3,12 @@
   file: path=config/{{ inventory_hostname }} state=directory recurse=yes
   delegate_to: localhost
 
-- name: locally render template
+- name: locally render interface template
   template: src=interfaces.j2 dest=config/{{ inventory_hostname }}/interfaces
+  delegate_to: localhost
+
+- name: locally render frr template
+  template: src=frr.j2 dest=config/{{ inventory_hostname }}/frr.conf
   delegate_to: localhost
 
 

@@ -1,13 +1,12 @@
 ---
-name: spine01
-profile: spine
+name: "spine01"
+profile: "spine"
+asn: 4200503000
 lo:
   ipv4: "10.0.160.23"
 eth0:
   ipv4: "10.0.163.23/25"
   ipv4_gateway: "10.0.163.1"
-vni:
-  enabled: false
 interfaces:
     swp1:
         description: "leaf01"
