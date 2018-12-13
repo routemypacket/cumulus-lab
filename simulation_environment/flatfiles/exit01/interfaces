@@ -7,7 +7,7 @@ auto eth0
 iface eth0
     vrf mgmt
     address 10.0.163.41/25
-    gateway 10.0.163.1
+    gateway 10.0.163.126
 
 auto public
 iface public
