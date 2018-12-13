@@ -18,7 +18,7 @@ iface eth0 inet dhcp
 auto eth1
 iface eth1
     alias Faces the Internal Management Network
-    address 10.0.163.126/24
+    address 10.0.163.126/25
 
 EOT
 
