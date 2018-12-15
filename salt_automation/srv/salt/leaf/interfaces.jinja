@@ -1,0 +1,7 @@
+
+
+# Loopback interface
+auto lo
+iface lo inet loopback
+  address {{ lo.ipv4 }}/32
+  alias loopback interface
