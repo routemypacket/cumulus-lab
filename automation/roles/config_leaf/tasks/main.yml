@@ -1,18 +1,27 @@
 ---
-- name: create config folder locally
-  file: path=config/{{ inventory_hostname }} state=directory recurse=yes
-  delegate_to: localhost
+- name: Copy FRR daemons file
+  copy:
+    src: daemons
+    dest: /etc/frr/daemons
+    backup: yes
+  notify: restart frr
 
-- name: locally render interface template
-  template: src=interfaces.j2 dest=config/{{ inventory_hostname }}/interfaces
-  delegate_to: localhost
+- name: L4 hash policy
+  sysctl:
+    name: net.ipv4.fib_multipath_hash_policy
+    value: 1
+    state: present
 
-- name: locally render frr template
-  template: src=frr.j2 dest=config/{{ inventory_hostname }}/frr.conf
-  delegate_to: localhost
+- name: Copy interfaces configuration
+  template:
+    src: interfaces.j2
+    dest: /etc/network/interfaces
+    backup: yes
+  notify: reload networking
 
-
-#- name: render template on remote remote host
-#  template: src=spine_interfaces.j2 dest=/etc/network/interfaces
-#  notify:
-#    - reload networking
+- name: Copy FRR configuration
+  template:
+    src: frr.j2
+    dest: /etc/frr/frr.conf
+    backup: yes
+  notify: reload frr

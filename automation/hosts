@@ -1,33 +1,59 @@
 [oob-switch]
-oob-mgmt-switch ansible_host=10.0.163.1 ansible_user=cumulus
+oob-mgmt-switch ansible_host=10.0.3.1 ansible_user=cumulus
 
-[exit]
-exit02 ansible_host=10.0.163.42 ansible_user=cumulus
-exit01 ansible_host=10.0.163.41 ansible_user=cumulus
 
 [leaf]
-leaf02 ansible_host=10.0.163.12 ansible_user=cumulus
-leaf01 ansible_host=10.0.163.11 ansible_user=cumulus
-
-[superspine]
-superspine02 ansible_host=10.0.163.22 ansible_user=cumulus
-superspine01 ansible_host=10.0.163.21 ansible_user=cumulus
+leaf01 ansible_host=10.0.3.11 ansible_user=cumulus
+leaf02 ansible_host=10.0.3.12 ansible_user=cumulus
+leaf04 ansible_host=10.0.3.14 ansible_user=cumulus
+leaf03 ansible_host=10.0.3.13 ansible_user=cumulus
+leaf04 ansible_host=10.0.3.14 ansible_user=cumulus
+leaf05 ansible_host=10.0.3.15 ansible_user=cumulus
+leaf06 ansible_host=10.0.3.16 ansible_user=cumulus
+leaf07 ansible_host=10.0.3.17 ansible_user=cumulus
+leaf08 ansible_host=10.0.3.18 ansible_user=cumulus
+leaf09 ansible_host=10.0.3.19 ansible_user=cumulus
+leaf10 ansible_host=10.0.3.20 ansible_user=cumulus
+leaf11 ansible_host=10.0.3.21 ansible_user=cumulus
+leaf12 ansible_host=10.0.3.22 ansible_user=cumulus
+leaf13 ansible_host=10.0.3.23 ansible_user=cumulus
+leaf14 ansible_host=10.0.3.24 ansible_user=cumulus
+leaf15 ansible_host=10.0.3.25 ansible_user=cumulus
+leaf16 ansible_host=10.0.3.26 ansible_user=cumulus
 
 [spine]
-spine02 ansible_host=10.0.163.24 ansible_user=cumulus
-spine01 ansible_host=10.0.163.23 ansible_user=cumulus
+spine01 ansible_host=10.0.3.31 ansible_user=cumulus
+spine02 ansible_host=10.0.3.32 ansible_user=cumulus
+spine02 ansible_host=10.0.3.33 ansible_user=cumulus
+spine02 ansible_host=10.0.3.34 ansible_user=cumulus
 
-[ts]
-netq ansible_host=10.0.163.52 ansible_user=cumulus
+[exit]
+exit01 ansible_host=10.0.3.41 ansible_user=cumulus
+exit02 ansible_host=10.0.3.42 ansible_user=cumulus
 
-[inet]
-internet ansible_host=10.0.163.63 ansible_user=cumulus
+[internet]
+netq ansible_host=10.0.3.49 ansible_user=cumulus
+
+[netq-ts]
+netq ansible_host=10.0.3.50 ansible_user=cumulus
 
 [host]
-server01 ansible_host=10.0.163.31 ansible_user=cumulus
-server03 ansible_host=10.0.163.33 ansible_user=cumulus
-server02 ansible_host=10.0.163.32 ansible_user=cumulus
-server04 ansible_host=10.0.163.34 ansible_user=cumulus
+server01 ansible_host=10.0.3.51 ansible_user=cumulus
+server02 ansible_host=10.0.3.52 ansible_user=cumulus
+server03 ansible_host=10.0.3.53 ansible_user=cumulus
+server04 ansible_host=10.0.3.54 ansible_user=cumulus
+server05 ansible_host=10.0.3.55 ansible_user=cumulus
+server06 ansible_host=10.0.3.56 ansible_user=cumulus
+server07 ansible_host=10.0.3.57 ansible_user=cumulus
+server08 ansible_host=10.0.3.58 ansible_user=cumulus
+server09 ansible_host=10.0.3.59 ansible_user=cumulus
+server10 ansible_host=10.0.3.60 ansible_user=cumulus
+server11 ansible_host=10.0.3.61 ansible_user=cumulus
+server12 ansible_host=10.0.3.62 ansible_user=cumulus
+server13 ansible_host=10.0.3.63 ansible_user=cumulus
+server14 ansible_host=10.0.3.64 ansible_user=cumulus
+server15 ansible_host=10.0.3.65 ansible_user=cumulus
+server16 ansible_host=10.0.3.66 ansible_user=cumulus
 
 
 [all:vars]

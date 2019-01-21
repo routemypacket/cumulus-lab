@@ -1,3 +1,0 @@
-base:
-  'leaf*':
-    - 'leaf.leaf*'

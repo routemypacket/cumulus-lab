@@ -1,7 +1,7 @@
 ---
 name: "leaf01"
 profile: "leaf"
-asn: 4200501000
+asn: 4200001000
 vrf:
   list:
     - "public"
@@ -38,17 +38,13 @@ vxlan:
       vxlan_id: 104001
       vrf: "public"
 lo:
-  ipv4: "10.0.160.11"
+  ipv4: "10.0.0.11"
 eth0:
-  ipv4: "10.0.163.11/25"
-  ipv4_gateway: "10.0.163.1"
+  ipv4: "10.0.3.11/25"
+  ipv4_gateway: "10.0.3.1"
 interfaces:
   swp1:
     description: "server01"
-    port_type: "access"
-    vlan_id: 100
-  swp2:
-    description: "server02"
     port_type: "access"
     vlan_id: 100
   swp49:
@@ -56,4 +52,10 @@ interfaces:
     port_type: "uplink"
   swp50:
     description: "spine02"
+    port_type: "uplink"
+  swp51:
+    description: "spine03"
+    port_type: "uplink"
+  swp52:
+    description: "spine04"
     port_type: "uplink"
