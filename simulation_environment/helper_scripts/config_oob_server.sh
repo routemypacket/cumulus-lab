@@ -79,8 +79,8 @@ leaf16 ansible_host=10.0.3.26 ansible_user=cumulus
 [spine]
 spine01 ansible_host=10.0.3.31 ansible_user=cumulus
 spine02 ansible_host=10.0.3.32 ansible_user=cumulus
-spine02 ansible_host=10.0.3.33 ansible_user=cumulus
-spine02 ansible_host=10.0.3.34 ansible_user=cumulus
+spine03 ansible_host=10.0.3.33 ansible_user=cumulus
+spine04 ansible_host=10.0.3.34 ansible_user=cumulus
 
 [exit]
 exit01 ansible_host=10.0.3.41 ansible_user=cumulus
@@ -263,8 +263,8 @@ cat << EOT > /etc/hosts
 
 10.0.3.31 spine01
 10.0.3.32 spine02
-10.0.3.33 spine02
-10.0.3.34 spine02
+10.0.3.33 spine03
+10.0.3.34 spine04
 
 10.0.3.41 exit01
 10.0.3.42 exit02
