@@ -1,0 +1,82 @@
+{% set device = hostvars[inventory_hostname] %}
+
+# Loopback interface
+auto lo
+iface lo inet loopback
+  address {{ device.lo.ipv4 }}/32
+  alias loopback interface
+
+# Management interface
+auto eth0
+iface eth0
+  vrf mgmt
+  address {{ device.eth0.ipv4 }}
+  gateway {{ device.eth0.ipv4_gateway }}
+
+auto mgmt
+iface mgmt
+    address 127.0.0.1/8
+    vrf-table auto
+
+{% set access_ports = [] %}
+{% for interface in device.interfaces %}
+{% set interface_vars = device.interfaces[interface] %}
+
+# Connects to {{ interface_vars.description }}
+auto {{ interface }}
+iface {{ interface }}
+  alias to {{ interface_vars.description }}
+  {% if interface_vars.port_type == "access" %}
+  {% do access_ports.append(interface) %}
+  bridge-access {{ interface_vars.vlan_id}}
+  {% endif %}
+{% endfor %}
+
+
+# Bridge configuration
+auto bridge
+iface bridge
+    bridge-vlan-aware yes
+    bridge-ports {{access_ports|sort|join(' ')}} {{ device.bridge.bridge_ports|sort|join(' ') }}
+    bridge-vids {{ device.bridge.bridge_vids|sort|join(' ') }}
+    bridge-pvid 1
+
+{% for vxlan_interface in device.vxlan.interfaces %}
+{% set vxlan_interface_vars = device.vxlan.interfaces[vxlan_interface] %}
+
+# VNI configuration
+auto {{ vxlan_interface }}
+iface {{ vxlan_interface }}
+    mtu 9166
+    vxlan-id {{ vxlan_interface_vars.vxlan_id }}
+    vxlan-local-tunnelip {{ device.lo.ipv4 }}
+    bridge-access {{ vxlan_interface_vars.vlan_id }}
+    bridge-learning off
+{% if vxlan_interface_vars.vni_type == "l2" %}
+    mstpctl-bpduguard yes
+    mstpctl-portbpdufilter yes
+{% endif %}
+    bridge-arp-nd-suppress on
+{% endfor %}
+
+{% for vrf in device.vrf.list %}
+auto {{ vrf }}
+iface {{ vrf }}
+    vrf-table auto
+
+{% endfor %}
+
+{% for svi in device.svi.interfaces %}
+{% set svi_vars = device.svi.interfaces[svi] %}
+
+auto {{ svi }}
+iface {{ svi }}
+{% if svi_vars.ip_addresses is defined %}
+{% for ip_addresses in svi_vars.ip_addresses %}
+    address {{ ip_addresses }}
+{% endfor %}
+{% endif %}
+    vlan-id {{ svi_vars.vlan_id }}
+    vlan-raw-device bridge
+    vrf public
+{% endfor %}

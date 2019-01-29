@@ -1,0 +1,46 @@
+---
+name: "spine03"
+profile: "spine"
+asn: 4200003000
+lo:
+  ipv4: "10.0.0.33"
+eth0:
+  ipv4: "10.0.3.33/25"
+  ipv4_gateway: "10.0.3.1"
+interfaces:
+    swp1:
+        description: "leaf01"
+    swp2:
+        description: "leaf02"
+    swp3:
+        description: "leaf03"
+    swp4:
+        description: "leaf04"
+    swp5:
+        description: "leaf05"
+    swp6:
+        description: "leaf06"
+    swp7:
+        description: "leaf07"
+    swp8:
+        description: "leaf08"
+    swp9:
+        description: "leaf09"
+    swp10:
+        description: "leaf10"
+    swp11:
+        description: "leaf11"
+    swp12:
+        description: "leaf12"
+    swp13:
+        description: "leaf13"
+    swp14:
+        description: "leaf14"
+    swp15:
+        description: "leaf15"
+    swp16:
+        description: "leaf16"
+    swp25:
+        description: "exit01"
+    swp26:
+        description: "exit02"

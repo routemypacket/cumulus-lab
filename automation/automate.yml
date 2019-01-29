@@ -10,3 +10,9 @@
   gather_facts: false
   roles:
       - config_leaf
+
+- hosts: exit
+  become: true
+  gather_facts: false
+  roles:
+      - config_exit
