@@ -1,50 +1,52 @@
 ---
-name: "exit01"
-profile: "exit"
-asn: 4200001000
-routing:
-  bgp:
-    vrf:
-      public:
-        neighbor:
-          br_rt01:
-            ipv4_address: "192.168.1.2/30"
-            ipv6_address: "2A02:2498:E004:1F::2/64"
-            asn: 13213
+name: "leaf03"
+profile: "leaf"
+asn: 4200001002
 vrf:
   list:
     - "public"
 svi:
   interfaces:
+    vlan100:
+      svi_type: "standard"
+      vlan_id: 100
+      vrf: "public"
+      ip_addresses:
+        - "185.2.136.241/28"
+        - "2a02:2498:e004:4f::1/64"
     vlan4001:
       svi_type: "vxlan"
       vlan_id: 4001
       vrf: "public"
 bridge:
   bridge_ports:
+    - "vni100"
     - "vxlan4001"
   bridge_vids:
+    - 100
     - 4001
 vxlan:
   interfaces:
+    vni100:
+      vni_type: "l2"
+      vlan_id: 100
+      vxlan_id: 10100
+      vrf: "public"
     vxlan4001:
       vni_type: "l3"
       vlan_id: 4001
       vxlan_id: 104001
       vrf: "public"
 lo:
-  ipv4: "10.0.0.41"
+  ipv4: "10.0.0.13"
 eth0:
-  ipv4: "10.0.3.41/25"
+  ipv4: "10.0.3.13/25"
   ipv4_gateway: "10.0.3.1"
 interfaces:
   swp1:
-    description: "border router"
-    port_type: "edge"
-    ipv4_address: "192.168.1.1/30"
-    ipv6_address: "2A02:2498:E004:1F::1/64"
-    vrf: "public"
-
+    description: "server03"
+    port_type: "access"
+    vlan_id: 100
   swp49:
     description: "spine01"
     port_type: "uplink"
