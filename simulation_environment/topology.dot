@@ -41,6 +41,7 @@ graph vx {
  "internet" [function="internet" vagrant="swp48" os="CumulusCommunity/cumulus-vx" version="3.7.2" memory="768" config="./helper_scripts/config_internet.sh" ]
  "oob-mgmt-switch" [function="oob-mgmt-switch" vagrant="eth0" os="CumulusCommunity/cumulus-vx" version="3.7.2" memory="768" config="./helper_scripts/config_oob_switch.sh" ]
  "oob-mgmt-server" [function="oob-server" vagrant="eth0" os="CumulusCommunity/vx_oob_server" version="1.0.4" memory="4096" config="./helper_scripts/config_oob_server.sh" ]
+ "oob-mgmt-util" [function="host" vagrant="eth0" os="generic/ubuntu1804" memory="8192" config="./helper_scripts/config_util_server.sh" ]
  "fake01" [function="fake"]
  "fake02" [function="fake"]
  "fake03" [function="fake"]
@@ -198,6 +199,7 @@ graph vx {
  "exit02":"eth0" -- "oob-mgmt-switch":"swp39" [left_mac="a0:00:00:00:00:42"]
  "internet":"eth0" -- "oob-mgmt-switch":"swp40" [left_mac="a0:00:00:00:00:49"]
  "netq":"eth0" -- "oob-mgmt-switch":"swp41" [left_mac="a0:00:00:00:00:50"]
+ "oob-mgmt-util":"eth1" -- "oob-mgmt-switch":"swp42" [left_mac="a0:00:00:00:00:67"]
 
  "fake01":"eth2" -- "leaf01":"swp2"
  "fake01":"eth3" -- "leaf01":"swp3"
