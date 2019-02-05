@@ -32,7 +32,7 @@ exit01 ansible_host=10.0.3.41 ansible_user=cumulus
 exit02 ansible_host=10.0.3.42 ansible_user=cumulus
 
 [internet]
-netq ansible_host=10.0.3.49 ansible_user=cumulus
+internet01 ansible_host=10.0.3.49 ansible_user=cumulus
 
 [netq-ts]
 netq ansible_host=10.0.3.50 ansible_user=cumulus

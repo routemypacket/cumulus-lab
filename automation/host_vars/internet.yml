@@ -1,0 +1,54 @@
+---
+name: "internet"
+profile: "internet"
+asn: 13213
+routing:
+  bgp:
+    vrf:
+      public:
+        neighbor:
+          exit01:
+            ipv4_address: "185.2.139.137/31"
+            ipv6_address: "2A02:2498:E004:1F::2/64"
+            asn: 13213
+          exit01:
+            ipv4_address: "185.2.139.139/31"
+            ipv6_address: "2A02:2498:E004:2F::2/64"
+            asn: 13213
+vrf:
+  list:
+    - "public"
+lo:
+  ipv4: "10.0.0.49"
+eth0:
+  ipv4: "10.0.3.49/25"
+  ipv4_gateway: "10.0.3.1"
+interfaces:
+  swp1:
+    description: "exit01"
+    port_type: "tbc"
+    ipv4_address: "185.2.139.137"
+    ipv6_address: "2A02:2498:E004:1F::1/64"
+    vrf: "public"
+
+  swp2:
+    description: "exit02"
+    port_type: "tbc"
+    ipv4_address: "185.2.139.139"
+    ipv6_address: "2A02:2498:E004:2F::1/64"
+    vrf: "public"
+
+
+  swp49:
+    description: "spine01"
+    port_type: "uplink"
+  swp50:
+    description: "spine02"
+    port_type: "uplink"
+  swp51:
+    description: "spine03"
+    port_type: "uplink"
+  swp52:
+    description: "spine04"
+    port_type: "uplink"
+

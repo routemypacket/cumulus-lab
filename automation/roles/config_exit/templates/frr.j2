@@ -61,14 +61,17 @@ router bgp {{ device.asn }}
  exit-address-family
 !
 
+
+
+
 {% for vrf in device.routing.bgp.vrf %}
 router bgp {{ device.asn }} vrf {{ vrf }}
  bgp router-id {{ device.lo.ipv4 }}
  coalesce-time 1050
+
 {% set vrf_vars = device.routing.bgp.vrf[vrf] %}
+{% for neighbor in vrf_vars %}
 {% set neighbor_vars = vrf_vars[neighbor] %}
-{% for neighbor in vrf_vars.neighbor %}
-print **** {{ neighbor_vars }}
 {% if neighbor_vars.ipv4_address is defined %}
  neighbor {{ neighbor_vars.ipv4_address }} remote-as {{ neighbor_vars.asn }}
 {% endif %}
@@ -77,6 +80,11 @@ print **** {{ neighbor_vars }}
 {% endif %}
 {% endfor %}
 {% endfor %}
+
+
+
+
+
 
 line vty
 !
