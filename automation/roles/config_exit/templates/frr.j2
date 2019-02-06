@@ -1,3 +1,4 @@
+w
 {% set device = hostvars[inventory_hostname] %}
 frr defaults datacenter
 hostname {{ device.name|lower }}
@@ -56,11 +57,6 @@ router bgp {{ device.asn }}
   advertise-all-vni
  exit-address-family
 !
- address-family l2vpn evpn
-  advertise ipv4 unicast
- exit-address-family
-!
-
 
 
 
@@ -68,7 +64,6 @@ router bgp {{ device.asn }}
 router bgp {{ device.asn }} vrf {{ vrf }}
  bgp router-id {{ device.lo.ipv4 }}
  coalesce-time 1050
-
 {% set vrf_vars = device.routing.bgp.vrf[vrf] %}
 {% for neighbor in vrf_vars %}
 {% set neighbor_vars = vrf_vars[neighbor] %}
@@ -80,11 +75,46 @@ router bgp {{ device.asn }} vrf {{ vrf }}
 {% endif %}
 {% endfor %}
 {% endfor %}
+ !
 
 
+ address-family ipv4 unicast
+  network {{ device.lo.ipv4 }}/32
 
+{% for vrf in device.routing.bgp.vrf %}
+{% set vrf_vars = device.routing.bgp.vrf[vrf] %}
+{% for neighbor in vrf_vars %}
+{% set neighbor_vars = vrf_vars[neighbor] %}
+{% if neighbor_vars.ipv4_address is defined %}
+ neighbor {{ neighbor_vars.ipv4_address }} activate 
+ neighbor {{ neighbor_vars.ipv4_address }} soft-reconfiguration inbound
+{% endif %}
+{% endfor %}
+{% endfor %}
+ exit-address-family
+ !
+ address-family ipv6 unicast
+{% for vrf in device.routing.bgp.vrf %}
+{% set vrf_vars = device.routing.bgp.vrf[vrf] %}
+{% for neighbor in vrf_vars %}
+{% set neighbor_vars = vrf_vars[neighbor] %}
+{% if neighbor_vars.ipv6_address is defined %}
+  neighbor {{ neighbor_vars.ipv6_address }} activate
+  neighbor {{ neighbor_vars.ipv6_address }} soft-reconfiguration inbound
+{% endif %}
+{% endfor %}
+{% endfor %}
+ exit-address-family
+ !
+ address-family l2vpn evpn
+  advertise ipv4 unicast
+  advertise ipv6 unicast
+  neighbor fabric activate
+  advertise-all-vni
+ exit-address-family
+!
 
-
-
+!
+ !
 line vty
 !

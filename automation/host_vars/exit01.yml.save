@@ -6,10 +6,17 @@ routing:
   bgp:
     vrf:
       public:
-         br_rt01:
+         neighbor:
             ipv4_address: "185.2.139.137"
             ipv6_address: "2A02:2498:E004:1F::1"
-            asn: 13213          
+            asn: 13213
+            ipv4_address: "3.3.3.3"
+            ipv6_address: "2A02:2498:E004:2F::1"
+            asn: 22119
+            ipv4_address: "2.2.2.2"
+            ipv6_address: "2A02:2498:E004:3F::1"
+            asn: 33322
+          
 vrf:
   list:
     - "public"
