@@ -37,23 +37,23 @@ eth0:
   ipv4: "10.0.3.41/25"
   ipv4_gateway: "10.0.3.1"
 interfaces:
-  swp1:
+  swp32:
     description: "border router"
     port_type: "edge"
     ipv4_address: "185.2.139.136/31"
     ipv6_address: "2A02:2498:E004:1F::2/64"
     vrf: "public"
 
-  swp49:
+  swp1:
     description: "spine01"
     port_type: "uplink"
-  swp50:
+  swp2:
     description: "spine02"
     port_type: "uplink"
-  swp51:
+  swp3:
     description: "spine03"
     port_type: "uplink"
-  swp52:
+  swp4:
     description: "spine04"
     port_type: "uplink"
 
