@@ -14,22 +14,42 @@ iface eth0
   gateway {{ device.eth0.ipv4_gateway }}
 
 auto mgmt
-iface mgmt
+interface mgmt
     address 127.0.0.1/8
     vrf-table auto
 
+
 {% set access_ports = [] %}
+
 {% for interface in device.interfaces %}
 {% set interface_vars = device.interfaces[interface] %}
 
 # Connects to {{ interface_vars.description }}
+  
+{% if interface_vars.port_type == "access" %} 
 auto {{ interface }}
-iface {{ interface }}
-  alias to {{ interface_vars.description }}
-  {% if interface_vars.port_type == "access" %}
-  {% do access_ports.append(interface) %}
-  bridge-access {{ interface_vars.vlan_id}}
-  {% endif %}
+interface {{ interface }}
+alias to {{ interface_vars.description }}
+{% do access_ports.append(interface) %}
+bridge-access {{ interface_vars.vlan_id}}
+{% endif %}
+{% if interface_vars.port_type|lower == "edge" %}
+interface {{ interface }}
+vrf {{ interface_vars.vrf }}
+{% if interface_vars.ipv4_address is defined %}
+address {{ interface_vars.ipv4_address }}
+{% endif %}
+{% if interface_vars.ipv6_address is defined %}
+address {{ interface_vars.ipv6_address }}
+{% endif %}
+{% else %}
+!
+interface {{ interface }}
+ ipv6 nd ra-interval 10
+ no ipv6 nd suppress-ra
+!
+{% endif %}
+
 {% endfor %}
 
 

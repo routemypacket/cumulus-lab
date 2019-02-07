@@ -16,25 +16,7 @@ exit-vrf
 {% endif %}
 {% endfor %}
 !
-interface lo
- description loopback interface
 !
-!
-{% for interface in device.interfaces|sort %}
-{% set interface_vars = device.interfaces[interface] %}
-{% if interface_vars.port_type|lower == "edge" %}
-interface {{ interface }} vrf {{ interface_vars.vrf }}
- ipv6 nd ra-interval 10
- no ipv6 nd suppress-ra
-{% else %}
-!
-interface {{ interface }}
- ipv6 nd ra-interval 10
- no ipv6 nd suppress-ra
-!
-{% endif %}
-{% endfor %}
-
 router bgp {{ device.asn }}
  bgp router-id {{ device.lo.ipv4 }}
  bgp bestpath as-path multipath-relax
@@ -57,6 +39,10 @@ router bgp {{ device.asn }}
   advertise-all-vni
  exit-address-family
 !
+
+
+
+
 {% for vrf in device.routing.bgp.vrf %}
 router bgp {{ device.asn }} vrf {{ vrf }}
  bgp router-id {{ device.lo.ipv4 }}
@@ -107,4 +93,3 @@ router bgp {{ device.asn }} vrf {{ vrf }}
  !
  !
 line vty
-!

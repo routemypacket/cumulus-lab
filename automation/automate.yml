@@ -16,3 +16,10 @@
   gather_facts: false
   roles:
       - config_exit
+
+- hosts: internet
+  become: true
+  gather_facts: false
+  roles:
+      - config_internet
+

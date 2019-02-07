@@ -13,36 +13,57 @@ iface eth0
   gateway 10.0.3.1
 
 auto mgmt
-iface mgmt
+interface mgmt
     address 127.0.0.1/8
     vrf-table auto
 
 
+
+
 # Connects to border router
-auto swp32
-iface swp32
-  alias to border router
   
+interface swp32
+vrf public
+address 185.2.139.136/31
+address 2A02:2498:E004:1F::2/64
+
+
 # Connects to spine02
-auto swp2
-iface swp2
-  alias to spine02
   
+!
+interface swp2
+ ipv6 nd ra-interval 10
+ no ipv6 nd suppress-ra
+!
+
+
 # Connects to spine01
-auto swp1
-iface swp1
-  alias to spine01
   
+!
+interface swp1
+ ipv6 nd ra-interval 10
+ no ipv6 nd suppress-ra
+!
+
+
 # Connects to spine04
-auto swp4
-iface swp4
-  alias to spine04
   
+!
+interface swp4
+ ipv6 nd ra-interval 10
+ no ipv6 nd suppress-ra
+!
+
+
 # Connects to spine03
-auto swp3
-iface swp3
-  alias to spine03
   
+!
+interface swp3
+ ipv6 nd ra-interval 10
+ no ipv6 nd suppress-ra
+!
+
+
 
 # Bridge configuration
 auto bridge
