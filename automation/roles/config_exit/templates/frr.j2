@@ -17,6 +17,9 @@ exit-vrf
 {% endfor %}
 !
 !
+
+
+
 router bgp {{ device.asn }}
  bgp router-id {{ device.lo.ipv4 }}
  bgp bestpath as-path multipath-relax
