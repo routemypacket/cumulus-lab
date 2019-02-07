@@ -18,30 +18,30 @@ iface mgmt
     vrf-table auto
 
 
-# Connects to spine01
-auto swp49
-iface swp49
-  alias to spine01
-  
 # Connects to border router
-auto swp1
-iface swp1
+auto swp32
+iface swp32
   alias to border router
   
 # Connects to spine02
-auto swp50
-iface swp50
+auto swp2
+iface swp2
   alias to spine02
   
-# Connects to spine03
-auto swp51
-iface swp51
-  alias to spine03
+# Connects to spine01
+auto swp1
+iface swp1
+  alias to spine01
   
 # Connects to spine04
-auto swp52
-iface swp52
+auto swp4
+iface swp4
   alias to spine04
+  
+# Connects to spine03
+auto swp3
+iface swp3
+  alias to spine03
   
 
 # Bridge configuration
