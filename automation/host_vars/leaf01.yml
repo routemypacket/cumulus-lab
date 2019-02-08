@@ -5,33 +5,49 @@ asn: 4200001000
 vrf:
   list:
     - "public"
+    - "Customer_A"
+    - "Customer_B"
 svi:
   interfaces:
-    vlan100:
+    vlan200:
       svi_type: "standard"
-      vlan_id: 100
-      vrf: "public"
+      vlan_id: 200
+      vrf: "Customer_A"
       ip_addresses:
-        - "185.2.136.241/28"
+        - "10.22.22.1/28"
         - "2a02:2498:e004:4f::1/64"
+    vlan300:
+      svi_type: "standard"
+      vlan_id: 300
+      vrf: "Customer_B"
+      ip_addresses:
+        - "10.23.23.1/28"
+        - "2a02:2498:e004:8f::1/64"
     vlan4001:
       svi_type: "vxlan"
       vlan_id: 4001
       vrf: "public"
 bridge:
   bridge_ports:
-    - "vni100"
+    - "vni200"
+    - "vni300"
     - "vxlan4001"
   bridge_vids:
-    - 100
+    - 200
+    - 300
     - 4001
 vxlan:
   interfaces:
-    vni100:
-      vni_type: "l2"
-      vlan_id: 100
-      vxlan_id: 10100
-      vrf: "public"
+    vni200:
+      vni_type: "l3"
+      vlan_id: 200
+      vxlan_id: 10200
+      vrf: "Customer_A"
+    vni300:
+      vni_type: "l3"
+      vlan_id: 300
+      vxlan_id: 10300
+      vrf: "Customer_B"
     vxlan4001:
       vni_type: "l3"
       vlan_id: 4001
@@ -46,7 +62,11 @@ interfaces:
   swp1:
     description: "server1"
     port_type: "access"
-    vlan_id: 100
+    vlan_id: 200
+  swp2:
+    description: "server2"
+    port_type: "access"
+    vlan_id: 300
   swp49:
     description: "spine01"
     port_type: "uplink"

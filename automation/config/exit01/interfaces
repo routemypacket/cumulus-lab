@@ -70,10 +70,30 @@ iface swp3
 auto bridge
 iface bridge
     bridge-vlan-aware yes
-    bridge-ports  vxlan4001
-    bridge-vids 4001
+    bridge-ports  vxlan200 vxlan300 vxlan4001
+    bridge-vids 200 300 4001
     bridge-pvid 1
 
+
+# VNI configuration
+auto vxlan300
+iface vxlan300
+    mtu 9166
+    vxlan-id 10300
+    vxlan-local-tunnelip 10.0.0.41
+    bridge-access 300
+    bridge-learning off
+    bridge-arp-nd-suppress on
+
+# VNI configuration
+auto vxlan200
+iface vxlan200
+    mtu 9166
+    vxlan-id 10200
+    vxlan-local-tunnelip 10.0.0.41
+    bridge-access 200
+    bridge-learning off
+    bridge-arp-nd-suppress on
 
 # VNI configuration
 auto vxlan4001
@@ -89,7 +109,27 @@ auto public
 iface public
     vrf-table auto
 
+auto Customer_A
+iface Customer_A
+    vrf-table auto
 
+auto Customer_B
+iface Customer_B
+    vrf-table auto
+
+
+
+auto vlan200
+iface vlan200
+    vlan-id 200
+    vlan-raw-device bridge
+    vrf Customer_A
+
+auto vlan300
+iface vlan300
+    vlan-id 300
+    vlan-raw-device bridge
+    vrf Customer_B
 
 auto vlan4001
 iface vlan4001

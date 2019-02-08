@@ -94,6 +94,6 @@ iface {{ svi }}
 {% endif %}
     vlan-id {{ svi_vars.vlan_id }}
     vlan-raw-device bridge
-    vrf public
+    vrf {{ svi_vars.vrf }}
 {% endfor %}
 
