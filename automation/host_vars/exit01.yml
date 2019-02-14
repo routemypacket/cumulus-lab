@@ -9,12 +9,12 @@ routing:
          edgert01:
             ipv4_address: "185.2.139.137"
             ipv6_address: "2A02:2498:E004:1F::1"
-            asn: 65150
+            asn: 13213
       Customer_B:
          edgert01:
             ipv4_address: "10.2.2.1"
             ipv6_address: "2A02:2498:E004:9F::1"
-            asn: 65150
+            asn: 65160
 
 vrf:
   list:
