@@ -6,10 +6,11 @@ routing:
   bgp:
     vrf:
       public:
-         br_rt02:
+         edgert01:
             ipv4_address: "185.2.139.139"
             ipv6_address: "2A02:2498:E004:2F::1"
             asn: 13213
+
 vrf:
   list:
     - "public"
