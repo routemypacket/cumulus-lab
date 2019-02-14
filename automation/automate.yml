@@ -23,3 +23,9 @@
   roles:
       - config_internet
 
+- hosts: host
+  become: true
+  gather_facts: false
+  roles:
+      - config_server
+

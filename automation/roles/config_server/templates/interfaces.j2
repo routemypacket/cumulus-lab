@@ -1,0 +1,21 @@
+{% set device = hostvars[inventory_hostname] %}
+
+
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+  address {{ device.interfaces.ipv4_address }}
+  netmask {{ device.interfaces.ipv4_subnetmask }}
+  post-up ip route add {{ device.interfaces.ipv4_route }} via {{ device.interfaces.ipv4_anycast_gateway }}
+
+iface eth1 inet6 static
+  address {{ device.interfaces.ipv6_address }}
+  netmask 64
+  gateway {{ device.interfaces.ipv6_anycast_gateway }}
+
+
