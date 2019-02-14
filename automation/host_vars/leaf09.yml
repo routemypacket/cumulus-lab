@@ -13,7 +13,7 @@ svi:
       vrf: "public"
       ip_addresses:
         - "185.2.136.241/28"
-        - "2a02:2498:e004:4f::1/64"
+        - "2a02:2498:e004:1f::1/64"
     vlan4001:
       svi_type: "vxlan"
       vlan_id: 4001

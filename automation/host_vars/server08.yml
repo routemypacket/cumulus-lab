@@ -1,5 +1,5 @@
 ---
-name: "server01"
+name: "server08"
 profile: "server"
 interfaces:
     ipv4_address: "10.22.22.5"

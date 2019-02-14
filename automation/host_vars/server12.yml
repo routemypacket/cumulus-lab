@@ -1,0 +1,11 @@
+---
+name: "server12"
+profile: "server"
+interfaces:
+    ipv4_address: "185.2.136.253"
+    ipv4_anycast_gateway: "185.2.136.241"
+    ipv4_subnetmask: "255.255.255.240"
+    ipv4_route: "172.16.1.0/24"
+    ipv6_address: "2A02:2498:E004:1F::D"
+    ipv6_anycast_gateway: "2A02:2498:E004:1F::1"
+    

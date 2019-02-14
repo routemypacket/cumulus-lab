@@ -5,12 +5,12 @@ asn: 4200502000
 routing:
   bgp:
     vrf:
-      Customer_A:
+      public:
          edgert01:
             ipv4_address: "185.2.139.137"
             ipv6_address: "2A02:2498:E004:1F::1"
             asn: 13213
-      Customer_B:
+      Customer_A:
          edgert01:
             ipv4_address: "10.2.2.1"
             ipv6_address: "2A02:2498:E004:9F::1"
@@ -18,26 +18,26 @@ routing:
 
 vrf:
   list:
+    - "public"
     - "Customer_A"
-    - "Customer_B"
 svi:
   interfaces:
     vlan200:
       svi_type: "vxlan"
       vlan_id: 200
       vrf: "Customer_A"
-    vlan300:
+    vlan4001:
       svi_type: "vxlan"
-      vlan_id: 300
-      vrf: "Customer_B"
+      vlan_id: 4001
+      vrf: "public"
 
 bridge:
   bridge_ports:
     - "vxlan200"
-    - "vxlan300"
+    - "vxlan4001"
   bridge_vids:
     - 200
-    - 300
+    - 4001
 
 vxlan:
   interfaces:
@@ -46,11 +46,11 @@ vxlan:
       vlan_id: 200
       vxlan_id: 10200
       vrf: "Customer_A"
-    vxlan300:
-      vni_type: "l2"
-      vlan_id: 300
-      vxlan_id: 10300
-      vrf: "Customer_B"
+    vxlan4001:
+      vni_type: "l3"
+      vlan_id: 4001
+      vxlan_id: 104001
+      vrf: "public"
 
 
 lo:
@@ -64,7 +64,7 @@ interfaces:
     port_type: "edge"
     ipv4_address: "185.2.139.136/31"
     ipv6_address: "2A02:2498:E004:1F::2/64"
-    vrf: "Customer_A"
+    vrf: "public"
 
   swp1:
     description: "spine01"

@@ -25,7 +25,7 @@ iface swp32
   
 
 iface swp32
-  vrf Customer_A
+  vrf public
     address 185.2.139.136/31
       address 2A02:2498:E004:1F::2/64
 
@@ -70,22 +70,10 @@ iface swp3
 auto bridge
 iface bridge
     bridge-vlan-aware yes
-    bridge-ports  vxlan200 vxlan300
-    bridge-vids 200 300
+    bridge-ports  vxlan200 vxlan4001
+    bridge-vids 200 4001
     bridge-pvid 1
 
-
-# VNI configuration
-auto vxlan300
-iface vxlan300
-    mtu 9166
-    vxlan-id 10300
-    vxlan-local-tunnelip 10.0.0.41
-    bridge-access 300
-    bridge-learning off
-    mstpctl-bpduguard yes
-    mstpctl-portbpdufilter yes
-    bridge-arp-nd-suppress on
 
 # VNI configuration
 auto vxlan200
@@ -99,12 +87,22 @@ iface vxlan200
     mstpctl-portbpdufilter yes
     bridge-arp-nd-suppress on
 
-auto Customer_A
-iface Customer_A
+# VNI configuration
+auto vxlan4001
+iface vxlan4001
+    mtu 9166
+    vxlan-id 104001
+    vxlan-local-tunnelip 10.0.0.41
+    bridge-access 4001
+    bridge-learning off
+    bridge-arp-nd-suppress on
+
+auto public
+iface public
     vrf-table auto
 
-auto Customer_B
-iface Customer_B
+auto Customer_A
+iface Customer_A
     vrf-table auto
 
 
@@ -115,9 +113,9 @@ iface vlan200
     vlan-raw-device bridge
     vrf Customer_A
 
-auto vlan300
-iface vlan300
-    vlan-id 300
+auto vlan4001
+iface vlan4001
+    vlan-id 4001
     vlan-raw-device bridge
-    vrf Customer_B
+    vrf public
 
