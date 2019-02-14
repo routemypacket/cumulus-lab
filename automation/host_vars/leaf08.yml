@@ -4,39 +4,25 @@ profile: "leaf"
 asn: 4200001007
 vrf:
   list:
-    - "public"
+    - "Customer_A"
 svi:
   interfaces:
-    vlan100:
+    vlan200:
       svi_type: "standard"
-      vlan_id: 100
-      vrf: "public"
-      ip_addresses:
-        - "185.2.136.241/28"
-        - "2a02:2498:e004:4f::1/64"
-    vlan4001:
-      svi_type: "vxlan"
-      vlan_id: 4001
-      vrf: "public"
+      vlan_id: 200
+      vrf: "Customer_A"
 bridge:
   bridge_ports:
-    - "vni100"
-    - "vxlan4001"
+    - "vni200"
   bridge_vids:
-    - 100
-    - 4001
+    - 200
 vxlan:
   interfaces:
-    vni100:
+    vni200:
       vni_type: "l2"
-      vlan_id: 100
-      vxlan_id: 10100
-      vrf: "public"
-    vxlan4001:
-      vni_type: "l3"
-      vlan_id: 4001
-      vxlan_id: 104001
-      vrf: "public"
+      vlan_id: 200
+      vxlan_id: 10200
+      vrf: "Customer_A"
 lo:
   ipv4: "10.0.0.18"
 eth0:
@@ -46,7 +32,7 @@ interfaces:
   swp1:
     description: "server8"
     port_type: "access"
-    vlan_id: 100
+    vlan_id: 200
   swp49:
     description: "spine01"
     port_type: "uplink"
