@@ -1,0 +1,57 @@
+---
+name: "exit02"
+profile: "exit"
+asn: 4200502000
+routing:
+  bgp:
+    vrf:
+      public:
+         br_rt02:
+            ipv4_address: "185.2.139.139"
+            ipv6_address: "2A02:2498:E004:2F::1"
+            asn: 13213 bdr_rtr_01: ipv4_address: "10.1.1.1" vrf: ipv6_address: "2A02:2498:E004:5F::1" list:
+asn: 65160    - "public"
+svi:
+  interfaces:
+    vlan4001:
+      svi_type: "vxlan"
+      vlan_id: 4001
+      vrf: "public"
+bridge:
+  bridge_ports:
+    - "vxlan4001"
+  bridge_vids:
+    - 4001
+vxlan:
+  interfaces:
+    vxlan4001:
+      vni_type: "l3"
+      vlan_id: 4001
+      vxlan_id: 104001
+      vrf: "public"
+lo:
+  ipv4: "10.0.0.42"
+eth0:
+  ipv4: "10.0.3.42/25"
+  ipv4_gateway: "10.0.3.1"
+interfaces:
+  swp32:
+    description: "border router"
+    port_type: "edge"
+    ipv4_address: "185.2.139.138/31"
+    ipv6_address: "2A02:2498:E004:2F::2/64"
+    vrf: "public"
+
+  swp1:
+    description: "spine01"
+    port_type: "uplink"
+  swp2:
+    description: "spine02"
+    port_type: "uplink"
+  swp3:
+    description: "spine03"
+    port_type: "uplink"
+  swp4:
+    description: "spine04"
+    port_type: "uplink"
+
