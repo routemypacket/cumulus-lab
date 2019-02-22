@@ -11,3 +11,12 @@
   service:
     name: frr
     state: reloaded
+
+
+- name: apt-get update
+  command: "sudo apt-get update && sudo apt-get install cumulus-netq"
+
+- name: activate netq
+  command: "sudo netq config restart agent"
+
+

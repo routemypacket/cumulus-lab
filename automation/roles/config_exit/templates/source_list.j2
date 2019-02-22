@@ -1,0 +1,21 @@
+{% set device = hostvars[inventory_hostname] %}
+
+
+deb     http://repo3.cumulusnetworks.com/repo CumulusLinux-3 cumulus upstream
+deb-src http://repo3.cumulusnetworks.com/repo CumulusLinux-3 cumulus upstream
+
+deb     http://repo3.cumulusnetworks.com/repo CumulusLinux-3-security-updates cumulus upstream
+deb-src http://repo3.cumulusnetworks.com/repo CumulusLinux-3-security-updates cumulus upstream
+
+deb     http://repo3.cumulusnetworks.com/repo CumulusLinux-3-updates cumulus upstream
+deb-src http://repo3.cumulusnetworks.com/repo CumulusLinux-3-updates cumulus upstream
+
+deb http://apps3.cumulusnetworks.com/repos/deb CumulusLinux-3 netq-1.4
+
+#deb     http://repo3.cumulusnetworks.com/repo CumulusLinux-3-early-access cumulus
+#deb-src http://repo3.cumulusnetworks.com/repo CumulusLinux-3-early-access cumulus
+
+#deb      http://repo3.cumulusnetworks.com/repo Jessie-supplemental upstream
+#deb-src  http://repo3.cumulusnetworks.com/repo Jessie-supplemental upstream
+
+
