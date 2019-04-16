@@ -2,10 +2,10 @@
 name: "server07"
 profile: "server"
 interfaces:
-    ipv4_address: "10.22.22.4"
-    ipv4_anycast_gateway: "10.22.22.1"
+    ipv4_address: "10.33.33.2"
+    ipv4_anycast_gateway: "10.33.33.1"
     ipv4_subnetmask: "255.255.255.240"
-    ipv4_route: "10.33.33.0/24"
+    ipv4_route: "0.0.0.0/0"
     ipv6_address: "2A02:2498:E004:1E::4"
     ipv6_anycast_gateway: "2A02:2498:E004:1E::1"
     

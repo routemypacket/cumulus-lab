@@ -1,10 +1,12 @@
 ---
 name: "leaf02"
 profile: "leaf"
-asn: 4200001001
+asn: 4200001002
 vrf:
   list:
     - "public"
+    - "production"
+    - "pci"
 svi:
   interfaces:
     vlan100:
@@ -18,13 +20,32 @@ svi:
       svi_type: "vxlan"
       vlan_id: 4001
       vrf: "public"
+    vlan200:
+      svi_type: "standard"
+      vlan_id: 200
+      vrf: "production"
+    vlan300:
+      svi_type: "standard"
+      vlan_id: 300
+      vrf: "production"
+    vlan400:
+      svi_type: "standard"
+      vlan_id: 400
+      vrf: "pci"
 bridge:
   bridge_ports:
     - "vni100"
     - "vxlan4001"
+    - "vni200"
+    - "vni300"
+    - "vni400"
+    - "swp10"
   bridge_vids:
     - 100
     - 4001
+    - 200
+    - 300
+    - 400
 vxlan:
   interfaces:
     vni100:
@@ -37,6 +58,21 @@ vxlan:
       vlan_id: 4001
       vxlan_id: 104001
       vrf: "public"
+    vni200:
+      vni_type: "l2"
+      vlan_id: 200
+      vxlan_id: 10200
+      vrf: "production"
+    vni300:
+      vni_type: "l2"
+      vlan_id: 300
+      vxlan_id: 10300
+      vrf: "production"
+    vni400:
+      vni_type: "l2"
+      vlan_id: 400
+      vxlan_id: 10400
+      vrf: "pci"
 lo:
   ipv4: "10.0.0.12"
 eth0:
@@ -47,6 +83,9 @@ interfaces:
     description: "server02"
     port_type: "access"
     vlan_id: 100
+  swp10:
+    description: "Fortigate Firewall"
+    port_type: "trunk"
   swp49:
     description: "spine01"
     port_type: "uplink"

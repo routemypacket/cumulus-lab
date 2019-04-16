@@ -8,9 +8,9 @@ iface eth0 inet dhcp
 
 auto eth1
 iface eth1 inet static
-  address 10.22.22.4
+  address 10.33.33.2
   netmask 255.255.255.240
-  post-up ip route add 10.33.33.0/24 via 10.22.22.1
+  post-up ip route add 0.0.0.0/0 via 10.33.33.1
 
 iface eth1 inet6 static
   address 2A02:2498:E004:1E::4

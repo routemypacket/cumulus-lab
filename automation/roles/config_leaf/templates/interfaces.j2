@@ -19,6 +19,7 @@ iface mgmt
     vrf-table auto
 
 {% set access_ports = [] %}
+{% set trunk_ports = [] %}
 {% for interface in device.interfaces %}
 {% set interface_vars = device.interfaces[interface] %}
 
@@ -30,6 +31,10 @@ iface {{ interface }}
   {% do access_ports.append(interface) %}
   bridge-access {{ interface_vars.vlan_id}}
   {% endif %}
+  {% if interface_vars.port_type == "trunk" %}
+  {% do trunk_ports.append(interface) %}
+  {% endif %}
+
 {% endfor %}
 
 
@@ -37,7 +42,7 @@ iface {{ interface }}
 auto bridge
 iface bridge
     bridge-vlan-aware yes
-    bridge-ports {{access_ports|sort|join(' ')}} {{ device.bridge.bridge_ports|sort|join(' ') }}
+    bridge-ports {{access_ports|sort|join(' ')}} {{trunk_ports|sort|join(' ')}} {{ device.bridge.bridge_ports|sort|join(' ') }}
     bridge-vids {{ device.bridge.bridge_vids|sort|join(' ') }}
     bridge-pvid 1
 
