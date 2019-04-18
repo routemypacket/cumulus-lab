@@ -20,8 +20,14 @@ iface mgmt
 
 {% set access_ports = [] %}
 {% set trunk_ports = [] %}
+{% set mlag_ports = [] %}
+{% set bond_ports = [] %}
+
+
+
 {% for interface in device.interfaces %}
 {% set interface_vars = device.interfaces[interface] %}
+
 
 # Connects to {{ interface_vars.description }}
 auto {{ interface }}
@@ -29,13 +35,49 @@ iface {{ interface }}
   alias to {{ interface_vars.description }}
   {% if interface_vars.port_type == "access" %}
   {% do access_ports.append(interface) %}
-  bridge-access {{ interface_vars.vlan_id}}
+  bridge-access {{ interface_vars.vlan_id }}
   {% endif %}
   {% if interface_vars.port_type == "trunk" %}
   {% do trunk_ports.append(interface) %}
   {% endif %}
+  {% if interface_vars.port_type == "mlag" %}
+  {% do mlag_ports.append(interface) %}
+  post-up ip link set {{ interface }} promisc on
+  {% endif %}
+  {% if interface_vars.port_type == "bond" %}
+  {% do bond_ports.append(interface) %}
+  mtu {{ interface_vars.mtu}}
+  bond-slaves {{ interface_vars.bond-slaves }}
+  bridge-access {{ interface_vars.bridge-access }}
+  clag-id {{ interface_vars.clag-id}}
+  {% endif %}
 
 {% endfor %}
+
+# CLAG Peerlink bond
+auto peerlink
+iface peerlink
+  mtu 9000
+  bond-slaves swp47 swp48
+
+
+
+# CLAG Peerlink L2 interface.
+# This creates VLAN 4094 that only lives on the peerlink bond
+# No other interface will be aware of VLAN 4094
+auto peerlink.4094
+iface peerlink.4094
+  address {{ device.clag.clag_address }}
+  clagd-peer-ip {{ device.clag.clagd-peer-ip }}
+  clagd-backup-ip {{ device.clag.clagd-backup-ip }}
+  clagd-sys-mac {{ device.clag.clagd-sys-mac }}
+  clagd-priority {{ device.clag.clagd-priority }}
+
+
+
+
+
+
 
 
 # Bridge configuration

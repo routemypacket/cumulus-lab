@@ -77,14 +77,31 @@ lo:
 eth0:
   ipv4: "10.0.3.11/25"
   ipv4_gateway: "10.0.3.1"
+
+clag:
+  clag_address: "169.254.1.1/30"
+  clagd-peer-ip: "169.254.1.1"
+  clagd-backup-ip: "10.0.0.11"
+  clagd-sys-mac: "44:39:39:ff:40:94"
+  clagd-priority: 200
+  
 interfaces:
   swp1:
     description: "server1"
+    port_type: "mlag"
+  swp2:
+    description: "server2"
     port_type: "access"
     vlan_id: 100
   swp10:
     description: "Fortigate Firewall"
     port_type: "trunk"
+  swp47:
+    description: "Peerlink"
+    port_type: "mlag"
+  swp48:
+    description: "Peerlink"
+    port_type: "mlag"
   swp49:
     description: "spine01"
     port_type: "uplink"
@@ -97,3 +114,10 @@ interfaces:
   swp52:
     description: "spine04"
     port_type: "uplink"
+  bond01:
+    description: "bond"
+    port_type: "bond"
+    mtu: 9000
+    bond-slaves: swp1
+    bridge-access: 200
+    clag-id: 2
