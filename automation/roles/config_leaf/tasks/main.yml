@@ -23,11 +23,11 @@
     dest: /etc/frr/frr.conf
   notify: reload frr
 
-- name: install netq
-  template:
-    src: source_list.j2
-    dest: /etc/apt/sources.list
-  notify: install netq
+#- name: install netq
+#  template:
+#    src: source_list.j2
+#    dest: /etc/apt/sources.list
+#  notify: install netq
 
 - name: configure and activate netq
   template:
